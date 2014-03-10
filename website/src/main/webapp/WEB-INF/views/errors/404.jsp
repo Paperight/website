@@ -1,0 +1,2 @@
+<h1>Page not available</h1>
+<div class="description">Sorry, the page you're looking for doesn't exist or isn't available. For help finding what you need, please email us at <a style="color:white;" href="mailto:team@paperight.com">team@paperight.com</a></div>

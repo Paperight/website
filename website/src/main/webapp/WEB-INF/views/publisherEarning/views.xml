@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="publisher-earnings/list" template="/WEB-INF/views/publisherEarning/list.jsp" />
+	
+	<definition name="publisher-earnings/search" extends="default">
+		<put-attribute name="title" value="Publisher Earnings" type="string" />
+		<put-attribute name="id" value="publisherEarnings" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/publisherEarning/search.jsp" />
+					<add-attribute value="/WEB-INF/views/publisherEarning/requestPayment.jsp" />
+					<add-attribute value="/WEB-INF/views/publisherEarning/searchResult.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="publisher-payment-requests/search" extends="default">
+		<put-attribute name="title" value="Publisher Payment Requests" type="string" />
+		<put-attribute name="id" value="publisherPaymentRequests" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/publisherEarning/publisherPaymentRequestSearch.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/form-defaults.js" type="string" />
+			<add-attribute value="/js/view/publisherEarning/publisherPaymentRequestSearch.js" type="string" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="publisher-payment-details" extends="default">
+		<put-attribute name="title" value="Publisher Payment Details" type="string" />
+		<put-attribute name="id" value="publisherPaymentDetails" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/publisherEarning/publisherPaymentDetails.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	
+  
+</tiles-definitions>

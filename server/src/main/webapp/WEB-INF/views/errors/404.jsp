@@ -1,0 +1,2 @@
+<h1>Page could not be found...</h1>
+<div class="description">It seems the page you were looking for doesn't exist. If there is a problem please email us at <a style="color:white;" href="mailto:team@paperight.com">team@paperight.com</a></div>

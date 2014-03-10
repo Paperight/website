@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="impersonate" extends="default">
+		<put-attribute name="title" value="Impersonate User" type="string" />
+		<put-attribute name="id" value="impersonateUser" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/impersonate/login.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+</tiles-definitions>

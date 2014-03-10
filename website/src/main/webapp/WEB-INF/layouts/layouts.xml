@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="base" template="/WEB-INF/layouts/html.jsp" />
+	
+	<definition name="header" extends="list">
+		<put-attribute name="name" value="header" type="string" />
+		<put-list-attribute name="items">
+			<add-attribute value="notification" />
+			<add-attribute value="headerLogo" />
+			<add-attribute value="headerLogin" />
+			<add-attribute value="headerLogout" />
+			<add-attribute value="headerSearch" />
+			<add-attribute value="headerBreadCrumbs" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="footer" extends="list">
+		<put-attribute name="name" value="footer" type="string" />
+		<put-list-attribute name="items">
+			<add-attribute value="footerContact" />
+			<add-attribute value="footerNavigation" />
+			<add-attribute value="footerLogos" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="default" extends="base">
+		<put-attribute name="header" value="header" />
+		<put-attribute name="footer" value="footer" />
+		<put-list-attribute name="scripts">
+			<add-attribute value="//www.google.com/jsapi" type="string" />
+			<add-attribute value="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" />
+            <add-attribute value="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript" />
+			<add-attribute value="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" type="string" />
+			<add-attribute value="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.min.js" type="string" />
+			<add-attribute value="/js/accounting.js" type="string" />
+			<add-attribute value="/js/paperight.js" type="string" />
+			<add-attribute value="/js/paperight.dialog.js" type="string" />
+			<add-attribute value="/js/paperight.notification.js" type="string" />
+			<add-attribute value="/js/paperight.grid.js" type="string" />
+			<add-attribute value="/js/paperight.htabs.js" type="string" />
+			<add-attribute value="/js/paperight.context.jsonp?cb=paperight.load" type="string" />
+			<add-attribute value="/js/jquery.sortElements.js" type="string" />
+			<add-attribute value="/js/common.js" type="string" />
+			<add-attribute value="/js/google.analytics.js" type="string" />
+			<add-attribute value="/js/breadcrumbs.js" type="string" />
+		</put-list-attribute>
+		<put-list-attribute name="links">
+			<add-attribute value="/css/jquery-ui.css" type="string" />
+			<add-attribute value="/css/paperight.css" type="string" />
+		</put-list-attribute>
+		<put-list-attribute name="print">
+			<add-attribute value="/css/print.css" type="string" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="oneColumn" template="/WEB-INF/layouts/oneColumn.jsp" />
+	<definition name="twoColumn" template="/WEB-INF/layouts/twoColumn.jsp" />
+	<definition name="twoColumnLeft" template="/WEB-INF/layouts/twoColumnLeft.jsp" />
+
+	<definition name="list" template="/WEB-INF/layouts/common/list.jsp" />
+	<definition name="notification" template="/WEB-INF/layouts/common/notification.jsp" />
+	<definition name="pagination" template="/WEB-INF/layouts/common/pagination.jsp" />
+	
+	<definition name="headerLogo" template="/WEB-INF/layouts/common/header/logo.jsp" />
+	<definition name="headerSearch" template="/WEB-INF/layouts/common/header/search.jsp" />
+	<definition name="headerBreadCrumbs" template="/WEB-INF/layouts/common/header/breadCrumbs.jsp" />
+	<definition name="headerLogin" template="/WEB-INF/layouts/common/header/login.jsp" />
+	<definition name="headerLogout" template="/WEB-INF/layouts/common/header/logout.jsp" preparer="userViewPreparer" />
+	<definition name="footerContact" template="/WEB-INF/layouts/common/footer/contact.jsp" />
+	<definition name="footerNavigation" template="/WEB-INF/layouts/common/footer/navigation.jsp" />
+	<definition name="footerLogos" template="/WEB-INF/layouts/common/footer/logos.jsp" />
+
+</tiles-definitions>

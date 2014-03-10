@@ -1,0 +1,22 @@
+#logo-panel a { width:100px; height:118px; background:url(../themes/default/images/logo.png) no-repeat 0 0; display:block; }
+
+#navigators h3 { margin-bottom: 10px; }
+#navigators ul { margin-bottom: 20px; }
+#navigators ul li a { display: block; }
+
+body { background-color:#f2f2f2; }
+#header > .wrapper { height: auto; }
+#content > .wrapper { border-top-left-radius: 6px; border-top-right-radius: 6px; border:1px solid #dedede; border-bottom:0; overflow: hidden; }
+#content > .wrapper,
+#footer > .wrapper { background: white; }
+#footer > .wrapper { overflow: auto; padding-top: 50px; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border:1px solid #dedede; border-top:0; }
+#footer { margin-bottom:20px; }
+
+.columns { margin:40px; }
+
+#productownership #companySelect { width:100%; clear: both; margin-bottom: 40px; }
+#productownership #orphanedProducts,
+#productownership #companyProducts { width:100%; clear: both; margin-bottom: 40px; }
+#productownership .selectfilters { margin-bottom:5px; }
+#productownership .selectfilters input { width:295px; border:1px solid #cacaca; background: white; }
+#productownership small { opacity:0.7; }

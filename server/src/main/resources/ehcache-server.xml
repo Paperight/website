@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd"  updateCheck="true" monitoring="autodetect" name="serverCacheManager">
+                
+<!-- 	<defaultCache maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="false" diskSpoolBufferSizeMB="30" maxElementsOnDisk="10000000" diskPersistent="false" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" statistics="true"/> -->
+	
+	<cache name="currencies" maxElementsInMemory="200" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="3600" overflowToDisk="false" maxElementsOnDisk="10000000" diskPersistent="false" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+	<cache name="defaultCurrencies" maxElementsInMemory="10" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="300" overflowToDisk="false" maxElementsOnDisk="10000000" diskPersistent="false" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" statistics="true"/>     
+	<cache name="countries" maxElementsInMemory="300" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="3600" overflowToDisk="false" maxElementsOnDisk="10000000" diskPersistent="false" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+	
+	<cache name="applicationSettings" maxElementsInMemory="20" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="300" overflowToDisk="false" maxElementsOnDisk="10000000" diskPersistent="false" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" statistics="true"/>
+	
+	<cache name="snippetGroups" maxElementsInMemory="2000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="300" overflowToDisk="false" maxElementsOnDisk="10000000" diskPersistent="false" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" statistics="true"/>	
+	<cache name="articles" maxElementsInMemory="2000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="300" overflowToDisk="false" maxElementsOnDisk="10000000" diskPersistent="false" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" statistics="true"/>
+	
+</ehcache>

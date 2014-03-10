@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+  
+	<definition name="search" extends="default">
+		<put-attribute name="title" type="string" value="Search" />
+		<put-attribute name="id" type="string" value="search" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeft">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/search/navigators.jsp" />
+					<add-attribute value="/WEB-INF/views/search/suggestBookWidget.jsp" />
+				</put-list-attribute>
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/search/results.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/form-defaults.js" type="string" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="search/result/product" template="/WEB-INF/views/search/product.jsp" />
+	
+	<definition name="search/amazon" template="/WEB-INF/views/search/amazon.jsp" />
+	
+	<definition name="search/amazon/noresults" template="/WEB-INF/views/search/amazonNoResults.jsp" />
+	
+	
+  
+</tiles-definitions>

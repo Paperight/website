@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<definition name="posters" extends="default">
+		<put-attribute name="title" type="string" value="Paperight poster" />
+		<put-attribute name="id" type="string" value="paperightPosters" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/posters/search.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/posters/search.js" type="string" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="poster/update" extends="default">
+		<put-attribute name="title" type="string" value="Poster update" />
+		<put-attribute name="id" type="string" value="posterUpdate" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/posters/update.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+</tiles-definitions>

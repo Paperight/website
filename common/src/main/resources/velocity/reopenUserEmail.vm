@@ -1,0 +1,9 @@
+<p>Hi $user.firstName</p>
+
+<p>To reopen your account on Paperight, please click the link below or paste it into a web browser. (If you didn't ask to reopen your account, you can ignore this, or let us know at <a href="mailto:team@paperight.com">team@paperight.com</a>.)</p>
+
+<p><a href="$reopenUserUrl">$reopenUserUrl</a></p>
+
+<p>Best wishes</p>
+
+<p>The Paperight team</p>

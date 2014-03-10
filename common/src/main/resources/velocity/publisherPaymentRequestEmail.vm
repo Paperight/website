@@ -1,0 +1,10 @@
+<div>
+	<dl>
+		<dt>Company</dt>
+		<dd>${publisherPaymentRequest.company.name}</dd>
+	</dl>
+	<dl>
+		<dt>Link</dt>
+		<dd><a href="${publisherPaymentRequestUrl}">${publisherPaymentRequestUrl}</a></dd>
+	</dl>
+</div>

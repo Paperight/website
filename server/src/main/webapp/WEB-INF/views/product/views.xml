@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="product/import" extends="default">
+		<put-attribute name="title" type="string" value="Import Products" />
+		<put-attribute name="id" type="string" value="import" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/product/importForm.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="product/import/complete" extends="default">
+		<put-attribute name="title" type="string" value="Import Products Complete" />
+		<put-attribute name="id" type="string" value="import" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/product/importComplete.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="product/import/search" extends="default">
+		<put-attribute name="title" type="string" value="Paperight Product Import Search" />
+		<put-attribute name="id" type="string" value="paperightProductImportSearch" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/product/imports.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="product/import/errors" extends="default">
+		<put-attribute name="title" type="string" value="Import Products" />
+		<put-attribute name="id" type="string" value="import" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/product/importErrors.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="product/update" extends="default">
+		<put-attribute name="title" type="string" value="Product Update" />
+		<put-attribute name="id" type="string" value="productUpdate" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/product/update.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="product/search" extends="default">
+		<put-attribute name="title" type="string" value="Product Search" />
+		<put-attribute name="id" type="string" value="productSearch" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/product/search.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/product/search.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+</tiles-definitions>

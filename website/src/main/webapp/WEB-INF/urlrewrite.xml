@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<!--
+
+    Configuration file for UrlRewriteFilter
+    http://www.tuckey.org/urlrewrite/
+
+-->
+<urlrewrite>
+
+	<rule>
+		<name>Dev host rewrite</name>
+		<condition name="host" operator="equal">paperight.com:8080</condition>
+		<from>^/(.*)</from>
+		<to type="redirect">http://www.paperight.com/$1</to>
+	</rule>
+	
+	<rule>
+		<name>Dev host rewrite2</name>
+		<condition name="host" operator="equal">www.paperight.com:8080</condition>
+		<from>^/(.*)</from>
+		<to type="redirect">http://www.paperight.com/$1</to>
+	</rule>
+
+	<rule>
+		<name>Canonical Hostnames</name>
+		<condition name="host" operator="equal">^paperight.com</condition>
+		<from>^/(.*)</from>
+		<to type="redirect" last="true">http://www.paperight.com/$1</to>
+	</rule>
+
+</urlrewrite>

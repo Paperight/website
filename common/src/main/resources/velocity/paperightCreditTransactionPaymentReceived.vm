@@ -1,0 +1,7 @@
+Hi $user.firstName
+<br />
+<br />
+Thank you for topping up your Paperight credit balance. We have received your payment, and have credited your Paperight balance by $transaction.numberOfCredits credits.
+<br />
+<br />
+If you have any questions or need to follow up, please email us at <a href="mailto:team@paperight.com">team@paperight.com</a>.

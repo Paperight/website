@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<definition name="licence/search" extends="default">
+		<put-attribute name="title" type="string" value="Licence Search" />
+		<put-attribute name="id" type="string" value="licenceSearch" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/licence/search.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/licence/search.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+</tiles-definitions>

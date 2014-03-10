@@ -1,0 +1,185 @@
+<style type="text/css">
+
+@page { size: A4 landscape; margin: 30pt 30pt 30pt 30pt; prince-shrink-to-fit: auto  }
+
+@font-face {
+	font-family: 'Ubuntu Condensed';
+	font-style: normal;
+	font-weight: normal;
+	src:url(http://media.paperight.com/fonts/ubuntu-condensed/UbuntuCondensed-Regular.ttf);
+}
+
+body {
+	margin: 1em;
+	font-family: 'Ubuntu Condensed', Arial, Helvetica, sans-serif;
+	font-size: 0.8em;}
+h1, h2, h3 {
+	color: grey;}
+.from {
+	float: left;
+	max-width: 40%;
+	margin: 1em 2em 1em 0;}
+.to {
+	float: left;
+	max-width: 40%;
+	margin: 1em 0 1em 0;}
+.for {
+	clear: both;
+	margin: 1em 0 1em 0;}
+.statement-summary {
+	padding: 0em 1em 1em 1em;
+	border: 1px dotted grey;}
+.details div, .paperight-details div, .publisher-details div, .outlet-details div {
+	padding: 0.2em;}
+table {
+	border-collapse: collapse;
+	border: 0;
+	width: 100%;
+	font-size: inherit;}
+thead {
+	font-weight: bold;
+	border-top: 1px dotted grey;
+	border-bottom: 1px dotted grey;}
+tr {}
+tr.rand-value, tr.vat-included {
+	font-weight: bold;}
+tr.total-row {
+	font-weight: bold;
+	border-top: 1px dotted grey;
+	border-bottom: 1px dotted grey;}
+td {
+	padding: 0.2em 0.5em 0.2em 0.2em;
+	border: 0;
+	vertical-align: top;}
+.footer {
+	float: left;
+	text-align: center;
+	font-size: 0.7em;
+	color: grey;
+	font-weight: bold;
+	margin-top: 2em;
+	padding-top: 1em;}
+.footer img {
+	width: 5em;
+	height: 5em;
+	border-radius: 2em;
+	border: 1px dotted grey;
+	padding: 0.5em;
+	margin: 0.5em;}
+
+</style>
+
+<h1>Outlet statement</h1>
+
+<div class="to">
+
+    <h2>To</h2>
+    
+    <div class="details">
+        <div><span>$toCompany.name</span></div>
+        <div><span>$toCompany.primaryAddress</span></div>
+      	#if( $toCompany.vatRegistered )
+        	<div>VAT number: <span>$toCompany.vatRegistrationNumber</span></div>
+        #else
+        	<div>VAT number: <span>Not VAT registered</span></div>
+        #end
+    </div><!--.details-->
+
+</div><!--.to-->
+
+<div class="for">
+
+	<h2>For</h2>
+
+	<div class="statement-summary">
+
+		<h3>Summary</h3>
+
+		<table>
+			<tr>
+				<td>Period</td>
+				<td><span>$fromDate.toString("dd MMMM yyyy") to $toDate.toString("dd MMMM yyyy")</span></td>
+			</tr>
+			<tr>
+				<td>Total licence fees</td>
+				<td><span>R$totalLicenceFees</span></td>
+			</tr>
+			<tr>
+				<td>Total VAT on licence fees</td>
+				<td><span>R$totalLicenceFeesVat</span></td>
+			</tr>
+		</table>
+
+	</div><!--.statement-summary-->
+
+	<h3>Licence transactions between $toCompany.name and rightsholders</h3>
+
+	<table>
+		<thead>
+			<tr>
+				<td>Invoice no.</td>
+				<td>Date</td>
+				<td>Title</td>
+				<td>Rightsholder</td>
+				<td>Identifier</td>
+				<td>Copies</td>
+				<td>Licence fee in credits</td>
+				<td>Licence fee in dollars</td>
+				<td>ZAR equivalent</td>
+				<td>VAT included</td>
+				<td>VAT rate</td>
+			</tr>
+		</thead>
+		<tbody>
+			#set ($totalCopies = 0)
+			#set ($totalDollars = 0)
+			#set ($totalCredits = 0)
+			#foreach ($licence in $licences)
+				#set ($totalCopies = $totalCopies + $licence.numberOfCopies)
+				#set ($totalDollars = $totalDollars + $licence.dollarsInvoiceValue)
+				#set ($totalCredits = $totalCredits + $licence.costInCredits)
+				#set ($vatAmount = $licence.randsInvoiceVatValue)
+				#if( $vatAmount > 0 )
+					#set ($vatRateValue = $vatRate.rate0)
+				#else
+					#set ($vatRateValue = 0)
+				#end
+				<tr>
+					<td><span>$licence.id</span></td>
+					<td><span>$licence.transactionDate.toString("yyyy-MM-dd")</span></td>
+					<td><span>$licence.product.title</span></td>
+					#if ($licence.product.ownerCompany)
+						<td><span>$licence.product.ownerCompany.name</span></td>
+					#else
+						<td><span>Paperight</span></td>
+					#end
+					<td><span>$licence.product.identifier</span></td>
+					<td><span>$licence.numberOfCopies</span></td>
+					<td><span>$licence.costInCredits</span></td>
+					<td><span>$licence.dollarsInvoiceValue</span></td>					
+					<td><span>R$licence.randsInvoiceValue</span></td>
+					<td><span>R$vatAmount</span></td>
+					<td><span> $vatRateValue%</span></td>
+				</tr>
+			#end
+			<tr>
+				<td>Total</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><span>$totalCopies</span></td>
+				<td><span>$totalCredits</span></td>
+				<td><span>$$totalDollars</span></td>
+				<td><span>R$totalLicenceFees</span></td>
+				<td><span>R$totalLicenceFeesVat</span></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div><!--.for-->
+
+<div class="footer">
+	Powered by<br> <img alt="Paperight" src="$applicationUrl/img/logo.png">
+</div><!--.footer-->

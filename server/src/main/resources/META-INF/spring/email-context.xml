@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mail="http://www.springframework.org/schema/integration/mail"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration/mail http://www.springframework.org/schema/integration/mail/spring-integration-mail-2.1.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-2.1.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${email.host}" />
+		<property name="port" value="${email.port}" />
+		<property name="username" value="${email.username}" />
+		<property name="password" value="${email.password}" />
+	</bean>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="velocityProperties">
+			<value>
+				resource.loader=class
+				class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+			</value>
+		</property>
+	</bean>
+	
+	<int:gateway id="mailGateway"  service-interface="com.paperight.email.integration.EmailGateway" />
+	
+	<!-- Outbound Channel Adapter -->
+	
+	<int:channel id="outboundEmailChannel" />	
+	
+	<mail:outbound-channel-adapter channel="outboundEmailChannel" mail-sender="mailSender" />	
+	
+	<!-- Activate User -->
+	
+	<int:channel id="activateUserChannel" />	
+		
+	<int:transformer id="activateUserEmailTransformer" input-channel="userRegistationChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.ActivateUserEmailTransformer" />
+	</int:transformer>
+	
+	<int:transformer input-channel="activateUserChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.ActivateUserEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Contact Us -->
+	
+	<int:channel id="contactUsChannel" />
+	
+	<int:transformer id="contactUsEmailTransformer" input-channel="contactUsChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.ContactUsEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Forgot Password -->
+	
+	<int:channel id="resetPasswordChannel" />
+	
+	<int:transformer id="resetPasswordEmailTransformer" input-channel="resetPasswordChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.ResetPasswordEmailTransformer" />
+	</int:transformer>
+	
+	<!-- User Registration -->
+	
+	<int:publish-subscribe-channel id="userRegistationChannel"/>
+	
+	<int:transformer id="userRegistationEmailTransformer" input-channel="userRegistationChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.UserRegistrationEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Paperight Credit Payment -->
+	
+	<int:channel id="paperightCreditTransactionPaymentReceivedChannel"/>
+	
+	<int:transformer id="paperightCreditTransactionPaymentReceivedTransformer" input-channel="paperightCreditTransactionPaymentReceivedChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.PaperightCreditTransactionPaymentReceivedEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Request a Book -->
+	
+	<int:channel id="suggestBookChannel"/>
+	
+	<int:transformer id="suggestBookTransformer" input-channel="suggestBookChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.SuggestBookEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Update Email -->
+	
+	<int:publish-subscribe-channel id="updateEmailChannel"/>
+	
+	<int:transformer id="updateEmailOldEmailTransformer" input-channel="updateEmailChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.UpdateEmailOldEmailTransformer" />
+	</int:transformer>
+	
+	<int:transformer id="updateEmailNewEmailTransformer" input-channel="updateEmailChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.UpdateEmailNewEmailTransformer" />
+	</int:transformer>
+	
+	<!-- New User -->
+	
+	<int:channel id="newUserChannel"/>
+	
+	<int:transformer id="newUserEmailTransformer" input-channel="newUserChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.NewUserEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Close Account -->
+	
+	<int:channel id="closeUserChannel" />
+	
+	<int:transformer id="closeUserEmailTransformer" input-channel="closeUserChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.CloseUserEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Reopen Account -->
+	
+	<int:channel id="reopenUserChannel" />
+	
+	<int:transformer id="reopenUserEmailTransformer" input-channel="reopenUserChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.ReopenUserEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Publisher Payment Request Email -->
+	
+	<int:channel id="publisherPaymentRequestEmailChannel"/>
+	
+	<int:transformer id="publisherPaymentRequestEmailTransformer" input-channel="publisherPaymentRequestEmailChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.PublisherPaymentRequestEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Cancel Publisher Payment Request Email -->
+	
+	<int:channel id="cancelPublisherPaymentRequestEmailChannel"/>
+	
+	<int:transformer id="cancelPublisherPaymentRequestEmailTransformer" input-channel="cancelPublisherPaymentRequestEmailChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.CancelPublisherPaymentRequestEmailTransformer" />
+	</int:transformer>
+	
+	<!-- Paid Publisher Payment Request Email -->
+	
+	<int:channel id="paidPublisherPaymentRequestEmailChannel"/>
+	
+	<int:transformer id="paidPublisherPaymentRequestEmailTransformer" input-channel="paidPublisherPaymentRequestEmailChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.PaidPublisherPaymentRequestEmailTransformer" />
+	</int:transformer>
+
+	<!-- Licence Purchase Emails -->
+	
+	<int:publish-subscribe-channel id="licencePurchaseEmailChannel" />
+	<int:publish-subscribe-channel id="licencePurchaseCompanyAdminEmailChannel" />
+		
+	<int:transformer id="licencePurchaseEmailTransformer" input-channel="licencePurchaseCompanyAdminEmailChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.LicencePurchaseEmailTransformer" />
+	</int:transformer>
+
+	<int:splitter id="licencePurchaseEmailSplitter"
+  		method="split"
+  		input-channel="licencePurchaseEmailChannel"
+  		output-channel="licencePurchaseCompanyAdminEmailChannel">
+			<bean class="com.paperight.email.integration.LicencePurchaseEmailSplitter"/>
+  	</int:splitter>
+  	
+  	<!-- Publisher Earnings Reminder Email -->
+  	
+  	<task:executor id="publisherEarningReminderEmailTaskExecutor"/>
+  	
+  	<int:publish-subscribe-channel id="publisherEarningReminderCompanyAdminEmailChannel" task-executor="publisherEarningReminderEmailTaskExecutor" />
+  	
+	<int:publish-subscribe-channel id="publisherEarningReminderEmailChannel" task-executor="publisherEarningReminderEmailTaskExecutor" />
+ 	
+ 	<int:transformer id="publisherEarningReminderEmailTransformer" input-channel="publisherEarningReminderCompanyAdminEmailChannel" output-channel="outboundEmailChannel" >
+		<bean class="com.paperight.email.integration.PublisherEarningReminderEmailTransformer" />
+	</int:transformer>
+	
+	<int:splitter id="publisherEarningReminderEmailSplitter"
+  		input-channel="publisherEarningReminderEmailChannel"
+  		output-channel="publisherEarningReminderCompanyAdminEmailChannel"
+  		expression="payload.getActiveCompanyAdmins()">
+  	</int:splitter>
+
+</beans>

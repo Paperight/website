@@ -1,0 +1,15 @@
+<p>Hi $user.firstName</p>
+
+<p>This is to confirm that you have just changed your email address on Paperight. Your old email address was:</p>
+
+<p>$oldEmail</p>
+
+<p>and you changed it to:</p>
+
+<p>$user.email</p>
+
+<p>If you didn't make this change, please let us know immediately (email <a href="mailto:team@paperight.com">team@paperight.com</a>). Perhaps someone changed it without your permission.</p>
+
+<p>Best wishes</p>
+
+<p>The Paperight team</p>

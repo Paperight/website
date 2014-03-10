@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">
+
+<mapping>
+
+	<class name="com.paperight.product.ThirdPartyProduct">
+
+		<map-to xml="Item" ns-uri="http://webservices.amazon.com/AWSECommerceService/2011-08-01"/>
+		
+		<field name="DetailPageUrl" type="java.lang.String" >
+			<bind-xml name="DetailPageURL" node="element" />
+		</field>
+				
+		<field name="Title" type="java.lang.String">
+			<bind-xml name="Title" node="element" location="ItemAttributes" />
+		</field>
+		
+		<field name="ImageUrl" type="java.lang.String">
+			<bind-xml name="URL" node="element" location="MediumImage" />
+		</field>
+		
+		<field name="PriceInCents" type="int">
+			<bind-xml name="Amount" node="element" location="ItemAttributes/ListPrice" />
+		</field>
+		
+		<field name="Contributors" type="java.lang.String" collection="arraylist">
+			<bind-xml name="Author" node="element" location="ItemAttributes" />
+		</field>
+		
+	</class>
+
+</mapping>

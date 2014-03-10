@@ -1,0 +1,19 @@
+<p>Hi $user.firstName</p>
+
+<p>This is to confirm that you have just changed your email address on Paperight. Your old email address was:</p>
+
+<p>$oldEmail</p>
+
+<p>and you changed it to:</p>
+
+<p>$user.email</p>
+
+<p>Now, you must confirm that this new address is correct. To confirm, please click the following link, or paste it into a web browser:</p>
+
+<p><a href="$activateUrl">$activateUrl</a></p>
+
+<p>Thanks! Any questions, let us know at <a href="mailto:team@paperight.com">team@paperight.com</a>.</p>
+
+<p>Best wishes</p>
+
+<p>The Paperight team</p>

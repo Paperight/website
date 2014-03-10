@@ -1,0 +1,14 @@
+<div>
+	<dl>
+		<dt>Title</dt>
+		<dd>${suggestBook.title}</dd>
+	</dl>
+	<dl>
+		<dt>Author(s)</dt>
+		<dd>${suggestBook.author}</dd>
+	</dl>
+	<dl>
+		<dt>Additional Information</dt>
+		<dd>${suggestBook.additionalInformation}</dd>
+	</dl>
+</div>

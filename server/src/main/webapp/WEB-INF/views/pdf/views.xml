@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<definition name="pdf/epub" extends="default">
+		<put-attribute name="title" type="string" value="New ePub conversion" />
+		<put-attribute name="id" type="string" value="ePubToPdf" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/pdf/epub.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="pdf/html" extends="default">
+		<put-attribute name="title" type="string" value="New HTML conversion" />
+		<put-attribute name="id" type="string" value="htmlToPdf" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/pdf/html.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/pdf/html.js" type="string" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="pdf/pdf" extends="default">
+		<put-attribute name="title" type="string" value="Existing PDF conversion" />
+		<put-attribute name="id" type="string" value="existingPdfToPdf" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/pdf/pdf.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/pdf/pdf.js" type="string" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="pdf/product" extends="default">
+		<put-attribute name="title" type="string" value="PDF to product" />
+		<put-attribute name="id" type="string" value="pdfToProduct" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/pdf/toProduct.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/pdf/toProduct.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+</tiles-definitions>

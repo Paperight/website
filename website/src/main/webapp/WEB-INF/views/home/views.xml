@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<definition name="home" extends="default">
+		<put-attribute name="title" type="string" value="Home" />
+		<put-attribute name="id" type="string" value="home" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/home/posters.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-attribute name="deck" value="/WEB-INF/views/home/deck.jsp" />
+	</definition>
+  
+</tiles-definitions>

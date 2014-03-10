@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="login" extends="default">
+    <put-attribute name="title" type="string" value="Log in" />
+    <put-attribute name="id" type="string" value="login" />
+	<put-attribute name="header">
+		<definition extends="list">
+			<put-attribute name="name" value="header" type="string" />
+			<put-list-attribute name="items">
+				<add-attribute value="notification" />
+				<add-attribute value="headerLogo" />
+				<add-attribute value="headerSearch" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+	<put-attribute name="body">
+		<definition extends="twoColumn">
+			<put-list-attribute name="columnOne">
+				<add-attribute value="/WEB-INF/views/user/loginForm.jsp" />
+			</put-list-attribute>
+			<put-list-attribute name="columnTwo">
+				<add-attribute value="/WEB-INF/views/user/newCustomersSnippet.jsp" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+	<put-list-attribute name="scripts" inherit="true">
+		<add-attribute value="/js/jquery.url.js" type="string" />
+	</put-list-attribute>
+  </definition>
+  
+  <definition name="register" extends="default">
+    <put-attribute name="title" type="string" value="Register" />
+    <put-attribute name="id" type="string" value="register" />
+    <put-attribute name="body">
+		<definition extends="oneColumn">
+			<put-list-attribute name="columnOne">
+				<add-attribute value="/WEB-INF/views/user/registrationForm.jsp" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+	<put-list-attribute name="links" inherit="true">
+		<add-attribute value="/css/jquery-gmaps-latlon-picker.css" type="string" />
+	</put-list-attribute>
+	<put-list-attribute name="scripts" inherit="true">
+		<add-attribute value="/js/view/registration.js" type="string" />
+		<add-attribute value="//maps.googleapis.com/maps/api/js?sensor=false" type="string" />
+		<add-attribute value="/js/jquery-gmaps-latlon-picker.custom.js" type="string" />
+	</put-list-attribute>
+  </definition>
+  
+  <definition name="registration/complete" extends="default">
+    <put-attribute name="title" type="string" value="Registration Success" />
+    <put-attribute name="id" type="string" value="registration" />
+	<put-attribute name="body">
+		<definition extends="oneColumn">
+			<put-list-attribute name="columnOne">
+				<add-attribute value="/WEB-INF/views/user/registrationComplete.jsp" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+	<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/jquery.ba-replacetext.min.js" type="string" />
+		</put-list-attribute>
+  </definition>
+  
+  <definition name="forgot/password" extends="default">
+    <put-attribute name="title" type="string" value="Forgot Password" />
+    <put-attribute name="id" type="string" value="forgotpassword" />
+    <put-attribute name="body">
+		<definition extends="twoColumn">
+			<put-list-attribute name="columnOne">
+				<add-attribute value="/WEB-INF/views/user/forgotPasswordForm.jsp" />
+			</put-list-attribute>
+			<put-list-attribute name="columnTwo">
+				<add-attribute value="/WEB-INF/views/user/newCustomersSnippet.jsp" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+	<put-list-attribute name="scripts" inherit="true">
+		<add-attribute value="/js/jquery.url.js" type="string" />
+	</put-list-attribute>
+  </definition>
+  
+  <definition name="password/reset" extends="default">
+    <put-attribute name="title" type="string" value="Reset Password" />
+    <put-attribute name="id" type="string" value="resetPassword" />
+	<put-attribute name="body">
+		<definition extends="oneColumn">
+			<put-list-attribute name="columnOne">
+				<add-attribute value="/WEB-INF/views/user/resetPasswordForm.jsp" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+	<put-list-attribute name="scripts" inherit="true">
+		<add-attribute value="/js/view/resetPassword.js" type="string" />
+	</put-list-attribute>
+	<put-list-attribute name="scripts" inherit="true">
+		<add-attribute value="/js/jquery.url.js" type="string" />
+	</put-list-attribute>
+  </definition>
+  
+  <definition name="password/reset/success" extends="login">
+    <put-attribute name="title" type="string" value="Password Reset Successful" />
+    <put-attribute name="id" type="string" value="passwordResetSuccessful" />
+  </definition>
+  
+  <definition name="password/sent" extends="login">
+    <put-attribute name="title" type="string" value="Password Sent" />
+    <put-attribute name="id" type="string" value="passwordsent" />
+  </definition>
+  
+  <definition name="reopen" extends="default">
+    <put-attribute name="title" type="string" value="Reopen Account" />
+    <put-attribute name="id" type="string" value="reopenAccount" />
+    <put-attribute name="body">
+		<definition extends="oneColumn">
+			<put-list-attribute name="columnOne">
+				<add-attribute value="/WEB-INF/views/user/reopenAccountForm.jsp" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+  </definition>
+  
+  <definition name="reopen/sent" extends="login">
+    <put-attribute name="title" type="string" value="Reopen Account Details Sent" />
+    <put-attribute name="id" type="string" value="reopenAccountDetailsSent" />
+  </definition>
+  
+  <definition name="reopen/success" extends="login">
+    <put-attribute name="title" type="string" value="Reopen Account Successful" />
+    <put-attribute name="id" type="string" value="reopenAccountSuccessful" />
+  </definition>
+  
+</tiles-definitions>

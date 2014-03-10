@@ -1,0 +1,13 @@
+<p>Hi $user.firstName</p>
+
+<p>Thanks for registering on Paperight! Everyone in our office just got an email telling them about you. We look forward to working with you.</p>
+
+<p>First, we need to check that your email address is correct. To do this, please click on this link, or paste it into a web browser:</p>
+
+<p><a href="$activateUrl">$activateUrl</a></p>
+
+<p>Your registration is NOT complete until you have done this. If you have any problems, email us at <a href="mailto:team@paperight.com">team@paperight.com</a> and we'll get right back to you.</p>
+
+<p>Best wishes</p>
+
+<p>The Paperight team</p>

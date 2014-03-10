@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<definition name="company/search" extends="default">
+		<put-attribute name="title" type="string" value="Company Search" />
+		<put-attribute name="id" type="string" value="companySearch" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/company/search.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="company/credits" extends="default">
+		<put-attribute name="title" type="string" value="Company Credits" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/company/credits.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="company/credits/detail" extends="default">
+		<put-attribute name="title" type="string" value="Company Credit Record" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/company/creditDetail.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+</tiles-definitions>

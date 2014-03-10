@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="login" extends="default">
+    <put-attribute name="title" type="string" value="Log in" />
+    <put-attribute name="id" type="string" value="login" />
+	<put-attribute name="header">
+		<definition extends="list">
+			<put-attribute name="name" value="header" type="string" />
+			<put-list-attribute name="items">
+				<add-attribute value="headerLogo" />
+				<add-attribute value="headerSearch" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+	<put-attribute name="body">
+		<definition extends="oneColumn">
+   			<put-list-attribute name="columnOne">
+				<add-attribute value="/WEB-INF/views/login/loginForm.jsp" />
+			</put-list-attribute>
+		</definition>
+	</put-attribute>
+  </definition>
+  
+</tiles-definitions>

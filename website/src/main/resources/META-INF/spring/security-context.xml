@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans 
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<http pattern="/css/**" security="none"/>
+	<http pattern="/themes/**" security="none"/>
+
+	<http use-expressions="true">
+		<session-management session-fixation-protection="migrateSession" />
+		<form-login 
+			login-page="/login/" 
+			username-parameter="username" 
+			password-parameter="password" 
+			login-processing-url="/login" 
+			authentication-success-handler-ref="authenticationSuccessHandler" 
+			authentication-failure-handler-ref="authenticationFailureHandler" 
+			always-use-default-target="false" />
+		<logout logout-url="/logout" logout-success-url="/" />
+		<remember-me key="paperight" user-service-ref="userDetailsService" />
+		<expression-handler ref="webExpressionHandler"/>
+	</http>
+	
+	<beans:bean id="webExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler">
+        <beans:property name="permissionEvaluator" ref="permissionEvaluator"/>
+	</beans:bean>
+	
+	<beans:bean id="permissionEvaluator" class="com.paperight.authentication.PermissionEvaluatorImpl" />
+	
+	<beans:bean id="authenticationSuccessHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="targetUrlParameter" value="redirectUrl" />
+	</beans:bean>
+	
+	<beans:bean id="authenticationFailureHandler" class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+		<beans:property name="defaultFailureUrl" value="/login/?error=login_failed" />
+		<beans:property name="exceptionMappings">
+			<beans:props>
+	            <beans:prop key="org.springframework.security.authentication.DisabledException">/login/?error=disabled</beans:prop>
+	            <beans:prop key="org.springframework.security.authentication.LockedException">/login/?error=closed</beans:prop>
+       		</beans:props>
+		</beans:property>
+		<beans:property name="redirectStrategy">
+			<beans:bean class="com.paperight.security.RedirectUrlRedirectStrategy" />
+		</beans:property>
+	</beans:bean>
+	
+	<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+	    	<password-encoder ref="passwordEncoder" />
+	    </authentication-provider>
+	</authentication-manager>
+	
+	<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+	<beans:bean id="userDetailsService" class="com.paperight.authentication.AuthenticationService" />
+	 	
+</beans:beans>

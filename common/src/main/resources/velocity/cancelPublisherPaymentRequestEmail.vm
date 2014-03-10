@@ -1,0 +1,5 @@
+<p>$publisherPaymentRequest.company.name has asked to cancel a publisher payment request.</p>
+
+<p>Please cancel if the payment has not been made, or inform $publisherPaymentRequest.company.name if payment has already been completed, and mark the request as paid in the <a href="$publisherPaymentRequestUrl">Paperight admin console</a>.</p>
+
+<p>Admin Console: <a href="${publisherPaymentRequestUrl}">$publisherPaymentRequestUrl</a></p>

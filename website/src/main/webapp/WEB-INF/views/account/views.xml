@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="dashboard" extends="default">
+		<put-attribute name="title" value="Dashboard" type="string" />
+		<put-attribute name="id" value="dashboard" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/publisherEarningSummary.jsp" />
+<!-- 					<add-attribute value="/WEB-INF/views/publisherEarning/requestPayment.jsp" /> -->
+					<add-attribute value="/WEB-INF/views/account/latestPublisherEarnings.jsp" />
+					<add-attribute value="/WEB-INF/views/account/licenceSummary.jsp" />
+					<add-attribute value="/WEB-INF/views/account/latestLicences.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="account" extends="default">
+		<put-attribute name="title" value="Account Information" type="string" />
+		<put-attribute name="id" value="accountInformation" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/details.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/account/details.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="account/update" extends="default">
+		<put-attribute name="title" type="string" value="Account Update" />
+		<put-attribute name="id" type="string" value="account" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/update.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+			<put-list-attribute name="links" inherit="true">
+			<add-attribute value="/css/jquery-gmaps-latlon-picker.css" type="string" />
+		</put-list-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="//maps.googleapis.com/maps/api/js?sensor=false" type="string" />
+			<add-attribute value="/js/jquery-gmaps-latlon-picker.custom.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="account/update/success" extends="account/update">
+	</definition>
+
+	<definition name="account/activated" extends="default">
+		<put-attribute name="title" type="string" value="Account Activated" />
+		<put-attribute name="id" type="string" value="account" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/activated.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="change/password" extends="default">
+		<put-attribute name="title" type="string" value="Change Password" />
+		<put-attribute name="id" type="string" value="changepassword" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/password.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="change/password/success" extends="change/password">
+	</definition>
+
+	<definition name="account/topup" extends="default">
+		<put-attribute name="title" type="string" value="Top Up" />
+		<put-attribute name="id" type="string" value="topup" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/topup.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/topup.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="account/payment" extends="default">
+		<put-attribute name="title" type="string" value="Confirmation" />
+		<put-attribute name="id" type="string" value="confirmation" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/payment.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/jquery.ba-replacetext.min.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="account/payment/paypal" extends="default">
+		<put-attribute name="title" type="string" value="Confirmation" />
+		<put-attribute name="id" type="string" value="confirmation" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/paymentPaypal.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/jquery.ba-replacetext.min.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="account/payment/paypal/cancel" extends="default">
+		<put-attribute name="title" type="string" value="Confirmation" />
+		<put-attribute name="id" type="string" value="confirmation" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/paymentPaypalCancel.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="account/licences" extends="default">
+		<put-attribute name="title" value="Licences" type="string" />
+		<put-attribute name="id" value="licences" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/licenceSummary.jsp" />
+					<add-attribute value="/WEB-INF/views/account/licences.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="account/publisher-earnings" extends="default">
+		<put-attribute name="title" value="Publisher earnings" type="string" />
+		<put-attribute name="id" value="publisherEarnings" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/publisherEarningSummary.jsp" />
+					<add-attribute value="/WEB-INF/views/account/publisherEarnings.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="account/email/update" extends="default">
+		<put-attribute name="title" value="Update Email" type="string" />
+		<put-attribute name="id" value="updateEmail" type="string" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/account/updateEmail.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="/js/view/updateEmail.js" type="string" />
+		</put-list-attribute>
+	</definition>
+
+</tiles-definitions>

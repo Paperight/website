@@ -1,0 +1,5 @@
+<p>Dear $publisherPaymentRequest.user.fullName.</p>
+
+<p>We have made a payment to $publisherPaymentRequest.company.name for $amountInCurrency of licence fees. To see your latest earnings balance, log in to <a href="$appUrl">paperight.com</a>.</p>
+
+<p>Best wishes, the Paperight team.</p>

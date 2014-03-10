@@ -1,0 +1,27 @@
+<p>Hi $user.firstName</p>
+
+<p>$licence.user.fullName at $licence.company.name has just purchased a licence to print:</p>
+
+<p>Title: $productTitle</p>
+
+<p>Customer name: $licence.customerName $licence.customerLastName</p>
+
+<p>Paperight credit cost: $licence.costInCredits</p>
+
+<p>Approximate value in your currency: $valueCurrency</p>
+
+<p>Your print charges as entered: $outletCharge</p>
+
+<p>Total charged to the customer: $totalCharge</p>
+
+<p>Product and licence details: <a href="$productUrl">$productUrl</a></p>
+
+<p>Your Paperight credit account balance is now: $licence.company.credits</p>
+
+<p>You can add more credits here: <a href="$topupUrl">$topupUrl</a></p>
+
+<p>If you have any questions or concerns, please contact us at <a href="mailto:team@paperight.com">team@paperight.com</a> or call <a href="tel:+27 21 671 1278">+27 21 671 1278</a></p>
+
+<p>Best wishes</p>
+
+<p>The Paperight team</p>

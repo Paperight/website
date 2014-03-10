@@ -1,0 +1,20 @@
+New Registration
+
+<div>
+	<dl>
+		<dt>Name:</dt>
+		<dd>$user.fullName</dd>
+	</dl>
+	<dl>
+		<dt>Company:</dt>
+		<dd>$user.company.name</dd>
+	</dl>
+	<dl>
+		<dt>Email:</dt>
+		<dd>$user.email</dd>
+	</dl>
+	<dl>
+		<dt>Contact Number:</dt>
+		<dd>$user.company.phoneNumber</dd>
+	</dl>
+</div>

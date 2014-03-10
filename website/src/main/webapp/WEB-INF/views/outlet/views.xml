@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="outlets" extends="default">
+		<put-attribute name="title" type="string" value="Outlets" />
+		<put-attribute name="id" type="string" value="outlets" />
+		<put-attribute name="body">
+			<definition extends="oneColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/outlet/outlets.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-list-attribute name="scripts" inherit="true">
+			<add-attribute value="//maps.google.com/maps/api/js?sensor=true&amp;libraries=places" type="text/javascript" />
+			<add-attribute value="/js/gmaps.js" type="text/javascript" />
+			<add-attribute value="/js/jquery.geocomplete.min.js" type="text/javascript" />
+		</put-list-attribute>
+	</definition>
+	
+</tiles-definitions>

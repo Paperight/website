@@ -1,0 +1,11 @@
+<p>Hi $user.firstName</p>
+
+<p>An account on Paperight has been created for you. To use your account you first need to choose a password. Click the link below.</p>
+
+<p><a href="$resetPasswordUrl">$resetPasswordUrl</a></p>
+
+<p>Username: $user.username</p>
+
+<p>Best wishes</p>
+
+<p>The Paperight team</p>

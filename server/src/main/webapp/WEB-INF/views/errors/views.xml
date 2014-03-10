@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="error/header" extends="list">
+		<put-attribute name="name" value="header" type="string" />
+		<put-list-attribute name="items">
+			<add-attribute value="headerLogo" />
+			<add-attribute value="headerSearch" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="error" extends="default">
+		<put-attribute name="title" type="string" value="Error" />
+		<put-attribute name="id" type="string" value="error" />
+		<put-attribute name="header" value="error/header" />
+		<put-attribute name="body">
+			<definition extends="twoColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/errors/error.jsp" />
+				</put-list-attribute>
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/home/introVideo.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+		<put-attribute name="deck" value="/WEB-INF/views/home/deck.jsp" />
+	</definition>
+ 
+	<definition name="error/404" extends="error">
+		<put-attribute name="title" type="string" value="Page not found" />
+		<put-attribute name="header" value="error/header" />
+		<put-attribute name="body">
+			<definition extends="twoColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/errors/404.jsp" />
+				</put-list-attribute>
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/home/introVideo.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+ 
+	<definition name="error/403" extends="error">
+		<put-attribute name="title" type="string" value="Page forbidden" />
+		<put-attribute name="header" value="error/header" />
+		<put-attribute name="body">
+			<definition extends="twoColumn">
+				<put-list-attribute name="columnOne">
+					<add-attribute value="/WEB-INF/views/errors/403.jsp" />
+				</put-list-attribute>
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/home/introVideo.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+  
+</tiles-definitions>

@@ -1,0 +1,5 @@
+<p>Hi $user.fullName.</p> 
+
+<p>This is just a monthly reminder to log in and check your licences statement on <a href="$appUrl">paperight.com</a>.</p>
+
+<p>Best wishes, the Paperight team.</p>

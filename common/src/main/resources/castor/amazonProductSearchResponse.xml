@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">
+
+<mapping>
+
+	<class name="com.paperight.product.amazon.AmazonProductSearchResponse" auto-complete="true">
+
+		<map-to xml="ItemSearchResponse" ns-uri="http://webservices.amazon.com/AWSECommerceService/2011-08-01" />
+		
+		<field name="TotalResults" type="int" >
+			<bind-xml name="TotalResults" location="Items" />
+		</field>		
+		
+		<field name="Products" type="com.paperight.product.ThirdPartyProduct" collection="arraylist">
+			<bind-xml name="Item" location="Items" />
+		</field>
+			
+	</class>
+
+</mapping>
