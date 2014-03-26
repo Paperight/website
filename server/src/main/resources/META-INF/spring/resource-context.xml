@@ -9,13 +9,10 @@
 	<bean id="placeholderProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:database-${ENVIRONMENT:local}.properties</value>
-				<value>classpath:application.properties</value>
-				<value>classpath:application-${ENVIRONMENT:local}.properties</value>
-				
+				<value>classpath:database.properties</value>
+				<value>classpath:application.properties</value>	
 				<value>classpath:/org/springframework/batch/admin/bootstrap/batch.properties</value>
-				<value>classpath:batch-default.properties</value>
-				<value>classpath:batch-${ENVIRONMENT:local}.properties</value>
+				<value>classpath:batch.properties</value>
 			</list>
 		</property>
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
@@ -24,6 +21,4 @@
 		<property name="order" value="0" />
 	</bean>
 	
-<!-- 	<util:properties id="integrationProperties" location="classpath:integration-${ENVIRONMENT:dev}.properties"/> -->
-
 </beans>
