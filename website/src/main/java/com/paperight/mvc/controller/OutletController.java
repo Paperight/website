@@ -92,6 +92,7 @@ public class OutletController {
 		}
 
 		BigDecimal printingCost = company.getAveragePrintingCost().multiply(new BigDecimal(pageCount));
+		printingCost = printingCost.add(BigDecimal.valueOf(15));
 		BigDecimal sellingPrice = currencyService.convert(product.getLicenceFeeInDollars(), currencyService.getBaseCurrency(), company.getCurrency());
 		BigDecimal totalCost = printingCost.add(sellingPrice);
 		return company.getCurrency().getSymbol() + totalCost.setScale(0, RoundingMode.CEILING);
