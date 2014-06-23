@@ -9,4 +9,5 @@ batch.drop.script=classpath*:/org/springframework/batch/core/schema-drop-mysql.s
 batch.business.schema.script=
 batch.database.incrementer.class=org.springframework.jdbc.support.incrementer.MySQLMaxValueIncrementer
 batch.data.source.init=false
-batch.remote.base.url=http://www.paperight.com/server/batch
+batch.remote.base.url=//path to batch e.g http://localhost/server/batch
+batch.job.configuration.file.dir=/tmp/batch

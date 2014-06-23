@@ -1,6 +1,7 @@
 base.url=the url to your website e.g. http://www.paperight.com
 rest.username=rest
 rest.password=rest
+
 email.username=
 email.password=
 email.host=localhost
@@ -8,8 +9,17 @@ email.port=25
 email.from.default=team@paperight.com
 email.from.default.name=Paperight
 email.to.default=team@paperight.com
+
 bitly.username=
 bitly.api.key=
+
+amazon.access.key.id=
+amazon.secret.key=
+amazon.associate.id=
+
+docraptor.api.url=http://docraptor.com/docs
+docraptor.api.key=
+
 pdf.file.folder=/paperight/pdf
 licenced.pdf.file.folder=/paperight/pdf/licences/live
 jacket.image.file.folder=//paperight/jacket_images
@@ -20,8 +30,3 @@ html.pdf.css.folder=/paperight/css
 html.folder=/paperight/html
 wkhtmltopdf.executable.location=/paperight/wkhtmltopdf-0.11.0
 princepdf.executable.location=/usr/lib/prince/bin/prince
-amazon.access.key.id=
-amazon.secret.key=
-amazon.associate.id=
-docraptor.api.url=http://docraptor.com/docs
-docraptor.api.key=
