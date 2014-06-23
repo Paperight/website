@@ -393,8 +393,8 @@
 						<!-- <aspectLibrary> <groupId>org.springframework.security</groupId> 
 							<artifactId>spring-security-aspects</artifactId> </aspectLibrary> -->
 					</aspectLibraries>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 					<encoding>utf-8</encoding>
 				</configuration>
 			</plugin>
@@ -446,8 +446,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
