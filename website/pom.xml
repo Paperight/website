@@ -4,7 +4,7 @@
 
 	<groupId>com.paperight</groupId>
 	<artifactId>website</artifactId>
-	<version>1.4.2.RELEASE</version>
+	<version>1.4.3.RELEASE</version>
 	<packaging>war</packaging>
 
 	<name>Paperight Website</name>
@@ -22,6 +22,7 @@
 		<junit.version>4.7</junit.version>
 		<tiles.version>2.2.2</tiles.version>
 		<aspectj.version>1.6.12</aspectj.version>
+		<java.version>1.7</java.version>
 		<theme>default</theme>
 	</properties>
 
@@ -387,8 +388,8 @@
 						<!-- <aspectLibrary> <groupId>org.springframework.security</groupId> 
 							<artifactId>spring-security-aspects</artifactId> </aspectLibrary> -->
 					</aspectLibraries>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<encoding>utf-8</encoding>
 				</configuration>
 			</plugin>
@@ -440,8 +441,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
