@@ -12,8 +12,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework.version>3.1.2.RELEASE</springframework.version>
-		<spring.security.version>3.1.2.RELEASE</spring.security.version>
+		<springframework.version>3.2.9.RELEASE</springframework.version>
+		<spring.security.version>3.1.6.RELEASE</spring.security.version>
 		<org.spring-integration-version>2.1.1.RELEASE</org.spring-integration-version>
 		<junit.version>4.7</junit.version>
 		<aspectj.version>1.6.12</aspectj.version>

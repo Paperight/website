@@ -16,8 +16,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework.version>3.1.2.RELEASE</springframework.version>
-		<spring.security.version>3.1.2.RELEASE</spring.security.version>
+		<springframework.version>3.2.9.RELEASE</springframework.version>
+		<spring.security.version>3.1.6.RELEASE</spring.security.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<junit.version>4.7</junit.version>
 		<tiles.version>2.2.2</tiles.version>
