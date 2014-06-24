@@ -92,7 +92,7 @@ public class OutletController {
 		}
 
 		BigDecimal printingCost = company.getAveragePrintingCost().multiply(new BigDecimal(pageCount));
-		printingCost = printingCost.add(BigDecimal.valueOf(15));
+		printingCost = printingCost.add(company.getAverageBindingCost());
 		BigDecimal sellingPrice = currencyService.convert(product.getLicenceFeeInDollars(), currencyService.getBaseCurrency(), company.getCurrency());
 		BigDecimal totalCost = printingCost.add(sellingPrice);
 		return company.getCurrency().getSymbol() + totalCost.setScale(0, RoundingMode.CEILING);
@@ -141,6 +141,7 @@ class CompanyDto {
 	private String phoneNumber;
 	private String printingCost;
 	private BigDecimal averagePrintingCost = new BigDecimal(0.00);
+	private BigDecimal averageBindingCost = new BigDecimal(15.00);
 	private double distanceFromLocation;
 	private Currency currency;
 
@@ -153,6 +154,7 @@ class CompanyDto {
 		companyDto.setPhoneNumber(company.getPhoneNumber());
 		companyDto.setPrintingCost("");
 		companyDto.setAveragePrintingCost(company.getAveragePrintingCost());
+		companyDto.setAverageBindingCost(company.getAverageBindingCost());
 		companyDto.setCurrency(company.getCurrency());
 		return companyDto;
 	}
@@ -222,4 +224,10 @@ class CompanyDto {
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
+    public BigDecimal getAverageBindingCost() {
+        return averageBindingCost;
+    }
+    public void setAverageBindingCost(BigDecimal averageBindingCost) {
+        this.averageBindingCost = averageBindingCost;
+    }
 }

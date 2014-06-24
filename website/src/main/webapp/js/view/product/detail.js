@@ -87,8 +87,7 @@ $(document).ready(function(){
 			pageCount = Math.ceil(a5PageCount / 4);
 		}
 		var eQuantity = $("#purchase-licence-form #quantity"), quantity = parseInt(eQuantity.val());
-		var printCosts = paperight.averagePrintingCost * pageCount * quantity;
-		printCosts = printCosts + 15;
+		var printCosts = ((paperight.averagePrintingCost * pageCount) + paperight.averageBindingCost) * quantity;
 		printCosts = printCosts.toFixed(2);
 		var eOutletCharges = $("#purchase-licence-form #outletcharges");
 		eOutletCharges.val(printCosts);
