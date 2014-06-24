@@ -35,6 +35,7 @@ import com.paperight.licence.LicenceStatus;
 import com.paperight.product.Product;
 import com.paperight.user.Address;
 import com.paperight.user.AddressContextType;
+import com.paperight.user.Company;
 
 @Controller
 public class LicenceController {
@@ -103,38 +104,45 @@ public class LicenceController {
 	
 	private String buildCsv(List<Licence> licences) throws IOException {
 		List<String[]> csvLines = new ArrayList<String[]>();
-		String[] csvHeader = { "RightsholderName", "RightsholderEmailAddress", "TransactionDate", "Title", "Subtitle", "Edition", "Author", "Identifier", "SubjectArea", "OutletName", "OutletId", "OutletCity", "OutletCountry", "OutletCurrency", "OutletServiceCharge", "NumberOfCopies", "Layout", "DoubleSidedSheets", "CreditsReserved", "DownloadedYN", "CreditsCharged", "DollarEquivalent", "PaperightFee", "AmountOwingToRightsholder" };
+		String[] csvHeader = { "RightsholderName", "Owner", "OwnerEmailAddress", "TransactionDate", "Title", "Subtitle", "Edition", "Author", "Identifier", "SubjectArea", "OutletName", "OutletId", "OutletCity", "OutletCountry", "OutletCurrency", "OutletServiceCharge", "NumberOfCopies", "Layout", "DoubleSidedSheets", "CreditsReserved", "DownloadedYN", "CreditsCharged", "DollarEquivalent", "PaperightFee", "AmountOwingToRightsholder" };
 		csvLines.add(csvHeader);
 		for (Licence licence : licences) {
 			Product product = licence.getProduct();
 			Address address = licence.getCompany().getAddressContextByType(AddressContextType.DEFAULT_PRIMARY).getAddress();
+			Company owner = product.getOwnerCompany();
+			String ownerEmail = owner.getEmail();
 			String[] csvLine = new String[24];
 			csvLine[0] = product.getPublisher();//RightsholderName
-			csvLine[1] = "";//RightsholderEmailAddress
-			csvLine[2] = licence.getCreatedDate().toString();//TransactionDate
-			csvLine[3] = product.getTitle();//Title
-			csvLine[4] = product.getSubTitle();//Subtitle
-			csvLine[5] = product.getEdition();//Edition
-			csvLine[6] = product.getPrimaryCreators();//Author
-			csvLine[7] = product.getIdentifier();//Identifier
-			csvLine[8] = product.getSubjectArea();//SubjectArea
-			csvLine[9] = licence.getCompany().getName();//OutletName
-			csvLine[10] = licence.getCompany().getId().toString();//OutletId
-			csvLine[11] = address.getAddressLine4();//OutletCity
-			csvLine[12] = address.getCountry().getName();//OutletCountry
-			csvLine[13] = licence.getCurrencyCode();//OutletCurrency
-			csvLine[14] = licence.getOutletCharge().toString();//OutletServiceCharge
-			csvLine[15] = licence.getNumberOfCopies() + "";//NumberOfCopies
-			csvLine[16] = licence.getPageLayout().toString();//Layout
-			csvLine[17] = licence.getPageExtent() + "";//DoubleSidedSheets
-			csvLine[18] = licence.getCostInCredits().toString();//CreditsReserved
-			csvLine[19] = licence.isDownloaded() ? "Y" : "N" ;//DownloadedYN
-			csvLine[20] = licence.isDownloaded() ? licence.getCostInCredits().toString() : "";//CreditsCharged
+			csvLine[1] = owner.getName();
+			if (ownerEmail != null ) {
+			    csvLine[2] = ownerEmail;//Owner email address
+			} else {
+			    csvLine[2] = "";//Owner email address
+			}
+			csvLine[3] = licence.getCreatedDate().toString();//TransactionDate
+			csvLine[4] = product.getTitle();//Title
+			csvLine[5] = product.getSubTitle();//Subtitle
+			csvLine[6] = product.getEdition();//Edition
+			csvLine[7] = product.getPrimaryCreators();//Author
+			csvLine[8] = product.getIdentifier();//Identifier
+			csvLine[9] = product.getSubjectArea();//SubjectArea
+			csvLine[10] = licence.getCompany().getName();//OutletName
+			csvLine[11] = licence.getCompany().getId().toString();//OutletId
+			csvLine[12] = address.getAddressLine4();//OutletCity
+			csvLine[13] = address.getCountry().getName();//OutletCountry
+			csvLine[14] = licence.getCurrencyCode();//OutletCurrency
+			csvLine[15] = licence.getOutletCharge().toString();//OutletServiceCharge
+			csvLine[16] = licence.getNumberOfCopies() + "";//NumberOfCopies
+			csvLine[17] = licence.getPageLayout().toString();//Layout
+			csvLine[18] = licence.getPageExtent() + "";//DoubleSidedSheets
+			csvLine[19] = licence.getCostInCredits().toString();//CreditsReserved
+			csvLine[20] = licence.isDownloaded() ? "Y" : "N" ;//DownloadedYN
+			csvLine[21] = licence.isDownloaded() ? licence.getCostInCredits().toString() : "";//CreditsCharged
 			BigDecimal dollarEquivalent = licence.getCostInCredits().multiply(licence.getPaperightCreditToBaseCurrencyRate()).setScale(2, RoundingMode.UP);
 			BigDecimal paperightFree = dollarEquivalent.multiply(BigDecimal.valueOf(0.2)).setScale(2, RoundingMode.HALF_UP);
-			csvLine[21] = dollarEquivalent.toString();//DollarEquivalent
-			csvLine[22] = paperightFree.toString();//PaperightFee
-			csvLine[23] = dollarEquivalent.subtract(paperightFree).toString();//AmountOwingToRightsholder
+			csvLine[22] = dollarEquivalent.toString();//DollarEquivalent
+			csvLine[23] = paperightFree.toString();//PaperightFee
+			csvLine[24] = dollarEquivalent.subtract(paperightFree).toString();//AmountOwingToRightsholder
 			csvLines.add(csvLine);
 		}
 		Writer writer = new StringWriter();
