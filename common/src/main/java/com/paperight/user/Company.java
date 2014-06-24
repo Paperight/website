@@ -554,6 +554,17 @@ public class Company implements Serializable {
 		return new ArrayList<Company>(companiesMap.values());
 	}
 	
+	@Transient
+	public String getEmail() {
+	    String result = null;
+	    if (!getActiveChildCompanies().isEmpty()) {
+	        result = getActiveCompanyAdmins().get(0).getEmail();
+	    } else if (!getNormalUsers().isEmpty()) {
+	        result = getNormalUsers().get(0).getEmail();
+	    }
+	    return result;
+	}
+	
 	public static void sortCompanies(List<Company> companies) {
 		Collections.sort(companies, new Comparator<Company>() {
 

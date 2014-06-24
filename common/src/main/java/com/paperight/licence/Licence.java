@@ -54,6 +54,7 @@ public class Licence implements Serializable {
 	private BigDecimal dollarsInvoiceValue;
 	private InvoiceState invoiceState = InvoiceState.NEW;
 	private DateTime firstDownloadedDate;
+	private Company ownerCompany;
 
 	public enum InvoiceState {
 		NEW("New"),
@@ -318,7 +319,7 @@ public class Licence implements Serializable {
 	@Transient
 	public BigDecimal getRandsInvoiceVatValue() {
 		BigDecimal result = BigDecimal.ZERO;
-		if (currencyService.isLiableForVat(getProduct().getOwnerCompany(), getTransactionDate())) {
+		if (currencyService.isLiableForVat(getOwnerCompany(), getTransactionDate())) {
 			VatRate vatRate = VatRate.findByCountryCode("ZA");
 			result = currencyService.backCalculateVat(getRandsInvoiceValue(), vatRate.getRate0());
 		}
@@ -364,6 +365,16 @@ public class Licence implements Serializable {
 			return getCreatedDate();
 		}
 	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "OWNER_COMPANY_ID", insertable = true, updatable = false, nullable = false)
+    public Company getOwnerCompany() {
+        return ownerCompany;
+    }
+
+    public void setOwnerCompany(Company ownerCompany) {
+        this.ownerCompany = ownerCompany;
+    }
 	
 	
 
