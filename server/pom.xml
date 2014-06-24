@@ -17,7 +17,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework.version>3.2.9.RELEASE</springframework.version>
+		<springframework.version>3.1.2.RELEASE</springframework.version>
 		<spring.security.version>3.1.6.RELEASE</spring.security.version>
 		<org.spring-batch-version>2.1.8.RELEASE</org.spring-batch-version>
 		<org.spring-batch-admin-version>1.2.2.BUILD-SNAPSHOT</org.spring-batch-admin-version>
@@ -152,7 +152,7 @@
 		<dependency>
 			<groupId>com.jolbox</groupId>
 			<artifactId>bonecp</artifactId>
-			<version>0.7.1.RELEASE</version>
+			<version>0.8.0.RELEASE</version>
 		</dependency>
 
 		<!-- JSON -->
@@ -166,18 +166,6 @@
 		<!-- JPA -->
 
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${springframework.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>spring-beans</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
@@ -185,18 +173,18 @@
 
 		<!-- Testing -->
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${springframework.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
 
 		<!-- Aspects -->
 
