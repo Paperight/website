@@ -367,7 +367,7 @@ public class Licence implements Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "OWNER_COMPANY_ID", insertable = true, updatable = false, nullable = false)
+    @JoinColumn(name = "OWNER_COMPANY_ID", insertable = true, updatable = false, nullable = true)
     public Company getOwnerCompany() {
         return ownerCompany;
     }
