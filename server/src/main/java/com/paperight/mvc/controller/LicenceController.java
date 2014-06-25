@@ -13,6 +13,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,12 +110,21 @@ public class LicenceController {
 		for (Licence licence : licences) {
 			Product product = licence.getProduct();
 			Address address = licence.getCompany().getAddressContextByType(AddressContextType.DEFAULT_PRIMARY).getAddress();
-			Company owner = product.getOwnerCompany();
-			String ownerEmail = owner.getEmail();
-			String[] csvLine = new String[24];
+			Company owner = licence.getOwnerCompany();
+			String ownerEmail = null;
+			String ownerName = null;
+			if (owner != null) {
+			    ownerName = owner.getName();
+			    ownerEmail = owner.getEmail();
+			}
+			String[] csvLine = new String[csvHeader.length];
 			csvLine[0] = product.getPublisher();//RightsholderName
-			csvLine[1] = owner.getName();
-			if (ownerEmail != null ) {
+			if (!StringUtils.isBlank(ownerName)) {
+			    csvLine[1] = ownerName; //Owner
+			} else {
+			    csvLine[1] = ""; //Owner
+			}
+			if (!StringUtils.isBlank(ownerEmail)) {
 			    csvLine[2] = ownerEmail;//Owner email address
 			} else {
 			    csvLine[2] = "";//Owner email address
