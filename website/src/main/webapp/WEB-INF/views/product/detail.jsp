@@ -106,26 +106,22 @@
 							<dl id="layoutselection">
 								<dt><pr:snippet name="customerDetailsLayout" group="productDetailLoggedIn" defaultValue="Select document layout" /></dt>
 								<dd id="layoutset">
-									<input autocomplete="off" type="hidden" class="required" name="layout" id="layout" value="TWO_UP" />
 									<label style="display:none;'" class="error" for="layout">Please select a layout</label>
 									<c:if test="${not empty product.twoUpFilename}">
-									<div class="layout-type" id="TWO_UP">
-										<div class="ico-two-up"></div>
-										<span><c:if test="${product.twoUpPageExtent gt 0}"><em>${product.twoUpPageExtent}</em> A4 pages (two per side) </c:if> ${product.twoUpFileSize} MB</span>
+									<div class="layout-type">
+										<span><input type="radio" name="layout" id="layout_two_up" value="TWO_UP"><label for="layout_two_up">&nbsp;<c:if test="${product.twoUpPageExtent gt 0}"><em>${product.twoUpPageExtent}</em> A4 pages (two per side) </c:if> ${product.twoUpFileSize} MB</span></label>
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="TWO_UP" class="btn-preview"><pr:snippet name="twoUpDownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>
 									<c:if test="${not empty product.oneUpFilename}">
-									<div class="layout-type" id="ONE_UP">
-										<div class="ico-one-up"></div>
-										<span><c:if test="${product.oneUpPageExtent gt 0}"><em>${product.oneUpPageExtent}</em> A4 pages (one per side) </c:if> ${product.oneUpFileSize} MB</span>
+									<div class="layout-type">
+										<span><input type="radio" name="layout" id="layout_one_up" value="ONE_UP"><label for="layout_one_up">&nbsp;<c:if test="${product.oneUpPageExtent gt 0}"><em>${product.oneUpPageExtent}</em> A4 pages (one per side) </c:if> ${product.oneUpFileSize} MB</span></label>
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="ONE_UP" class="btn-preview"><pr:snippet name="oneUpDownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>
 									<c:if test="${not empty product.a5Filename}">
-									<div class="layout-type" id="A5">
-										<div class="ico-a5"></div>
-										<span><c:if test="${product.a5PageExtent gt 0}"><em>${product.a5PageExtent}</em> A5 pages (one per side) </c:if> ${product.a5FileSize} MB</span>
+									<div class="layout-type">
+										<span><input type="radio" name="layout" id="layout_a5" value="A5"><label for="layout_a5">&nbsp;<c:if test="${product.a5PageExtent gt 0}"><em>${product.a5PageExtent}</em> A5 pages (one per side) </c:if> ${product.a5FileSize} MB</label></span>
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="A5" class="btn-preview"><pr:snippet name="a5DownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>

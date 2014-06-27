@@ -7,6 +7,8 @@ a { text-decoration:none; color:#0084a9; }
 ul,ol { margin-left:15px; line-height: 1.4em; margin-left: 15px; padding-left: 15px; }
 p{ padding:5px 0; }
 input[type="text"],input[type="password"] { padding:0 10px; font-size:12px; color:#838875; border:0; background:url(../img/bg-input.png) no-repeat 0 0; width:300px; height:30px; }
+input[type="radio"] { cursor: pointer }
+input[type="radio"]:disabled { cursor: default }
 input.small { background:url(../img/bg-input-small.png) no-repeat 0 0; width:135px; }
 input.medium { background:url(../img/bg-input-medium.png) no-repeat 0 0; width:230px; padding:0; }
 textarea { resize: none; padding: 10px 10px; font-size:12px; color:#838875; background:url(../img/bg-textarea.png) no-repeat 0 0; width:300px; height:76px; border:0; overflow:hidden; }
@@ -374,15 +376,12 @@ input.bg-input-detailed-tiny{ margin-right:-3px; padding:0; text-align:center; c
 button.btn-plus .ui-button-text, button.btn-minus .ui-button-text{ font-size:28px; line-height:30px; padding:0; }
 button.btn-plus .ui-button-icon-primary, button.btn-minus .ui-button-icon-primary{ margin-left:6px; }
 
-.layout-selected .ico-two-up, .layout-selected .ico-one-up , .layout-selected .ico-a5{ background-position:0 0; } 
-.ico-two-up, .ico-one-up, .ico-a5{ width:45px; height:45px; display:block; float:left; background-position:-45px 0; background-repeat:no-repeat; }
-.ico-two-up { background-image:url(../img/format.ds.gif); }
-.ico-one-up { background-image:url(../img/format.ss.gif); }
-.ico-a5 { background-image:url(../img/format.ss.gif); }
-.layout-type { border-radius:4px; cursor: pointer; float:left; clear:both; margin-bottom:0.5em; }
-.layout-type span { user-select: none; cursor: pointer; margin-left:0.5em; line-height:45px; display:block; float:left; }
+.layout-type { user-select: none; border-radius:4px; float:left; clear:both; margin-bottom:0.5em; }
+.layout-type span { user-select: none; margin-left:0.5em; line-height:30px; display:block; float:left; }
+.layout-type span label { cursor: pointer;}
+.layout-type span label.disabled { cursor: default;}
 .layout-hover { background:#f2f2f2; }
-.preview { margin-left:10px; margin-bottom:0.5em; line-height:45px; float:left; clear:right; }
+.preview { margin-left:10px; margin-bottom:0.5em; line-height:30px; float:left; clear:right; }
 
 .tooltip { position: absolute; }
 .tooltip-icon { position: relative; }
