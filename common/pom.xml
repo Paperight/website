@@ -16,7 +16,7 @@
 		<spring.security.version>3.1.6.RELEASE</spring.security.version>
 		<org.spring-integration-version>2.1.1.RELEASE</org.spring-integration-version>
 		<junit.version>4.7</junit.version>
-		<aspectj.version>1.6.12</aspectj.version>
+		<aspectj.version>1.7.3</aspectj.version>
 		<hibernate.version>4.1.1.Final</hibernate.version>
 		<hibernate-search.version>4.1.1.Final</hibernate-search.version>
 		<pdfbox.version>1.8.2</pdfbox.version>
