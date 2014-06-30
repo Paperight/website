@@ -143,6 +143,7 @@ class CompanyDto {
 	private BigDecimal averagePrintingCost = new BigDecimal(0.00);
 	private double distanceFromLocation;
 	private Currency currency;
+	private String email;
 
 	public static CompanyDto toDto(Company company) {
 		CompanyDto companyDto = new CompanyDto();
@@ -154,6 +155,7 @@ class CompanyDto {
 		companyDto.setPrintingCost("");
 		companyDto.setAveragePrintingCost(company.getAveragePrintingCost());
 		companyDto.setCurrency(company.getCurrency());
+		companyDto.setEmail(company.getEmail());		
 		return companyDto;
 	}
 	public long getId() {
@@ -222,4 +224,10 @@ class CompanyDto {
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

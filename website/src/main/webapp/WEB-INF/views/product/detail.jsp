@@ -41,6 +41,7 @@
 										<label id="printing-cost" class="printing-cost"></label>
 										<label id="printing-cost-message" class="printing-cost-detail"></label>
 										<label id="printing-cost-contact" class="printing-cost-detail"></label>
+										<button id="order-by-email" data-email-address="" style="margin-top: 10px"><pr:snippet name="order-by-email-button" group="product-outlets-map" escapeJavascript="true" defaultValue="Order by email"/></button>
 									</div>
 								</div>
 							</div>
@@ -328,6 +329,8 @@
 	twoUpPageCount = <c:out value="${product.twoUpPageExtent}"/>;
 	a5PageCount = <c:out value="${product.a5PageExtent}"/>;
 	productId = <c:out value="${product.id}"/>;
+	var productTitle = "<c:out value="${product.title}"/>";
+	
 	var map;
 	var companiesJSON;
 	var companiesHashMap = new Object();
@@ -699,7 +702,26 @@
 		$('#printing-cost').html('&#8776; ' + company.printingCost);
 		$('#printing-cost-message').text('<pr:snippet name="estimated-cost-pre" group="product-outlets-map" escapeJavascript="true" defaultValue="Estimated cost at"/>' + ' ' + company.name);
 		$('#printing-cost-contact').text('<pr:snippet name="estimated-cost-post" group="product-outlets-map" escapeJavascript="true" defaultValue="To check, call them on"/>' + ' ' + company.phoneNumber);
+		$('#order-by-email').attr("data-email-address", company.email);
 	}
+	
+	$('#order-by-email').click(function() {
+		var emailAddress = $('#order-by-email').attr("data-email-address");
+		
+		var subject = "<pr:snippet name="subject" group="order-by-email" escapeJavascript="true" defaultValue="Request to print a Paperight book"/>";
+		var body = "<pr:snippet name="body" group="order-by-email" escapeJavascript="true" multiline="true" defaultValue="Hello. I would like to order a copy of [$productTitle$], which is on Paperight here: [$productUrl$]
+
+Please send me details of pricing and how to pay and collect.
+
+Thank you."/>";
+	    body = body.replace("[$productTitle$]", productTitle);
+	    body = body.replace("[$productUrl$]", window.location.href);
+		var mailTo = "mailto:" + emailAddress + "?Subject=" + encodeURI(subject) + "&Body=" + encodeURI(body);
+		console.log(mailTo);
+	    window.location = mailTo;
+    });
+	
+	
 		
 	function addLocationsToMap(companies) {
 		if (companies == null
