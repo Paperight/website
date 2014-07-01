@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.paperight.authentication.AuthenticationService;
+import com.paperight.content.Article;
 import com.paperight.content.ContentService;
 import com.paperight.credit.PaperightCreditService;
 import com.paperight.currency.Currency;
@@ -43,8 +44,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/")
 	public String home(Model model) {
-		List<Poster> posters = loadPosters();
-		model.addAttribute("posters", posters);
+	    Article article = contentService.getArticle("home");
+		//List<Poster> posters = loadPosters();
+		model.addAttribute("article", article);
 		return "home";
 	}
 	
