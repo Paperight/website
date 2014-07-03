@@ -14,6 +14,10 @@
 						<div class="outlet-details">
 							<h3><pr:snippet name="heading" group="productDetailAnonymous" defaultValue="You can buy this book printed on demand at one of our outlets"/></h3>
 							<div id="outlets-search" style="padding:0;">
+							    <c:if test="${product.premium}">
+							    <div><pr:snippet name="headingPremium" group="productDetailAnonymous" defaultValue="This is only available from our Premium outlets. See the map for these outlets."/></div>
+							    <div>&nbsp;</div>
+							    </c:if>
 								<dl>
 									<dt>
 										<label class="outlets-search-label"><pr:snippet name="outlets-search-label" group="product-outlets-map" defaultValue="Your location:" /></label>
@@ -135,63 +139,73 @@
 						
 						<c:choose>
 							<c:when test="${product.availableForSale eq true}">
-							
-								<c:if test="${available eq true}">
-								
-									<sec:authorize access="hasRole('ROLE_OUTLET')">
-									<div class="pricing">
-										<div class="inner">
-											<div class="sellingprice">
-											<c:choose>
-												<c:when test="${product.licenceFeeInDollars.unscaledValue() ne 0}">
-												<span><pr:snippet name="priceYouPayCredits" group="productDetailLoggedIn" defaultValue="You pay in credits for this licence:" /></span><br />
-												<em id="creditamount">${product.licenceFeeInCredits}</em>
-												</c:when>
-												<c:otherwise>
-												<em id="creditamount">Free</em>
-												</c:otherwise>
-											</c:choose>
+							    <c:choose>
+							        <c:when test="${restrictedPremium eq true}">
+							            <div class="pricing">
+                                            <div class="inner">
+                                                <div class="publisher-note" style="margin-left:20px;">
+                                                    <h2><pr:snippet name="pricePremiumnProductHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
+                                                    <p><pr:snippet name="pricePremiumnProductDescription" group="productDetailLoggedIn" defaultValue="Sorry, this is only available to Premium outlets" /></p>
+                                                </div>
+                                            </div>
+                                        </div>
+							        </c:when> 
+								    <c:when test="${available eq true}">
+										<sec:authorize access="hasRole('ROLE_OUTLET')">
+										<div class="pricing">
+											<div class="inner">
+												<div class="sellingprice">
+												<c:choose>
+													<c:when test="${product.licenceFeeInDollars.unscaledValue() ne 0}">
+													<span><pr:snippet name="priceYouPayCredits" group="productDetailLoggedIn" defaultValue="You pay in credits for this licence:" /></span><br />
+													<em id="creditamount">${product.licenceFeeInCredits}</em>
+													</c:when>
+													<c:otherwise>
+													<em id="creditamount">Free</em>
+													</c:otherwise>
+												</c:choose>
+												</div>
+												<div class="value"><pr:snippet name="priceApproximate" group="productDetailLoggedIn" defaultValue="Approx." />&nbsp;<em><pr:price amount="${product.licenceFeeInDollars}" /></em></div>
+												<div class="outletcharges">
+													<label><pr:snippet name="priceAddPrintCosts" group="productDetailLoggedIn" defaultValue="Add your printing/service charges" /> <span class="currencycode">(${company.currency.code})</span></label>
+													<span class="currencysymbol">${company.currency.symbol}</span><input maxlength="12" type="text" id="outletcharges" name="outletcharges" value="${company.averagePrintingCost}" class="bg-input-detailed-small price required" />
+												</div>
+												<div class="total">
+													<span><pr:snippet name="priceCustomerTotal" group="productDetailLoggedIn" defaultValue="Total your customer pays you:" /></span>
+													<em><span class="amount" id="sellingprice"><pr:price amount="${product.licenceFeeInDollars}" /></span></em>
+												</div>
+												<button type="submit" class="btn-large"><pr:snippet name="buttonBuyNow" group="productDetailLoggedIn" defaultValue="buy now" /></button>
+												<div class="licence-terms"><a href="${ctx}/terms/outlet" target="_blank" ><pr:snippet name="licenceTerms" group="productDetailLoggedIn" defaultValue="Read licence terms" /></a></div>
 											</div>
-											<div class="value"><pr:snippet name="priceApproximate" group="productDetailLoggedIn" defaultValue="Approx." />&nbsp;<em><pr:price amount="${product.licenceFeeInDollars}" /></em></div>
-											<div class="outletcharges">
-												<label><pr:snippet name="priceAddPrintCosts" group="productDetailLoggedIn" defaultValue="Add your printing/service charges" /> <span class="currencycode">(${company.currency.code})</span></label>
-												<span class="currencysymbol">${company.currency.symbol}</span><input maxlength="12" type="text" id="outletcharges" name="outletcharges" value="${company.averagePrintingCost}" class="bg-input-detailed-small price required" />
-											</div>
-											<div class="total">
-												<span><pr:snippet name="priceCustomerTotal" group="productDetailLoggedIn" defaultValue="Total your customer pays you:" /></span>
-												<em><span class="amount" id="sellingprice"><pr:price amount="${product.licenceFeeInDollars}" /></span></em>
-											</div>
-											<button type="submit" class="btn-large"><pr:snippet name="buttonBuyNow" group="productDetailLoggedIn" defaultValue="buy now" /></button>
-											<div class="licence-terms"><a href="${ctx}/terms/outlet" target="_blank" ><pr:snippet name="licenceTerms" group="productDetailLoggedIn" defaultValue="Read licence terms" /></a></div>
 										</div>
-									</div>
-									</sec:authorize>
+										</sec:authorize>
+										
+										<sec:authorize access="!hasRole('ROLE_OUTLET')">
+										<div class="pricing">
+											<div class="inner">
+												<div class="publisher-note" style="margin-left:20px;">
+													<h2><pr:snippet name="priceNotOutletHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
+													<p><pr:snippet name="priceNotOutletDescription" group="productDetailLoggedIn" defaultValue="You need to change your account registration to &lt;em&gt;Paperight Outlet&lt;/em&gt;." /></p>
+													<button type="submit" onclick="window.location.href = '${ctx}/account/update'; return false;"><pr:snippet name="priceNotOutletButton" group="productDetailLoggedIn" defaultValue="Edit your details" /></button>
+												</div>
+											</div>
+										</div>
+										</sec:authorize>
 									
-									<sec:authorize access="!hasRole('ROLE_OUTLET')">
-									<div class="pricing">
-										<div class="inner">
-											<div class="publisher-note" style="margin-left:20px;">
-												<h2><pr:snippet name="priceNotOutletHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
-												<p><pr:snippet name="priceNotOutletDescription" group="productDetailLoggedIn" defaultValue="You need to change your account registration to &lt;em&gt;Paperight Outlet&lt;/em&gt;." /></p>
-												<button type="submit" onclick="window.location.href = '${ctx}/account/update'; return false;"><pr:snippet name="priceNotOutletButton" group="productDetailLoggedIn" defaultValue="Edit your details" /></button>
+									</c:when>
+									<c:otherwise>
+									
+										<div class="pricing">
+											<div class="inner">
+												<div class="publisher-note" style="margin-left:20px;">
+													<h2><pr:snippet name="priceNotAvailableHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
+													<p><pr:snippet name="priceNotAvailableDescription" group="productDetailLoggedIn" defaultValue="Unfortunately this is not available in your region. &lt;a target=&quot;_blank&quot; href=&quot;http://help.paperight.com/why-is-a-document-not-available-in-my-region/&quot;&gt;Find out why and report mistakes here.&lt;/a&gt;" /></p>
+												</div>
 											</div>
 										</div>
-									</div>
-									</sec:authorize>
-								
-								</c:if>
-								<c:if test="${available ne true}">
-								
-									<div class="pricing">
-										<div class="inner">
-											<div class="publisher-note" style="margin-left:20px;">
-												<h2><pr:snippet name="priceNotAvailableHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
-												<p><pr:snippet name="priceNotAvailableDescription" group="productDetailLoggedIn" defaultValue="Unfortunately this is not available in your region. &lt;a target=&quot;_blank&quot; href=&quot;http://help.paperight.com/why-is-a-document-not-available-in-my-region/&quot;&gt;Find out why and report mistakes here.&lt;/a&gt;" /></p>
-											</div>
-										</div>
-									</div>
-								
-								</c:if>
+									
+									</c:otherwise>
+								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<div class="pricing">

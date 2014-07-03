@@ -71,6 +71,7 @@ public class Product implements Serializable {
 	private boolean disabled = false;
 	private boolean publisherInactive = false;
 	private String relatedProducts;
+	private boolean premium;
 
 	@JsonIgnore
 	private Company ownerCompany;
@@ -576,5 +577,13 @@ public class Product implements Serializable {
 	public void setRelatedProducts(String relatedProducts) {
 		this.relatedProducts = relatedProducts;
 	}
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
 
 }

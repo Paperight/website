@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.paperight.currency.Currency;
 import com.paperight.currency.CurrencyService;
 import com.paperight.product.Product;
@@ -41,7 +44,7 @@ public class OutletController {
 
 	@RequestMapping(value = "/companies", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Object companies(Model model, @RequestParam double latitude, @RequestParam double longitude, @RequestParam Long productId) {
-		List<Company> allCompanies = Company.findAllActiveByRole(Role.ROLE_OUTLET);
+	    List<Company> allCompanies = Company.findAllActiveByRole(Role.ROLE_OUTLET);
 		List<CompanyDto> companies = new ArrayList<CompanyDto>();
 		for (Company company : allCompanies) {
 			if (!StringUtils.isBlank(company.getGpsLocation())
@@ -66,17 +69,31 @@ public class OutletController {
 				}
 			}
 		}
-		Collections.sort(companies, new DistanceCompare());
+		
 		
 		if (productId != null) {
-			calculatePrintingCost(companies, productId);
-		}
+		    Product product = Product.find(productId);
+			calculatePrintingCost(companies, product);
+			if (product.isPremium()) {
+			    companies = filterPremiumCompanies(companies);
+			}
+		}	
+		Collections.sort(companies, new DistanceCompare());
 		model.addAttribute("companies", companies);
 		return model;
 	}
+	
+	private List<CompanyDto> filterPremiumCompanies(List<CompanyDto> companies) {
+	    return Lists.newArrayList(Iterables.filter(companies, new Predicate<CompanyDto>() {
 
-	private void calculatePrintingCost(List<CompanyDto> companies, long productId) {
-		Product product = Product.find(productId);
+            @Override
+            public boolean apply(CompanyDto company) {
+                return company.getMapDisplay().equals(MapDisplay.FEATURE);
+            }
+        }));
+	}
+
+	private void calculatePrintingCost(List<CompanyDto> companies, Product product) {
 		for (CompanyDto company : companies) {
 			String printingCost = calculatePrintingCost(company, product);
 			company.setPrintingCost(printingCost);
