@@ -1,6 +1,6 @@
 <%@ include file="/WEB-INF/layouts/includes/taglibs.jsp" %>
 <div id="deck">
-	<div class="wrapper">
+	<div class="wrapper error-deck">
 		<div class="column column-one">
 			<h2>How it works</h2>
 			<div class="call-to-action">

@@ -60,8 +60,8 @@ div.dialog .message{ margin:0 0 5px 0; }
 
 #header, #deck, #content, #footer{ width:100%; }
 /* body.home { background:url(../img/home.bg.gif) repeat-x 0 182px; } */
-/* body.home #header > .wrapper,
-body.error #header > .wrapper{ background:url(../img/bg-home-header.png) repeat-x center bottom; } */
+/* body.home #header > .wrapper, */
+body.error #header > .wrapper{ background:url(../img/bg-home-header.png) repeat-x center bottom; }
 #content{ color:#404040; font-size:14px; }
 .columns .column{ display:inline-block; vertical-align: top; }
 .columns-two .column-one{ width:425px; padding:0 20px 0 0;  }
@@ -169,6 +169,7 @@ body.home #btn-register { margin-right:20px; }
 
 body.home #deck { height:428px; }
 #deck .wrapper{ min-height:200px; color:#fff; }
+#deck .error-deck { background: url("../img/bg-deck.png") repeat-x scroll center top #646567; }
 #deck h2, #deck p, #posters h2 { color:#fff; text-shadow:1px 1px 2px #444; }
 #deck h2{ font-size:36px; }
 #deck p{ font-size:18px; }
@@ -190,8 +191,8 @@ body.home #deck { height:428px; }
 .call-to-action .description{ width: 265px; vertical-align: top; display:inline-block; display: block; }
 .call-to-action .description em { font-weight:700; }
 
-/* body.home #footer > .wrapper,
-body.error #footer > .wrapper{ background:url(../img/bg-home-footer.png) repeat-x center top; } */
+/* body.home #footer > .wrapper, */
+body.error #footer > .wrapper{ background:url(../img/bg-home-footer.png) repeat-x center top; }
 #footer .navigation{ margin:10px 40px; }
 #footer .navigation ul{ display:inline-block; padding:0; margin:0; }
 #footer .navigation ul li{ display:inline-block; padding:0 5px; border-right:1px solid #838875; }
