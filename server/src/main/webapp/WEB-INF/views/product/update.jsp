@@ -16,6 +16,11 @@
 				</dd>
 			</dl>
 			<dl>
+                <dt>Premium</dt>
+                <dd><form:checkbox path="premium" cssClass="" />
+                <form:errors path="premium" cssClass="error" element="label" /></dd>
+            </dl>
+			<dl>
 				<dt>Disabled</dt>
 				<dd><form:checkbox path="disabled" cssClass="" />
 				<form:errors path="disabled" cssClass="error" element="label" /></dd>
