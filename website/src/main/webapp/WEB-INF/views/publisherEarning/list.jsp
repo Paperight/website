@@ -9,7 +9,7 @@
 	<tr class="header">
 		<td class="center-column"><pr:snippet name="grid-heading-date" group="product-detail-publisher-earnings" defaultValue="Date"/></td>
 		<td class="center-column"><pr:snippet name="grid-heading-copies" group="product-detail-publisher-earnings" defaultValue="Copies"/></td>
-		<td class="center-column"><pr:snippet name="grid-heading-layout" group="product-detail-publisher-earnings" defaultValue="Layout"/></td>
+		<td class="center-column"><pr:snippet name="grid-heading-layout" group="product-detail-publisher-earnings" defaultValue="Format"/></td>
 		<td class="center-column"><pr:snippet name="grid-heading-amount" group="product-detail-publisher-earnings" defaultValue="Amount"/></td>
 		<td class="center-column"><pr:snippet name="grid-heading-status" group="product-detail-publisher-earnings" defaultValue="Status"/></td>
 		<td class="right-column"><pr:snippet name="grid-heading-invoice" group="product-detail-publisher-earnings" defaultValue="Invoice"/></td>

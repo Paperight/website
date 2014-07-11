@@ -93,7 +93,16 @@ public class LicenceController {
 	@Transactional
 	private void completeLicencePurchase(Licence licence, Company company, BigDecimal totalLicenceCost) throws InsufficientCreditsException {
 		paperightCreditService.spendPaperightCredits(company, totalLicenceCost);
-		licence.persist();
+		if (licence.getPageLayout() == PageLayout.PHOTOCOPY) {
+		    licence = licence.merge();
+		    try {
+                publisherEarningService.recordPublisherEarning(licence);
+            } catch (Exception e) {
+                logger.error("Unable to record publisher earnings for licence " + licence.getId(), e);
+            }
+		} else {
+		    licence.persist();
+		}
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/licence/purchase")
@@ -143,79 +152,120 @@ public class LicenceController {
 		return model;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/licence/{licenceId}/generate")
-	public @ResponseBody Object  generateLicence(@PathVariable Long licenceId) throws Exception {
-		try {
-			Map<String, Object> map = new HashMap<String, Object>();
-			User user = AuthenticationService.currentActingUser();
-			Licence licence = Licence.findByIdAndCompanyId(licenceId, user.getCompany().getId());
-			if (licence.getStatus() == LicenceStatus.NEW) {
-				ClientHttpResponse serverResponse = RestHttpClientFactory.execute("rest/licence/generate/" + licence.getId(), HttpMethod.GET);
-				InputStream inputStream = serverResponse.getBody();
-				try {
-					if (serverResponse.getStatusCode() == HttpStatus.OK) {
-						Response response = new ObjectMapper().readValue(inputStream, Response.class);
-						if (response.getStatus() == ResponseStatus.OK) {
-							map.put("result", true);
-						} else {
-							map.put("result", false);
-							map.put("message", response.getResponseObject());
-						}
-					} else {
-						map.put("result", false);
-						map.put("message", "Error generating licence");
-					}
-				} finally {
-					inputStream.close();
-				}
-			} else {
-				map.put("result", false);
-				map.put("message", "Licence already generated");
-			}
-			return map;
-		} catch (Exception e) {
-			logger.error("Unable to generate licenceid: " + licenceId, e);
-			throw e;
-		}
-	}
+    @RequestMapping(method = RequestMethod.POST, value = "/licence/{licenceId}/generate")
+    public @ResponseBody Object generateLicence(@PathVariable Long licenceId) throws Exception {
+        try {
+            Map<String, Object> map = new HashMap<String, Object>();
+            User user = AuthenticationService.currentActingUser();
+            Licence licence = Licence.findByIdAndCompanyId(licenceId, user.getCompany().getId());
+            if (licence.getStatus() == LicenceStatus.NEW) {
+                if (licence.getPageLayout() == PageLayout.PHOTOCOPY) {
+                    String filename = FilenameUtils.concat(licenceFileService.getLicencedPdfFileFolder(), licence.getId() + ".pdf");
+                    licenceInvoiceService.generateOutletInvoice(licence, filename);
+                    licence.setStatus(LicenceStatus.GENERATED);
+                    licence.merge();
+                    map.put("result", true);
+                } else {
+                    ClientHttpResponse serverResponse = RestHttpClientFactory.execute("rest/licence/generate/" + licence.getId(), HttpMethod.GET);
+                    InputStream inputStream = serverResponse.getBody();
+                    try {
+                        if (serverResponse.getStatusCode() == HttpStatus.OK) {
+                            Response response = new ObjectMapper().readValue(inputStream, Response.class);
+                            if (response.getStatus() == ResponseStatus.OK) {
+                                map.put("result", true);
+                            } else {
+                                map.put("result", false);
+                                map.put("message", response.getResponseObject());
+                            }
+                        } else {
+                            map.put("result", false);
+                            map.put("message", "Error generating licence");
+                        }
+                    } finally {
+                        inputStream.close();
+                    }
+                }
+            } else {
+                map.put("result", false);
+                map.put("message", "Licence already generated");
+            }
+            return map;
+        } catch (Exception e) {
+            logger.error("Unable to generate licenceid: " + licenceId, e);
+            throw e;
+        }
+    }
 
-	@RequestMapping(method = RequestMethod.GET, value = "/licence/{licenceId}/download")
-	public void licenceDownload(@PathVariable Long licenceId, HttpServletResponse response) throws Exception {
-		try {
-			User user = AuthenticationService.currentActingUser();
-			Licence licence = Licence.findByIdAndCompanyId(licenceId, user.getCompany().getId());
-			if (licence.getStatus() == LicenceStatus.GENERATED) {
-				String filename = FilenameUtils.concat(licenceFileService.getLicencedPdfFileFolder(), licence.getId() + ".pdf");
-				File file = new File(filename);
-				InputStream inputStream = new FileInputStream(file);
-				try {
-					response.setContentType("application/pdf");
-					String tempFilename = URLEncoder.encode(licence.getProduct().getTitle(), "UTF-8");
-					tempFilename = tempFilename + "_" + URLEncoder.encode(licence.getCustomerFullName(), "UTF-8");
-					tempFilename = tempFilename + "_" + DateTime.now().getMillis();
-					response.setContentLength(new Long(file.length()).intValue());
-					response.addHeader("content-disposition", "attachment; filename=" + tempFilename + ".pdf");
-					IOUtils.copy(inputStream, response.getOutputStream());
-					response.flushBuffer();
-					if (licence.getFirstDownloadedDate() == null) {
-						licence.setFirstDownloadedDate(DateTime.now());
-					}
-					licence.setStatus(LicenceStatus.DOWNLOADED);
-					licence.merge();
-					try {
-						publisherEarningService.recordPublisherEarning(licence);
-					} catch (Exception e) {
-						logger.error("Unable to record publisher earnings for licence " + licence.getId(), e);
-					}
-				} finally {
-					inputStream.close();
-				}
-			}
-		} catch (Exception e) {
-			logger.error("Unable to download licenceid: " + licenceId, e);
-			throw e;
-		}
-	}
+    @RequestMapping(method = RequestMethod.GET, value = "/licence/{licenceId}/download")
+    public void licenceDownload(@PathVariable Long licenceId, HttpServletResponse response) throws Exception {
+        try {
+            User user = AuthenticationService.currentActingUser();
+            Licence licence = Licence.findByIdAndCompanyId(licenceId, user.getCompany().getId());
+            if (licence != null) {
+                /*if (licence.getPageLayout() == PageLayout.PHOTOCOPY) {
+                    response.setContentType("application/pdf");
+                    response.addHeader("content-disposition", "attachment; filename=print_licence_" + licenceId + ".pdf");
+                    licenceInvoiceService.generateOutletInvoice(licence, response.getOutputStream());
+                    response.flushBuffer();
+                    if (licence.getFirstDownloadedDate() == null) {
+                        licence.setFirstDownloadedDate(DateTime.now());
+                    }
+                    licence.setStatus(LicenceStatus.DOWNLOADED);
+                    licence.merge();                    
+                } else {*/
+                    if (licence.getStatus() == LicenceStatus.GENERATED) {
+                        String filename = FilenameUtils.concat(licenceFileService.getLicencedPdfFileFolder(), licence.getId() + ".pdf");
+                        File file = new File(filename);
+                        InputStream inputStream = new FileInputStream(file);
+                        try {
+                            response.setContentType("application/pdf");
+                            String tempFilename = URLEncoder.encode(licence.getProduct().getTitle(), "UTF-8");
+                            tempFilename = tempFilename + "_" + URLEncoder.encode(licence.getCustomerFullName(), "UTF-8");
+                            tempFilename = tempFilename + "_" + DateTime.now().getMillis();
+                            response.setContentLength(new Long(file.length()).intValue());
+                            response.addHeader("content-disposition", "attachment; filename=" + tempFilename + ".pdf");
+                            IOUtils.copy(inputStream, response.getOutputStream());
+                            response.flushBuffer();
+                            if (licence.getFirstDownloadedDate() == null) {
+                                licence.setFirstDownloadedDate(DateTime.now());
+                            }
+                            licence.setStatus(LicenceStatus.DOWNLOADED);
+                            licence.merge();
+                            try {
+                                publisherEarningService.recordPublisherEarning(licence);
+                            } catch (Exception e) {
+                                logger.error("Unable to record publisher earnings for licence " + licence.getId(), e);
+                            }
+                        } finally {
+                            inputStream.close();
+                        }
+                    }
+                //}
+            } else {
+                throw new Exception("Licence not found");
+            }
+        } catch (Exception e) {
+            logger.error("Unable to download licenceid: " + licenceId, e);
+            throw e;
+        }
+    }
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/licence/{licenceId}/invoice")
+    public  @ResponseBody Object licenceInvoice(Model model, @PathVariable("licenceId") long licenceId, HttpServletResponse response) throws Exception {
+        User user = AuthenticationService.currentActingUser();
+        Licence licence = Licence.findByIdAndCompanyId(licenceId, user.getCompany().getId());
+        if (licence != null) {
+            response.setContentType("application/pdf");
+            response.addHeader("content-disposition", "attachment; filename=invoice_" + licenceId + ".pdf");
+            licenceInvoiceService.generateOutletInvoice(licence, response.getOutputStream());
+            response.flushBuffer();
+            licence.setInvoiceState(InvoiceState.DOWNLOADED);
+            licence.merge();
+            model.addAttribute("result", true);
+            model.addAttribute("message", "");
+        }
+        return model;
+    }
 
 	@RequestMapping(method = RequestMethod.GET, value = "/licence/{licenceId}/cancel")
 	public @ResponseBody Object cancelLicence(@PathVariable Long licenceId) {
@@ -294,24 +344,6 @@ public class LicenceController {
 		}
 		
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/licence/{licenceId}/invoice")
-	public  @ResponseBody Object licenceInvoice(Model model, @PathVariable("licenceId") long licenceId, HttpServletResponse response) throws Exception {
-		User user = AuthenticationService.currentActingUser();
-		Licence licence = Licence.findByIdAndCompanyId(licenceId, user.getCompany().getId());
-		if (licence != null) {
-			response.setContentType("application/pdf");
-			response.addHeader("content-disposition", "attachment; filename=invoice_" + licenceId + ".pdf");
-			licenceInvoiceService.generateOutletInvoice(licence, response.getOutputStream());
-			response.flushBuffer();
-			licence.setInvoiceState(InvoiceState.DOWNLOADED);
-			licence.merge();
-			model.addAttribute("result", true);
-			model.addAttribute("message", "");
-		}
-		return model;
-	}
-	
 	
 	@Transactional
 	private void cancelLicence(Licence licence) {

@@ -69,7 +69,16 @@ td {
 	
 </style>
 
-<h1>Tax invoice (agent sales)</h1>
+<h1>Tax invoice (agent sales) #if( $licence.pageLayout == 'PHOTOCOPY' ) and copy licence #end</h1>
+
+#if( $licence.pageLayout == 'PHOTOCOPY' )
+	#set ($displayLayout = "copy")
+	#if ($licence.numberOfCopies > 1)
+	    #set ($displayLayout = "copies")
+	#end
+	<div>When stamped and signed by $licence.company.name, this invoice constitutes a licence to make $licence.numberOfCopies $displayLayout of $licence.product.title.</div>
+	<div>This licence should be printed and kept with the photocopy it makes legal.</div>
+#end
 
 <div class="from">
 
@@ -115,6 +124,7 @@ td {
 	    	<tr>
 	    		<td>Title</td>
 	    		<td>Identifier</td>
+	    		<td>Format</td>
 	    		<td>Number of copies</td>
 	    		<td>Total credits paid</td>
 	    		<td>USD value</td>
@@ -128,6 +138,7 @@ td {
 	        <tr>
 	            <td><span>$licence.product.title</span></td> 
 	            <td><span>$licence.product.identifier</span></td>
+	            <td><span>$licence.pageLayout.displayName</span></td>
 	            <td><span>$licence.numberOfCopies</span></td>
 	            <td><span>$licence.costInCredits</span></td>
 	            <td><span>$licence.dollarsInvoiceValue</span></td>
@@ -153,6 +164,18 @@ td {
 
 </div><!--.for-->
 
+#if( $licence.pageLayout == 'PHOTOCOPY' )
+<div class="licence-section">
+
+    <h1>Licence</h1>
+
+    <p>To show that your copy of <span>$licence.product.title</span> is legal, <span>$licence.company.name</span> must stamp and sign in the block below, and bind this page with the copy. You may do this with <span>$licence.numberOfCopies</span> $displayLayout. To make further copies, you must get a new licence from paperight.com.</p>
+
+    <table style="height: 4cm; width: 6cm; border: 1px solid black;"><tr><td>&nbsp;</td></tr></table>
+    Stamp and original signature of <span>$licence.company.name</span>
+
+</div><!--.licence-section-->
+#end
 <div class="footer">Powered by<br>
 	<img alt="Paperight" src="$applicationUrl/img/logo.png">
 </div><!--.footer-->

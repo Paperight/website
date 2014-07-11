@@ -4,6 +4,7 @@
 		<tr class="header">
 			<td><pr:snippet name="grid-product-heading" group="publisher-earnings" defaultValue="Product"/></td>
 			<td class="center-column"><pr:snippet name="grid-date-heading" group="publisher-earnings" defaultValue="Date"/></td>
+			<td class="center-column"><pr:snippet name="grid-layout-heading" group="publisher-earnings" defaultValue="Format"/></td>
 			<td class="center-column"><pr:snippet name="grid-amount-heading" group="publisher-earnings" defaultValue="Amount"/></td>
 			<td class="center-column"><pr:snippet name="grid-status-heading" group="publisher-earnings" defaultValue="Status"/></td>
 			<td class="right-column">Invoice</td>
@@ -19,6 +20,7 @@
 				</div>
 			</td>
 			<td class="center-column"><joda:format value="${publisherEarning.createdDate}" style="M-" /></td>
+			<td class="center-column">${publisherEarning.licence.pageLayout.displayName}</td>
 			<td class="center-column"><pr:price amount="${publisherEarning.amountInCurrency}" currency="${publisherEarning.currencyCode}" displayCurrency="${publisherEarning.currencyCode}" /></td>
 			<td class="center-column" style="text-transform: capitalize">${fn:toLowerCase(publisherEarning.status)}</td>
 			<td class="right-column">

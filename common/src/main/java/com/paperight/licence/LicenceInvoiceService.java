@@ -1,5 +1,6 @@
 package com.paperight.licence;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -54,6 +55,14 @@ public class LicenceInvoiceService {
 		generatePdf(invoiceHtml, outputStream);
 	}
 	
+	public void generateOutletInvoice(Licence licence, String outputFilename) throws Exception {
+	    OutputStream out = new FileOutputStream(outputFilename);
+        try {
+            generateOutletInvoice(licence, out);
+        } finally {
+            IOUtils.closeQuietly(out);
+        }
+    }
 	
 	private void generatePdf(String html, OutputStream outputStream) throws Exception {
 		InputStream inputStream = IOUtils.toInputStream(html);

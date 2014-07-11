@@ -10,7 +10,7 @@
 			<td class="left-column"><pr:snippet name="grid-product-heading" group="licence-search" defaultValue="Product"/></td>
 			<td class="left-column"><pr:snippet name="grid-total-copies-heading" group="licence-search" defaultValue="Total&lt;br /&gt;Copies"/></td>
 			<td class="left-column"><pr:snippet name="grid-date-heading" group="licence-search" defaultValue="Date"/></td>
-			<td class="left-column"><pr:snippet name="grid-layout-heading" group="licence-search" defaultValue="Layout"/></td>
+			<td class="left-column"><pr:snippet name="grid-layout-heading" group="licence-search" defaultValue="Format"/></td>
 			<td class="center-column"><pr:snippet name="grid-total-credits-heading" group="licence-search" defaultValue="Total&lt;br /&gt;credits used"/></td>
 			<td class="center-column"><pr:snippet name="grid-total-licence-fees-heading" group="licence-search" defaultValue="Total&lt;br /&gt;licence fees"/></td>
 			<td class="center-column"><pr:snippet name="grid-total-print-costs-heading" group="licence-search" defaultValue="Total&lt;br /&gt;print costs"/></td>

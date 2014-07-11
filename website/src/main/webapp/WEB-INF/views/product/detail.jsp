@@ -12,6 +12,24 @@
 				<sec:authorize access="isAnonymous()">
 					<div class="anonymous-details">
 						<div class="outlet-details">
+						    <div class="ui-helper-clearfix">
+					            <c:set var="printoutAvailableIconClass" value="ui-icon-closethick" />
+					            <c:if test="${product.canPrint}">
+					                <c:set var="printoutAvailableIconClass" value="ui-icon-check" />
+					            </c:if>
+					            <div>
+					                <span style="float: left; clear: both; font-size: 12px;"><pr:snippet name="printoutAvailable" group="productDetailAnonymous" defaultValue="Print-out available" /></span>
+					                <span class="ui-icon ${printoutAvailableIconClass}" style="float: left; clear: right;"></span>
+					            </div>
+					            <c:set var="canPhotocopyIconClass" value="ui-icon-closethick" />
+					            <c:if test="${product.canPhotocopy}">
+					                <c:set var="canPhotocopyIconClass" value="ui-icon-check" />
+					            </c:if>
+					            <div style="padding-bottom: 50px">
+					                <span style="float: left; clear: both; font-size: 12px;"><pr:snippet name="canPhotocopy" group="productDetailAnonymous" defaultValue="Can photocopy legally" /></span>
+					                <span class="ui-icon ${canPhotocopyIconClass}" style="float: left; clear: right;"></span>
+					            </div>
+					        </div>
 							<h3><pr:snippet name="heading" group="productDetailAnonymous" defaultValue="You can buy this book printed on demand at one of our outlets"/></h3>
 							<div id="outlets-search" style="padding:0;">
 								<dl>
@@ -104,18 +122,18 @@
 								</dd>
 							</dl>
 							<dl id="layoutselection">
-								<dt><pr:snippet name="customerDetailsLayout" group="productDetailLoggedIn" defaultValue="Select document layout" /></dt>
+								<dt><pr:snippet name="customerDetailsLayout" group="productDetailLoggedIn" defaultValue="Select document format" /></dt>
 								<dd id="layoutset">
 									<label style="display:none;'" class="error" for="layout">Please select a layout</label>
 									<c:if test="${not empty product.twoUpFilename}">
 									<div class="layout-type">
-										<span><input type="radio" name="layout" id="layout_two_up" value="TWO_UP"><label for="layout_two_up">&nbsp;<c:if test="${product.twoUpPageExtent gt 0}"><em>${product.twoUpPageExtent}</em> A4 pages (two per side) </c:if> ${product.twoUpFileSize} MB</span></label>
+										<span><input type="radio" name="layout" id="layout_two_up" value="TWO_UP"><label for="layout_two_up">&nbsp;<c:if test="${product.twoUpPageExtent gt 0}"><em>${product.twoUpPageExtent}</em> A4 pages (two per side) </c:if> ${product.twoUpFileSize} MB</label></span>
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="TWO_UP" class="btn-preview"><pr:snippet name="twoUpDownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>
 									<c:if test="${not empty product.oneUpFilename}">
 									<div class="layout-type">
-										<span><input type="radio" name="layout" id="layout_one_up" value="ONE_UP"><label for="layout_one_up">&nbsp;<c:if test="${product.oneUpPageExtent gt 0}"><em>${product.oneUpPageExtent}</em> A4 pages (one per side) </c:if> ${product.oneUpFileSize} MB</span></label>
+										<span><input type="radio" name="layout" id="layout_one_up" value="ONE_UP"><label for="layout_one_up">&nbsp;<c:if test="${product.oneUpPageExtent gt 0}"><em>${product.oneUpPageExtent}</em> A4 pages (one per side) </c:if> ${product.oneUpFileSize} MB</label></span>
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="ONE_UP" class="btn-preview"><pr:snippet name="oneUpDownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>
@@ -125,6 +143,11 @@
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="A5" class="btn-preview"><pr:snippet name="a5DownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>
+									<c:if test="${product.canPhotocopy}">
+                                    <div class="layout-type">
+                                        <span><input type="radio" name="layout" id="layout_photocopy" value="PHOTOCOPY"><label for="layout_photocopy">&nbsp;<pr:snippet name="layoutPhotocopy" group="productDetailLoggedIn" defaultValue="Photocopy licence only (no book PDF)" /></label></span>
+                                    </div>
+                                    </c:if>
 								</dd>
 							</dl>
 						</div>
@@ -453,6 +476,59 @@
 				}
 			});
 		});
+		
+		$('.btn-print-licence').live("click", function(){
+            var btn = $(this);
+            var modal = paperight.dialog('<p class="message"><pr:snippet name="dialog-generate-print-licence-generating" group="product-detail-licences" escapeJavascript="true" defaultValue="Generating print licence..."/></p>', {
+                title: "<pr:snippet name="dialog-generate-print-licence-title" group="product-detail-licences" escapeJavascript="true" defaultValue="Generating print licence"/>", height: 180, modal: true, progressbar : { time: paperight.ajax.timeout, start: true }
+            });
+            var data = false;
+            return paperight.generateLicence(btn.attr('value'), {
+                data: data,
+                success: function(data){
+                    if(typeof data == "object"){
+                        if (data.result == false) {
+                            modal.find(".message").text(data.message);
+                        } else {}
+                            modal.find(".message").text("<pr:snippet name="dialog-generate-print-licence-generated" group="product-detail-licences" escapeJavascript="true" defaultValue="Your file will now download."/>");
+                            modal.dialog('progressbar', {stop: true, value: 100});
+                            modal.dialog('addbutton', "<pr:snippet name="dialog-generate-print-licence-button-ok" group="product-detail-licences" escapeJavascript="true" defaultValue="OK"/>", function(){ $(this).dialog("close"); });
+                            paperight.downloadLicence(btn.attr('value'));
+                            setTimeout(function() {
+                                paperight.loadView(btn.closest('.ui-view'));
+                                paperight.reload();
+                                },
+                                1500);
+                    };
+                },
+                error: function(){
+                    modal.find(".message").text(data.message);
+                    modal.dialog('progressbar', {stop: true, value: 100});
+                    modal.dialog('addbutton', "<pr:snippet name="dialog-generate-print-licence-button-ok" group="product-detail-licences" escapeJavascript="true" defaultValue="OK"/>", function(){ $(this).dialog("close"); });
+                }
+            });
+        });
+		
+		/* $('.btn-print-licence').live('click', function(){
+			console.log("btn-print-licence click");
+	        var button = $(this);
+	        var licenceId = button.attr('value');
+	        paperight.dialog('<p class="message"><pr:snippet name="dialog-print-licence-message" group="product-detail-licences" escapeJavascript="true" defaultValue="Your print licence will download shortly. You may close this window at any time."/></p>', {
+	            title: "<pr:snippet name="dialog-print-licence-title" group="product-detail-licences" escapeJavascript="true" defaultValue="Invoice"/>", height: 145, modal: true,
+	            buttons: {
+	                "<pr:snippet name="dialog-print-licence-button-ok" group="product-detail-licences" escapeJavascript="true" defaultValue="OK"/>": function(){ 
+	                    button.find('span').removeClass('ui-icon-link').addClass('ui-icon-refresh');
+	                    $(this).dialog("close"); 
+	                }
+	            }
+	        });
+	        paperight.downloadLicence(licenceId);
+	        setTimeout(function() {
+                paperight.loadView(button.closest('.ui-view'));
+                paperight.reload();
+                }, 5000);
+	        return false;
+	    }); */
 		
 		$('.btn-preview').live("click", function(){
 			var btn = $(this);

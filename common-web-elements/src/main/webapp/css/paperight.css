@@ -128,7 +128,7 @@ input[type="checkbox"], input[type="radio"] { height:14px; margin:0; padding:0; 
 
 #breadcrumbs{ margin:0 auto; position: absolute; bottom:0; left:30px; height:0px }
 
-.btn-download, .btn-cancel, .btn-reset, .btn-earning-invoice-redownload { float:left; }
+.btn-download, .btn-print-licence, .btn-cancel, .btn-reset, .btn-earning-invoice-redownload { float:left; }
 button.btn-download .ui-button-text { padding:5px 5px; }
 a.btn-download-licence-invoice { line-height:32px; background:none; border:none; white-space:nowrap; }
 a.btn-cancel { margin-left:5px; line-height:32px; background:none; border:none; white-space:nowrap; }

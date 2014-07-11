@@ -34,7 +34,7 @@
 		<td>Date</td>
 		<td>Title</td>
 		<td>Outlet Name</td>
-		<td>Layout</td>
+		<td>Format</td>
 		<td>Number Copies</td>
 		<td>Status</td>
 	</tr>

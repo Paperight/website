@@ -2,9 +2,10 @@ package com.paperight.licence;
 
 public enum PageLayout {
 
-	ONE_UP("One Up"), 
-	TWO_UP("Two Up"),
-	A5("A5");
+	ONE_UP("One Up A4"), 
+	TWO_UP("Two Up A4"),
+	A5("A5"),
+	PHOTOCOPY("Photocopy");
 	
 	private String displayName;
 	

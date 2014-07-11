@@ -103,7 +103,7 @@ public class LicenceController {
 	
 	private String buildCsv(List<Licence> licences) throws IOException {
 		List<String[]> csvLines = new ArrayList<String[]>();
-		String[] csvHeader = { "RightsholderName", "RightsholderEmailAddress", "TransactionDate", "Title", "Subtitle", "Edition", "Author", "Identifier", "SubjectArea", "OutletName", "OutletId", "OutletCity", "OutletCountry", "OutletCurrency", "OutletServiceCharge", "NumberOfCopies", "Layout", "DoubleSidedSheets", "CreditsReserved", "DownloadedYN", "CreditsCharged", "DollarEquivalent", "PaperightFee", "AmountOwingToRightsholder" };
+		String[] csvHeader = { "RightsholderName", "RightsholderEmailAddress", "TransactionDate", "Title", "Subtitle", "Edition", "Author", "Identifier", "SubjectArea", "OutletName", "OutletId", "OutletCity", "OutletCountry", "OutletCurrency", "OutletServiceCharge", "NumberOfCopies", "Format", "DoubleSidedSheets", "CreditsReserved", "DownloadedYN", "CreditsCharged", "DollarEquivalent", "PaperightFee", "AmountOwingToRightsholder" };
 		csvLines.add(csvHeader);
 		for (Licence licence : licences) {
 			Product product = licence.getProduct();
@@ -125,7 +125,7 @@ public class LicenceController {
 			csvLine[13] = licence.getCurrencyCode();//OutletCurrency
 			csvLine[14] = licence.getOutletCharge().toString();//OutletServiceCharge
 			csvLine[15] = licence.getNumberOfCopies() + "";//NumberOfCopies
-			csvLine[16] = licence.getPageLayout().toString();//Layout
+			csvLine[16] = licence.getPageLayout().toString();//Format
 			csvLine[17] = licence.getPageExtent() + "";//DoubleSidedSheets
 			csvLine[18] = licence.getCostInCredits().toString();//CreditsReserved
 			csvLine[19] = licence.isDownloaded() ? "Y" : "N" ;//DownloadedYN

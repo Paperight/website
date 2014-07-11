@@ -71,6 +71,7 @@ public class Product implements Serializable {
 	private boolean disabled = false;
 	private boolean publisherInactive = false;
 	private String relatedProducts;
+	private boolean canPhotocopy;
 
 	@JsonIgnore
 	private Company ownerCompany;
@@ -576,5 +577,18 @@ public class Product implements Serializable {
 	public void setRelatedProducts(String relatedProducts) {
 		this.relatedProducts = relatedProducts;
 	}
+
+    public boolean isCanPhotocopy() {
+        return canPhotocopy;
+    }
+
+    public void setCanPhotocopy(boolean canPhotocopy) {
+        this.canPhotocopy = canPhotocopy;
+    }
+    
+    @Transient
+    public boolean isCanPrint() {
+        return !StringUtils.isBlank(getA5Filename()) || !StringUtils.isBlank(getOneUpFilename()) || !StringUtils.isBlank(getTwoUpFilename());
+    }
 
 }

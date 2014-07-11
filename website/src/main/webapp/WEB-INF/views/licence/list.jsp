@@ -27,6 +27,7 @@
 	<c:forEach items="${licences}" var="licence">
 	<tr>
 		<c:set var="licenceStatus" value="${licence.status}" />
+		<c:set var="pageLayout" value="${licence.pageLayout}" />
 		<c:set var="costInCredits" value="${licence.costInCredits}" />
 		<c:set var="costInCurrency" value="${licence.costInCurrency}" />
 		<c:set var="outletCharge" value="${licence.outletCharge}" />
@@ -46,6 +47,7 @@
 		<td class="right-column">
 		<c:if test="${(licenceStatus eq 'NEW') || (licenceStatus eq 'GENERATED')}">
 			<sec:authorize access="principal.user.verified">
+			<c:if test="${(pageLayout ne 'PHOTOCOPY')}">
 			<button value="${licence.id}" class="btn-download" title="approx. ${licence.fileSize} MB">
 				<span class="ui-icon ui-icon-circle-arrow-s"></span>
 				<span><pr:snippet name="download-button" group="product-detail-licences" defaultValue="Download"/></span>
@@ -54,6 +56,13 @@
 				<span><pr:snippet name="cancel-link" group="product-detail-licences" defaultValue="Cancel"/></span>
 				<span class="ui-icon ui-icon-trash"></span>
 			</a>
+			</c:if>
+			<c:if test="${(pageLayout eq 'PHOTOCOPY')}">
+			<button value="${licence.id}" class="btn-print-licence">
+                <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                <span><pr:snippet name="print-licence-button" group="product-detail-licences" defaultValue="Print licence"/></span>
+            </button>
+			</c:if>
 			</sec:authorize>
 			<sec:authorize access="!principal.user.verified">
 			<button class="btn-activate">

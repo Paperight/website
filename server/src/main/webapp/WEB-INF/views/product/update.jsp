@@ -26,6 +26,11 @@
 				<form:errors path="publisherInactive" cssClass="error" element="label" /></dd>
 			</dl>
 			<dl>
+                <dt>Photocopy Licence</dt>
+                <dd><form:checkbox path="canPhotocopy" cssClass="" />
+                <form:errors path="canPhotocopy" cssClass="error" element="label" /></dd>
+            </dl>
+			<dl>
 				<dt>Identifier</dt>
 				<dd><form:input path="identifier" cssClass="required" />
 				<form:errors path="identifier" cssClass="error" element="label" /></dd>

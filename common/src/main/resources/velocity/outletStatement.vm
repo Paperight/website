@@ -122,6 +122,7 @@ td {
 				<td>Title</td>
 				<td>Rightsholder</td>
 				<td>Identifier</td>
+				<td>Format</td>
 				<td>Copies</td>
 				<td>Licence fee in credits</td>
 				<td>Licence fee in dollars</td>
@@ -154,6 +155,7 @@ td {
 						<td><span>Paperight</span></td>
 					#end
 					<td><span>$licence.product.identifier</span></td>
+					<td><span>$licence.pageLayout.displayName</span></td>
 					<td><span>$licence.numberOfCopies</span></td>
 					<td><span>$licence.costInCredits</span></td>
 					<td><span>$licence.dollarsInvoiceValue</span></td>					

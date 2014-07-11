@@ -153,6 +153,7 @@ td {
 				<td>Outlet</td>
 				<td>City</td>
 				<td>Country</td>
+				<td>Format</td>
 				<td>Copies</td>
 				<td>Licence fee in dollars</td>
 				<td>Paperight commission</td>
@@ -187,6 +188,7 @@ td {
 					<td><span>$publisherEarning.licence.company.name</span></td>
 					<td><span>$publisherEarning.licence.company.primaryAddress.addressLine4</span></td>
 					<td><span>$publisherEarning.licence.company.primaryAddress.country.name</span></td>
+					<td><span>$publisherEarning.licence.pageLayout.displayName</span></td>
 					<td><span>$publisherEarning.licence.numberOfCopies</span></td>
 					<td><span>$publisherEarning.licence.dollarsInvoiceValue</span></td>
 					

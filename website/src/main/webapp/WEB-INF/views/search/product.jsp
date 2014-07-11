@@ -56,24 +56,58 @@
 </div>
 <div class="pricing">
 	<div class="inner">
+		<div class="ui-helper-clearfix">
+            <c:set var="printoutAvailableIconClass" value="ui-icon-closethick" />
+            <c:if test="${product.canPrint}">
+                <c:set var="printoutAvailableIconClass" value="ui-icon-check" />
+            </c:if>
+			<div>
+				<span style="float: left; clear: both; font-size: 12px;"><pr:snippet name="printoutAvailable" group="searchResult" defaultValue="Print-out available" /></span>
+				<span class="ui-icon ${printoutAvailableIconClass}" style="float: left; clear: right;"></span>
+			</div>
+			<c:set var="canPhotocopyIconClass" value="ui-icon-closethick" />
+			<c:if test="${product.canPhotocopy}">
+			    <c:set var="canPhotocopyIconClass" value="ui-icon-check" />
+			</c:if>
+			<div style="padding-bottom: 50px">
+				<span style="float: left; clear: both; font-size: 12px;"><pr:snippet name="canPhotocopy" group="searchResult" defaultValue="Can photocopy legally" /></span>
+				<span class="ui-icon ${canPhotocopyIconClass}" style="float: left; clear: right;"></span>
+			</div>
+		</div>
 		<sec:authorize access="hasRole('ROLE_OUTLET')">
-		<c:choose>
-			<c:when test="${product.availabilityStatus eq 'ON_SALE'}">
-				<c:choose>
-					<c:when test="${product.licenceFeeInCredits.unscaledValue() ne 0}">
-					<div class="credit"><em>${product.licenceFeeInCredits}</em><pr:snippet name="creditsText" group="searchResult" defaultValue="credits per copy-licence" /></div>
-					<div class="value"><pr:snippet name="creditsAboutText" group="searchResult" defaultValue="About" />&nbsp;<em><pr:price amount="${product.licenceFeeInDollars}" /></em></div>
-					</c:when>
+			<c:choose>
+				<c:when test="${product.availabilityStatus eq 'ON_SALE'}">
+					<c:choose>
+						<c:when test="${product.licenceFeeInCredits.unscaledValue() ne 0}">
+							<div class="credit">
+								<em>${product.licenceFeeInCredits}</em>
+								<pr:snippet name="creditsText" group="searchResult"
+									defaultValue="credits per copy-licence" />
+							</div>
+							<div class="value">
+								<pr:snippet name="creditsAboutText" group="searchResult"
+									defaultValue="About" />
+								&nbsp;<em><pr:price amount="${product.licenceFeeInDollars}" /></em>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="credit">
+								<em>Free</em>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:when>
 				<c:otherwise>
-				<div class="credit"><em>Free</em></div>
+					<div class="credit">
+						<em style="font-size: 26px;"><pr:snippet
+								name="unavailable-text" group="searchResult"
+								defaultValue="Unavailable" /></em>
+					</div>
 				</c:otherwise>
-				</c:choose>
-			</c:when>
-			<c:otherwise>
-				<div class="credit"><em style="font-size:26px;"><pr:snippet name="unavailable-text" group="searchResult" defaultValue="Unavailable" /></em></div>
-			</c:otherwise>
-		</c:choose>
+			</c:choose>
 		</sec:authorize>
-		<a class="button btn-view-product" href="${url}"><pr:snippet name="viewProductButton" group="searchResult" defaultValue="View product" /></a>
+		<a class="button btn-view-product" href="${url}"><pr:snippet
+				name="viewProductButton" group="searchResult"
+				defaultValue="View product" /></a>
 	</div>
 </div>

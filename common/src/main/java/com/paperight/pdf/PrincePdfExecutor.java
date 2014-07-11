@@ -26,13 +26,12 @@ public class PrincePdfExecutor extends PdfExecutor {
 	private String htmlFolder;
 	
 	@Override
-	public void execute(InputStream html, OutputStream out) 
-			throws IOException, InterruptedException {
+	public void execute(InputStream html, OutputStream out) throws IOException, InterruptedException {
 		Prince prince = new Prince(princePdfExecutableLocation);
 		prince.setInputType("html");
 		prince.convert(html, out);
 	}
-
+	
 	@Override
 	public File execute(String htmlLocation, List<String> cssFiles) throws IOException, InterruptedException {
 		Prince prince = new Prince(princePdfExecutableLocation);
