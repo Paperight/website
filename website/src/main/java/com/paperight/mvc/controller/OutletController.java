@@ -144,6 +144,7 @@ class CompanyDto {
 	private BigDecimal averageBindingCost = new BigDecimal(15.00);
 	private double distanceFromLocation;
 	private Currency currency;
+	private String email;
 
 	public static CompanyDto toDto(Company company) {
 		CompanyDto companyDto = new CompanyDto();
@@ -156,6 +157,7 @@ class CompanyDto {
 		companyDto.setAveragePrintingCost(company.getAveragePrintingCost());
 		companyDto.setAverageBindingCost(company.getAverageBindingCost());
 		companyDto.setCurrency(company.getCurrency());
+		companyDto.setEmail(company.getEmail());		
 		return companyDto;
 	}
 	public long getId() {
@@ -224,10 +226,20 @@ class CompanyDto {
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
+
     public BigDecimal getAverageBindingCost() {
         return averageBindingCost;
     }
+    
     public void setAverageBindingCost(BigDecimal averageBindingCost) {
         this.averageBindingCost = averageBindingCost;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
