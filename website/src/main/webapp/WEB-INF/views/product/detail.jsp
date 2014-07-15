@@ -10,48 +10,60 @@
 					<a class="download-image" href="${ctx}/product/${product.id}/jacket-image" target="_blank"><pr:snippet name="downloadCoverImageLink" group="productDetail" defaultValue="Download high-res image"/></a>
 				</div>
 				<sec:authorize access="isAnonymous()">
-					<div class="anonymous-details">
-						<div class="outlet-details">
-							<h3><pr:snippet name="heading" group="productDetailAnonymous" defaultValue="You can buy this book printed on demand at one of our outlets"/></h3>
-							<div id="outlets-search" style="padding:0;">
-								<dl>
-									<dt>
-										<label class="outlets-search-label"><pr:snippet name="outlets-search-label" group="product-outlets-map" defaultValue="Your location:" /></label>
-									</dt>
-								</dl>
-								<dl>
-									<dt>
-										<input class="outlets-search-input small input-dims" type="text">
-										<button onclick="geoCodingSearch()"><pr:snippet name="outlets-search-button" group="product-outlets-map" defaultValue="Find outlets" /></button>
-									</dt>
-								</dl>
-						
-								<div class="outlets-search-results">
-									<div class="outlets-search-results-label">
-										<dl>
-											<dt>
-												<label class="outlets-search-label"><pr:snippet name="outlet-select-label" group="product-outlets-map" defaultValue="Select an outlet:" /></label>
-											</dt>
-										</dl>
-									</div>
-									<div class="outlets-search-results-list">
-										<select class="outlets-list-select" id="outlet-list-parent"></select>
-									</div>
-									<div>
-										<label id="printing-cost" class="printing-cost"></label>
-										<label id="printing-cost-message" class="printing-cost-detail"></label>
-										<label id="printing-cost-contact" class="printing-cost-detail"></label>
+				    <c:choose>
+                        <c:when test="${product.availableForSale eq true}">
+						<div class="anonymous-details">
+							<div class="outlet-details">
+								<h3><pr:snippet name="heading" group="productDetailAnonymous" defaultValue="You can buy this book printed on demand at one of our outlets"/></h3>
+								<div id="outlets-search" style="padding:0;">
+									<dl>
+										<dt>
+											<label class="outlets-search-label"><pr:snippet name="outlets-search-label" group="product-outlets-map" defaultValue="Your location:" /></label>
+										</dt>
+									</dl>
+									<dl>
+										<dt>
+											<input class="outlets-search-input small input-dims" type="text">
+											<button onclick="geoCodingSearch()"><pr:snippet name="outlets-search-button" group="product-outlets-map" defaultValue="Find outlets" /></button>
+										</dt>
+									</dl>
+							
+									<div class="outlets-search-results">
+										<div class="outlets-search-results-label">
+											<dl>
+												<dt>
+													<label class="outlets-search-label"><pr:snippet name="outlet-select-label" group="product-outlets-map" defaultValue="Select an outlet:" /></label>
+												</dt>
+											</dl>
+										</div>
+										<div class="outlets-search-results-list">
+											<select class="outlets-list-select" id="outlet-list-parent"></select>
+										</div>
+										<div>
+											<label id="printing-cost" class="printing-cost"></label>
+											<label id="printing-cost-message" class="printing-cost-detail"></label>
+											<label id="printing-cost-contact" class="printing-cost-detail"></label>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="outlet-map">
-							<div class="map" id="outlets-map-display"></div>
-							<div class="panorama" id="outlets-panorama-display">
-								<button id="panorama-button" class="panorama-btn">&times;</button>
+							<div class="outlet-map">
+								<div class="map" id="outlets-map-display"></div>
+								<div class="panorama" id="outlets-panorama-display">
+									<button id="panorama-button" class="panorama-btn">&times;</button>
+								</div>
 							</div>
 						</div>
-					</div>
+					    </c:when>
+	                    <c:otherwise>
+	                        <div class="anonymous-details" style="height: 240px;">
+	                            <div class="publisher-note" style="margin-left: 20px; margin-top: 20px;">
+	                                <h2><pr:snippet name="productNotAvailableHeader" group="productDetail" defaultValue="Want to buy this book?" /></h2>
+	                                <p><pr:snippet name="productNotAvailableDescription" group="productDetail" defaultValue="Unfortunately this book is not for sale at present" /></p>
+	                            </div>
+	                        </div>
+	                    </c:otherwise>
+	                </c:choose>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 				<div class="details-top"></div>
