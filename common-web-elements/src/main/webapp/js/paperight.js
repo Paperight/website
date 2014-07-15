@@ -12,6 +12,7 @@
 		ajax: { timeout: 10000 },
 		credits: 0,
 		averagePrintingCost: 0,
+		averageBindingCost: 0,
 		number: { 
 			precision: 0, 
 			thousand: ",", 

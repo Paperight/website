@@ -10,52 +10,65 @@
 					<a class="download-image" href="${ctx}/product/${product.id}/jacket-image" target="_blank"><pr:snippet name="downloadCoverImageLink" group="productDetail" defaultValue="Download high-res image"/></a>
 				</div>
 				<sec:authorize access="isAnonymous()">
-					<div class="anonymous-details">
-						<div class="outlet-details">
-							<h3><pr:snippet name="heading" group="productDetailAnonymous" defaultValue="You can buy this book printed on demand at one of our outlets"/></h3>
-							<div id="outlets-search" style="padding:0;">
-							    <c:if test="${product.premium}">
-							    <div><pr:snippet name="headingPremium" group="productDetailAnonymous" defaultValue="This is only available from our Premium outlets. See the map for these outlets."/></div>
-							    <div>&nbsp;</div>
-							    </c:if>
-								<dl>
-									<dt>
-										<label class="outlets-search-label"><pr:snippet name="outlets-search-label" group="product-outlets-map" defaultValue="Your location:" /></label>
-									</dt>
-								</dl>
-								<dl>
-									<dt>
-										<input class="outlets-search-input small input-dims" type="text">
-										<button onclick="geoCodingSearch()"><pr:snippet name="outlets-search-button" group="product-outlets-map" defaultValue="Find outlets" /></button>
-									</dt>
-								</dl>
-						
-								<div class="outlets-search-results">
-									<div class="outlets-search-results-label">
-										<dl>
-											<dt>
-												<label class="outlets-search-label"><pr:snippet name="outlet-select-label" group="product-outlets-map" defaultValue="Select an outlet:" /></label>
-											</dt>
-										</dl>
-									</div>
-									<div class="outlets-search-results-list">
-										<select class="outlets-list-select" id="outlet-list-parent"></select>
-									</div>
-									<div>
-										<label id="printing-cost" class="printing-cost"></label>
-										<label id="printing-cost-message" class="printing-cost-detail"></label>
-										<label id="printing-cost-contact" class="printing-cost-detail"></label>
+				    <c:choose>
+                        <c:when test="${product.availableForSale eq true}">
+						<div class="anonymous-details">
+							<div class="outlet-details">
+								<h3><pr:snippet name="heading" group="productDetailAnonymous" defaultValue="You can buy this book printed on demand at one of our outlets"/></h3>
+								<div id="outlets-search" style="padding:0;">
+								    <c:if test="${product.premium}">
+	                                <div><pr:snippet name="headingPremium" group="productDetailAnonymous" defaultValue="This is only available from our Premium outlets. See the map for these outlets."/></div>
+	                                <div>&nbsp;</div>
+	                                </c:if>
+									<dl>
+										<dt>
+											<label class="outlets-search-label"><pr:snippet name="outlets-search-label" group="product-outlets-map" defaultValue="Your location:" /></label>
+										</dt>
+									</dl>
+									<dl>
+										<dt>
+											<input class="outlets-search-input small input-dims" type="text">
+											<button onclick="geoCodingSearch()"><pr:snippet name="outlets-search-button" group="product-outlets-map" defaultValue="Find outlets" /></button>
+										</dt>
+									</dl>
+							
+									<div class="outlets-search-results">
+										<div class="outlets-search-results-label">
+											<dl>
+												<dt>
+													<label class="outlets-search-label"><pr:snippet name="outlet-select-label" group="product-outlets-map" defaultValue="Select an outlet:" /></label>
+												</dt>
+											</dl>
+										</div>
+										<div class="outlets-search-results-list">
+											<select class="outlets-list-select" id="outlet-list-parent"></select>
+										</div>
+										<div>
+											<label id="printing-cost" class="printing-cost"></label>
+											<label id="printing-cost-message" class="printing-cost-detail"></label>
+											<label id="printing-cost-contact" class="printing-cost-detail"></label>
+											<button id="order-by-email" data-email-address="" style="margin-top: 10px"><pr:snippet name="order-by-email-button" group="product-outlets-map" escapeJavascript="true" defaultValue="Order by email"/></button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="outlet-map">
-							<div class="map" id="outlets-map-display"></div>
-							<div class="panorama" id="outlets-panorama-display">
-								<button id="panorama-button" class="panorama-btn">&times;</button>
+							<div class="outlet-map">
+								<div class="map" id="outlets-map-display"></div>
+								<div class="panorama" id="outlets-panorama-display">
+									<button id="panorama-button" class="panorama-btn">&times;</button>
+								</div>
 							</div>
 						</div>
-					</div>
+					    </c:when>
+	                    <c:otherwise>
+	                        <div class="anonymous-details" style="height: 240px;">
+	                            <div class="publisher-note" style="margin-left: 20px; margin-top: 20px;">
+	                                <h2><pr:snippet name="productNotAvailableHeader" group="productDetail" defaultValue="Want to buy this book?" /></h2>
+	                                <p><pr:snippet name="productNotAvailableDescription" group="productDetail" defaultValue="Unfortunately this book is not for sale at present" /></p>
+	                            </div>
+	                        </div>
+	                    </c:otherwise>
+	                </c:choose>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 				<div class="details-top"></div>
@@ -342,6 +355,8 @@
 	twoUpPageCount = <c:out value="${product.twoUpPageExtent}"/>;
 	a5PageCount = <c:out value="${product.a5PageExtent}"/>;
 	productId = <c:out value="${product.id}"/>;
+	var productTitle = "<c:out value="${product.title}"/>";
+	
 	var map;
 	var companiesJSON;
 	var companiesHashMap = new Object();
@@ -713,7 +728,26 @@
 		$('#printing-cost').html('&#8776; ' + company.printingCost);
 		$('#printing-cost-message').text('<pr:snippet name="estimated-cost-pre" group="product-outlets-map" escapeJavascript="true" defaultValue="Estimated cost at"/>' + ' ' + company.name);
 		$('#printing-cost-contact').text('<pr:snippet name="estimated-cost-post" group="product-outlets-map" escapeJavascript="true" defaultValue="To check, call them on"/>' + ' ' + company.phoneNumber);
+		$('#order-by-email').attr("data-email-address", company.email);
 	}
+	
+	$('#order-by-email').click(function() {
+		var emailAddress = $('#order-by-email').attr("data-email-address");
+		
+		var subject = "<pr:snippet name="subject" group="order-by-email" escapeJavascript="true" defaultValue="Request to print a Paperight book"/>";
+		var body = "<pr:snippet name="body" group="order-by-email" escapeJavascript="true" multiline="true" defaultValue="Hello. I would like to order a copy of [$productTitle$], which is on Paperight here: [$productUrl$]
+
+Please send me details of pricing and how to pay and collect.
+
+Thank you."/>";
+	    body = body.replace("[$productTitle$]", productTitle);
+	    body = body.replace("[$productUrl$]", window.location.href);
+		var mailTo = "mailto:" + emailAddress + "?Subject=" + encodeURI(subject) + "&Body=" + encodeURI(body);
+		console.log(mailTo);
+	    window.location = mailTo;
+    });
+	
+	
 		
 	function addLocationsToMap(companies) {
 		if (companies == null

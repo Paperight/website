@@ -597,6 +597,7 @@ public class AccountController {
 			company.setParentCompany(parentCompany);
 			company.setCredits(new BigDecimal(0));
 			company.setAveragePrintingCost(parentCompany.getAveragePrintingCost());
+			company.setAverageBindingCost(parentCompany.getAverageBindingCost());
 			company.setCurrencyCode(parentCompany.getCurrencyCode());
 			//Address parentAddress = parentCompany.getAddressContextByType(AddressContextType.DEFAULT_PRIMARY).getAddress();
 			//address.setCountryCode(parentAddress.getCountryCode());
