@@ -16,15 +16,15 @@
 				</dd>
 			</dl>
 			<dl>
-                <dt>Premium <form:checkbox path="premium" cssClass="" /></dt>
+                <dt><form:checkbox path="premium" cssClass="" /> Premium</dt>
                 <dd><form:errors path="premium" cssClass="error" element="label" /></dd>
             </dl>
 			<dl>
-				<dt>Disabled <form:checkbox path="disabled" cssClass="" /></dt>
+				<dt><form:checkbox path="disabled" cssClass="" /> Disabled</dt>
 				<dd><form:errors path="disabled" cssClass="error" element="label" /></dd>
 			</dl>
 			<dl>
-				<dt>Publisher Inactive <form:checkbox path="publisherInactive" cssClass="" /></dt>
+				<dt><form:checkbox path="publisherInactive" cssClass="" /> Publisher Inactive</dt>
 				<dd><form:errors path="publisherInactive" cssClass="error" element="label" /></dd>
 			</dl>
 			<dl>
