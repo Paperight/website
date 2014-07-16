@@ -59,7 +59,7 @@ $(document).ready(function(){
 		var firstLayout = $('input:radio[name="layout"]:first');
 		firstLayout.attr("checked", true);
 		if ($('input:radio[name="layout"]').length === 1) {
-			firstLayout.attr('disabled', true);
+			//firstLayout.attr('disabled', true);
 			var label = firstLayout.nextAll('label').first();
 			label.addClass('disabled');
 		}
