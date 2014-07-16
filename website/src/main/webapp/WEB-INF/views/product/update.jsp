@@ -16,11 +16,11 @@
 				</dd>
 			</dl>
 			<dl>
-				<dt>Disabled <form:checkbox path="disabled" cssClass="" /></dt>
+				<dt><form:checkbox path="disabled" cssClass="" /> Disabled</dt>
 				<dd><form:errors path="disabled" cssClass="error" element="label" /></dd>
 			</dl>
 			<dl>
-                <dt>Photocopy Licence <form:checkbox path="canPhotocopy" cssClass="" /></dt>
+                <dt><form:checkbox path="canPhotocopy" cssClass="" /> Photocopy Licence</dt>
                 <dd><form:errors path="canPhotocopy" cssClass="error" element="label" /></dd>
             </dl>
 			<dl>
