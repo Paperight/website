@@ -16,10 +16,17 @@
 				</dd>
 			</dl>
 			<dl>
-				<dt>Disabled</dt>
-				<dd><form:checkbox path="disabled" cssClass="" />
-				<form:errors path="disabled" cssClass="error" element="label" /></dd>
+                <dt><form:checkbox id="premium" path="premium" cssClass="" /><label for="premium"> Premium</label></dt>
+                <dd><form:errors path="premium" cssClass="error" element="label" /></dd>
+            </dl>
+			<dl>
+				<dt><form:checkbox id="disabled" path="disabled" cssClass="" /><label for="disabled"> Disabled</dt>
+				<dd><form:errors path="disabled" cssClass="error" element="label" /></dd>
 			</dl>
+			<dl>
+                <dt><form:checkbox id="publisherInactive" path="publisherInactive" cssClass="" /><label for="publisherInactive"> Publisher Inactive</dt>
+                <dd><form:errors path="publisherInactive" cssClass="error" element="label" /></dd>
+            </dl>
 			<dl>
 				<dt>Identifier</dt>
 				<dd><form:input path="identifier" cssClass="required" />

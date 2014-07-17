@@ -36,6 +36,7 @@ import com.paperight.mvc.util.Paginator;
 import com.paperight.product.Product;
 import com.paperight.publisherearning.PublisherEarning;
 import com.paperight.user.Company;
+import com.paperight.user.Company.MapDisplay;
 import com.paperight.user.User;
 
 @SessionAttributes({"product"})
@@ -115,14 +116,27 @@ public class ProductController {
 		model.addAttribute("defaultCurrency", currencyService.getDefaultCurrency());
 		model.addAttribute("available", availabilityService.isAvailable(product, request));
 		User user = AuthenticationService.currentActingUser();
+		Company company = null;
 		if (user != null) {
-			Company company = user.getCompany();
+			company = user.getCompany();
 			if (company == null) {
 				throw new CompanyNotFoundException();
 			}
 			model.addAttribute("company", company);
 		}
+		model.addAttribute("restrictedPremium", restrictedPremium(product, company));
 		return "product/detail";
+	}
+	
+	private boolean restrictedPremium(Product product, Company company) {
+	    boolean result = product.isPremium();
+	    if (company != null) {
+	        boolean premiumCompany = company.getMapDisplay().equals(MapDisplay.FEATURE);
+	        if (result && premiumCompany) {
+	            result = false;
+	        }
+	    }
+	    return result;
 	}
 	
 	@InitBinder("product")
