@@ -4,7 +4,7 @@
 
 	<groupId>com.paperight</groupId>
 	<artifactId>website</artifactId>
-	<version>1.4.3.RELEASE</version>
+	<version>1.4.4.RELEASE</version>
 	<packaging>war</packaging>
 
 	<name>Paperight Website</name>
@@ -82,7 +82,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>11.0.2</version>
+			<version>17.0</version>
 		</dependency>
 
 		<dependency>

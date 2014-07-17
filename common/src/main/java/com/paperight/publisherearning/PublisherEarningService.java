@@ -49,7 +49,7 @@ public class PublisherEarningService {
 				BigDecimal amountInCurrency = currencyService.convert(amount, currencyService.getBaseCurrency(), licence.getCompany().getCurrency());
 				publisherEarning.setAmountInCurrency(amountInCurrency);
 				publisherEarning.setCurrencyCode(licence.getCompany().getCurrency().getCode());
-				publisherEarning.setCompany(licence.getProduct().getOwnerCompany());
+				publisherEarning.setCompany(licence.getOwnerCompany());
 				publisherEarning.persist();
 			}
 		}
@@ -73,7 +73,7 @@ public class PublisherEarningService {
 	
 	private boolean needsPublisherEarning(Licence licence) {
 		boolean result = false;
-		if (licence.getProduct().getOwnerCompany() != null) {
+		if (licence.getOwnerCompany() != null) {
 			result = true;
 		}
 		return result;

@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.paperight.currency.Currency;
 import com.paperight.currency.CurrencyService;
 import com.paperight.product.Product;
@@ -41,7 +44,7 @@ public class OutletController {
 
 	@RequestMapping(value = "/companies", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Object companies(Model model, @RequestParam double latitude, @RequestParam double longitude, @RequestParam Long productId) {
-		List<Company> allCompanies = Company.findAllActiveByRole(Role.ROLE_OUTLET);
+	    List<Company> allCompanies = Company.findAllActiveByRole(Role.ROLE_OUTLET);
 		List<CompanyDto> companies = new ArrayList<CompanyDto>();
 		for (Company company : allCompanies) {
 			if (!StringUtils.isBlank(company.getGpsLocation())
@@ -66,17 +69,31 @@ public class OutletController {
 				}
 			}
 		}
-		Collections.sort(companies, new DistanceCompare());
+		
 		
 		if (productId != null) {
-			calculatePrintingCost(companies, productId);
-		}
+		    Product product = Product.find(productId);
+			calculatePrintingCost(companies, product);
+			if (product.isPremium()) {
+			    companies = filterPremiumCompanies(companies);
+			}
+		}	
+		Collections.sort(companies, new DistanceCompare());
 		model.addAttribute("companies", companies);
 		return model;
 	}
+	
+	private List<CompanyDto> filterPremiumCompanies(List<CompanyDto> companies) {
+	    return Lists.newArrayList(Iterables.filter(companies, new Predicate<CompanyDto>() {
 
-	private void calculatePrintingCost(List<CompanyDto> companies, long productId) {
-		Product product = Product.find(productId);
+            @Override
+            public boolean apply(CompanyDto company) {
+                return company.getMapDisplay().equals(MapDisplay.FEATURE);
+            }
+        }));
+	}
+
+	private void calculatePrintingCost(List<CompanyDto> companies, Product product) {
 		for (CompanyDto company : companies) {
 			String printingCost = calculatePrintingCost(company, product);
 			company.setPrintingCost(printingCost);
@@ -92,7 +109,7 @@ public class OutletController {
 		}
 
 		BigDecimal printingCost = company.getAveragePrintingCost().multiply(new BigDecimal(pageCount));
-		printingCost = printingCost.add(BigDecimal.valueOf(15));
+		printingCost = printingCost.add(company.getAverageBindingCost());
 		BigDecimal sellingPrice = currencyService.convert(product.getLicenceFeeInDollars(), currencyService.getBaseCurrency(), company.getCurrency());
 		BigDecimal totalCost = printingCost.add(sellingPrice);
 		return company.getCurrency().getSymbol() + totalCost.setScale(0, RoundingMode.CEILING);
@@ -141,8 +158,10 @@ class CompanyDto {
 	private String phoneNumber;
 	private String printingCost;
 	private BigDecimal averagePrintingCost = new BigDecimal(0.00);
+	private BigDecimal averageBindingCost = new BigDecimal(15.00);
 	private double distanceFromLocation;
 	private Currency currency;
+	private String email;
 
 	public static CompanyDto toDto(Company company) {
 		CompanyDto companyDto = new CompanyDto();
@@ -153,7 +172,9 @@ class CompanyDto {
 		companyDto.setPhoneNumber(company.getPhoneNumber());
 		companyDto.setPrintingCost("");
 		companyDto.setAveragePrintingCost(company.getAveragePrintingCost());
+		companyDto.setAverageBindingCost(company.getAverageBindingCost());
 		companyDto.setCurrency(company.getCurrency());
+		companyDto.setEmail(company.getEmail());		
 		return companyDto;
 	}
 	public long getId() {
@@ -222,4 +243,20 @@ class CompanyDto {
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
+
+    public BigDecimal getAverageBindingCost() {
+        return averageBindingCost;
+    }
+    
+    public void setAverageBindingCost(BigDecimal averageBindingCost) {
+        this.averageBindingCost = averageBindingCost;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

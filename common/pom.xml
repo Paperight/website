@@ -4,7 +4,7 @@
 
 	<groupId>com.paperight</groupId>
 	<artifactId>common</artifactId>
-	<version>1.4.3.RELEASE</version>
+	<version>1.4.4.RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>Paperight Common</name>
@@ -93,7 +93,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>11.0.2</version>
+			<version>17.0</version>
 		</dependency>
 
 		<dependency>

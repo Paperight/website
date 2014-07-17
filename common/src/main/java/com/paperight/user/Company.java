@@ -51,6 +51,7 @@ public class Company implements Serializable {
 	private Currency currency;
 	private BigDecimal credits;
 	private BigDecimal averagePrintingCost = new BigDecimal(0.00);
+	private BigDecimal averageBindingCost = new BigDecimal(15.00);
 
 	@NotEmpty
 	private String name;
@@ -554,6 +555,17 @@ public class Company implements Serializable {
 		return new ArrayList<Company>(companiesMap.values());
 	}
 	
+	@Transient
+    public String getEmail() {
+        String result = null;
+        if (!getActiveCompanyAdmins().isEmpty()) {
+            result = getActiveCompanyAdmins().get(0).getEmail();
+        } else if (!getNormalUsers().isEmpty()) {
+            result = getNormalUsers().get(0).getEmail();
+        }
+        return result;
+    }
+	
 	public static void sortCompanies(List<Company> companies) {
 		Collections.sort(companies, new Comparator<Company>() {
 
@@ -564,4 +576,13 @@ public class Company implements Serializable {
 			
 		});
 	}
+
+	@Column(nullable = false)
+    public BigDecimal getAverageBindingCost() {
+        return averageBindingCost;
+    }
+
+    public void setAverageBindingCost(BigDecimal averageBindingCost) {
+        this.averageBindingCost = averageBindingCost;
+    }
 }

@@ -158,9 +158,11 @@ public class HomeController {
 		if (user != null) {
 			model.addAttribute("credits", user.getCompany().getCredits());
 			model.addAttribute("averagePrintingCost", user.getCompany().getAveragePrintingCost());
+			model.addAttribute("averageBindingCost", user.getCompany().getAverageBindingCost());
 		} else {
 			model.addAttribute("credits", 0);
 			model.addAttribute("averagePrintingCost", 0);
+			model.addAttribute("averageBindingCost", 0);
 		}
 		
 		return model;

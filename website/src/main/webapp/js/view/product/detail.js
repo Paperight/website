@@ -50,45 +50,32 @@ $(document).ready(function(){
 		});
 		return false;
 	}).find(':input').attr('disabled', true);
-	
-	$('#layoutset').each(function(){
-		var layout = $(this).find('input[name="layout"]');
-		var layouts = $('.layout-type');
-		if(layouts.length > 1){
-			$('.layout-type').click(function(){
-				$('.layout-type').removeClass('layout-selected');
-				$(this).addClass('layout-selected');
-				layout.val($(this).attr('id'));
-				calculatePrintingCosts();
-				return false;
-			});
-			$('.layout-type').hover(function(){ $(this).addClass('layout-hover'); }, function(){ $(this).removeClass('layout-hover'); });
-		}else{
-			layouts.each(function(){
-				$(this).addClass('layout-selected');
-				layout.val($(this).attr('id'));
-			});
-		};
+		
+	$('input:radio[name="layout"]').click(function(){
+		calculatePrintingCosts();
 	});
 	
 	function initialiseLayout() {
-		$('.layout-type').removeClass('layout-selected');
-		var elayout = $('.layout-type:first');
-		elayout.addClass('layout-selected');
-		$("#purchase-licence-form #layout").val(elayout.attr('id'));
+		var firstLayout = $('input:radio[name="layout"]:first');
+		firstLayout.attr("checked", true);
+		if ($('input:radio[name="layout"]').length === 1) {
+			//firstLayout.attr('disabled', true);
+			var label = firstLayout.nextAll('label').first();
+			label.addClass('disabled');
+		}
 		calculatePrintingCosts();
 	};
 
 	function calculatePrintingCosts() {
+		var selectedLayout = $('input:radio[name="layout"]:checked').val();
 		var pageCount = Math.ceil(twoUpPageCount / 2);
-		if ($("#purchase-licence-form #layout").val() == 'ONE_UP') {
+		if (selectedLayout === 'ONE_UP') {
 			pageCount = Math.ceil(oneUpPageCount / 2);
-		} else if ($("#purchase-licence-form #layout").val() == 'A5') {
+		} else if (selectedLayout === 'A5') {
 			pageCount = Math.ceil(a5PageCount / 4);
 		}
 		var eQuantity = $("#purchase-licence-form #quantity"), quantity = parseInt(eQuantity.val());
-		var printCosts = paperight.averagePrintingCost * pageCount * quantity;
-		printCosts = printCosts + 15;
+		var printCosts = ((paperight.averagePrintingCost * pageCount) + paperight.averageBindingCost) * quantity;
 		printCosts = printCosts.toFixed(2);
 		var eOutletCharges = $("#purchase-licence-form #outletcharges");
 		eOutletCharges.val(printCosts);

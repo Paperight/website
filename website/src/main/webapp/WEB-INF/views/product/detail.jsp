@@ -10,48 +10,65 @@
 					<a class="download-image" href="${ctx}/product/${product.id}/jacket-image" target="_blank"><pr:snippet name="downloadCoverImageLink" group="productDetail" defaultValue="Download high-res image"/></a>
 				</div>
 				<sec:authorize access="isAnonymous()">
-					<div class="anonymous-details">
-						<div class="outlet-details">
-							<h3><pr:snippet name="heading" group="productDetailAnonymous" defaultValue="You can buy this book printed on demand at one of our outlets"/></h3>
-							<div id="outlets-search" style="padding:0;">
-								<dl>
-									<dt>
-										<label class="outlets-search-label"><pr:snippet name="outlets-search-label" group="product-outlets-map" defaultValue="Your location:" /></label>
-									</dt>
-								</dl>
-								<dl>
-									<dt>
-										<input class="outlets-search-input small input-dims" type="text">
-										<button onclick="geoCodingSearch()"><pr:snippet name="outlets-search-button" group="product-outlets-map" defaultValue="Find outlets" /></button>
-									</dt>
-								</dl>
-						
-								<div class="outlets-search-results">
-									<div class="outlets-search-results-label">
-										<dl>
-											<dt>
-												<label class="outlets-search-label"><pr:snippet name="outlet-select-label" group="product-outlets-map" defaultValue="Select an outlet:" /></label>
-											</dt>
-										</dl>
-									</div>
-									<div class="outlets-search-results-list">
-										<select class="outlets-list-select" id="outlet-list-parent"></select>
-									</div>
-									<div>
-										<label id="printing-cost" class="printing-cost"></label>
-										<label id="printing-cost-message" class="printing-cost-detail"></label>
-										<label id="printing-cost-contact" class="printing-cost-detail"></label>
+				    <c:choose>
+                        <c:when test="${product.availableForSale eq true}">
+						<div class="anonymous-details">
+							<div class="outlet-details">
+								<h3><pr:snippet name="heading" group="productDetailAnonymous" defaultValue="You can buy this book printed on demand at one of our outlets"/></h3>
+								<div id="outlets-search" style="padding:0;">
+								    <c:if test="${product.premium}">
+	                                <div><pr:snippet name="headingPremium" group="productDetailAnonymous" defaultValue="This is only available from our Premium outlets. See the map for these outlets."/></div>
+	                                <div>&nbsp;</div>
+	                                </c:if>
+									<dl>
+										<dt>
+											<label class="outlets-search-label"><pr:snippet name="outlets-search-label" group="product-outlets-map" defaultValue="Your location:" /></label>
+										</dt>
+									</dl>
+									<dl>
+										<dt>
+											<input class="outlets-search-input small input-dims" type="text">
+											<button onclick="geoCodingSearch()"><pr:snippet name="outlets-search-button" group="product-outlets-map" defaultValue="Find outlets" /></button>
+										</dt>
+									</dl>
+							
+									<div class="outlets-search-results">
+										<div class="outlets-search-results-label">
+											<dl>
+												<dt>
+													<label class="outlets-search-label"><pr:snippet name="outlet-select-label" group="product-outlets-map" defaultValue="Select an outlet:" /></label>
+												</dt>
+											</dl>
+										</div>
+										<div class="outlets-search-results-list">
+											<select class="outlets-list-select" id="outlet-list-parent"></select>
+										</div>
+										<div>
+											<label id="printing-cost" class="printing-cost"></label>
+											<label id="printing-cost-message" class="printing-cost-detail"></label>
+											<label id="printing-cost-contact" class="printing-cost-detail"></label>
+											<button id="order-by-email" data-email-address="" style="margin-top: 10px"><pr:snippet name="order-by-email-button" group="product-outlets-map" escapeJavascript="true" defaultValue="Order by email"/></button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="outlet-map">
-							<div class="map" id="outlets-map-display"></div>
-							<div class="panorama" id="outlets-panorama-display">
-								<button id="panorama-button" class="panorama-btn">&times;</button>
+							<div class="outlet-map">
+								<div class="map" id="outlets-map-display"></div>
+								<div class="panorama" id="outlets-panorama-display">
+									<button id="panorama-button" class="panorama-btn">&times;</button>
+								</div>
 							</div>
 						</div>
-					</div>
+					    </c:when>
+	                    <c:otherwise>
+	                        <div class="anonymous-details" style="height: 240px;">
+	                            <div class="publisher-note" style="margin-left: 20px; margin-top: 20px;">
+	                                <h2><pr:snippet name="productNotAvailableHeader" group="productDetail" defaultValue="Want to buy this book?" /></h2>
+	                                <p><pr:snippet name="productNotAvailableDescription" group="productDetail" defaultValue="Unfortunately this book is not for sale at present" /></p>
+	                            </div>
+	                        </div>
+	                    </c:otherwise>
+	                </c:choose>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 				<div class="details-top"></div>
@@ -106,26 +123,22 @@
 							<dl id="layoutselection">
 								<dt><pr:snippet name="customerDetailsLayout" group="productDetailLoggedIn" defaultValue="Select document layout" /></dt>
 								<dd id="layoutset">
-									<input autocomplete="off" type="hidden" class="required" name="layout" id="layout" value="TWO_UP" />
 									<label style="display:none;'" class="error" for="layout">Please select a layout</label>
 									<c:if test="${not empty product.twoUpFilename}">
-									<div class="layout-type" id="TWO_UP">
-										<div class="ico-two-up"></div>
-										<span><c:if test="${product.twoUpPageExtent gt 0}"><em>${product.twoUpPageExtent}</em> A4 pages (two per side) </c:if> ${product.twoUpFileSize} MB</span>
+									<div class="layout-type">
+										<span><input type="radio" name="layout" id="layout_two_up" value="TWO_UP"><label for="layout_two_up">&nbsp;<c:if test="${product.twoUpPageExtent gt 0}"><em>${product.twoUpPageExtent}</em> A4 pages (two per side) </c:if> ${product.twoUpFileSize} MB</span></label>
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="TWO_UP" class="btn-preview"><pr:snippet name="twoUpDownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>
 									<c:if test="${not empty product.oneUpFilename}">
-									<div class="layout-type" id="ONE_UP">
-										<div class="ico-one-up"></div>
-										<span><c:if test="${product.oneUpPageExtent gt 0}"><em>${product.oneUpPageExtent}</em> A4 pages (one per side) </c:if> ${product.oneUpFileSize} MB</span>
+									<div class="layout-type">
+										<span><input type="radio" name="layout" id="layout_one_up" value="ONE_UP"><label for="layout_one_up">&nbsp;<c:if test="${product.oneUpPageExtent gt 0}"><em>${product.oneUpPageExtent}</em> A4 pages (one per side) </c:if> ${product.oneUpFileSize} MB</span></label>
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="ONE_UP" class="btn-preview"><pr:snippet name="oneUpDownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>
 									<c:if test="${not empty product.a5Filename}">
-									<div class="layout-type" id="A5">
-										<div class="ico-a5"></div>
-										<span><c:if test="${product.a5PageExtent gt 0}"><em>${product.a5PageExtent}</em> A5 pages (one per side) </c:if> ${product.a5FileSize} MB</span>
+									<div class="layout-type">
+										<span><input type="radio" name="layout" id="layout_a5" value="A5"><label for="layout_a5">&nbsp;<c:if test="${product.a5PageExtent gt 0}"><em>${product.a5PageExtent}</em> A5 pages (one per side) </c:if> ${product.a5FileSize} MB</label></span>
 									</div>
 									<div class="preview"><a href="${product.id}" data-layout="A5" class="btn-preview"><pr:snippet name="a5DownloadPreview" group="productDetailLoggedIn" defaultValue="Download preview" /></a></div>
 									</c:if>
@@ -135,63 +148,73 @@
 						
 						<c:choose>
 							<c:when test="${product.availableForSale eq true}">
-							
-								<c:if test="${available eq true}">
-								
-									<sec:authorize access="hasRole('ROLE_OUTLET')">
-									<div class="pricing">
-										<div class="inner">
-											<div class="sellingprice">
-											<c:choose>
-												<c:when test="${product.licenceFeeInDollars.unscaledValue() ne 0}">
-												<span><pr:snippet name="priceYouPayCredits" group="productDetailLoggedIn" defaultValue="You pay in credits for this licence:" /></span><br />
-												<em id="creditamount">${product.licenceFeeInCredits}</em>
-												</c:when>
-												<c:otherwise>
-												<em id="creditamount">Free</em>
-												</c:otherwise>
-											</c:choose>
+							    <c:choose>
+							        <c:when test="${restrictedPremium eq true}">
+							            <div class="pricing">
+                                            <div class="inner">
+                                                <div class="publisher-note" style="margin-left:20px;">
+                                                    <h2><pr:snippet name="pricePremiumnProductHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
+                                                    <p><pr:snippet name="pricePremiumnProductDescription" group="productDetailLoggedIn" defaultValue="Sorry, this is only available to Premium outlets" /></p>
+                                                </div>
+                                            </div>
+                                        </div>
+							        </c:when> 
+								    <c:when test="${available eq true}">
+										<sec:authorize access="hasRole('ROLE_OUTLET')">
+										<div class="pricing">
+											<div class="inner">
+												<div class="sellingprice">
+												<c:choose>
+													<c:when test="${product.licenceFeeInDollars.unscaledValue() ne 0}">
+													<span><pr:snippet name="priceYouPayCredits" group="productDetailLoggedIn" defaultValue="You pay in credits for this licence:" /></span><br />
+													<em id="creditamount">${product.licenceFeeInCredits}</em>
+													</c:when>
+													<c:otherwise>
+													<em id="creditamount">Free</em>
+													</c:otherwise>
+												</c:choose>
+												</div>
+												<div class="value"><pr:snippet name="priceApproximate" group="productDetailLoggedIn" defaultValue="Approx." />&nbsp;<em><pr:price amount="${product.licenceFeeInDollars}" /></em></div>
+												<div class="outletcharges">
+													<label><pr:snippet name="priceAddPrintCosts" group="productDetailLoggedIn" defaultValue="Add your printing/service charges" /> <span class="currencycode">(${company.currency.code})</span></label>
+													<span class="currencysymbol">${company.currency.symbol}</span><input maxlength="12" type="text" id="outletcharges" name="outletcharges" value="${company.averagePrintingCost}" class="bg-input-detailed-small price required" />
+												</div>
+												<div class="total">
+													<span><pr:snippet name="priceCustomerTotal" group="productDetailLoggedIn" defaultValue="Total your customer pays you:" /></span>
+													<em><span class="amount" id="sellingprice"><pr:price amount="${product.licenceFeeInDollars}" /></span></em>
+												</div>
+												<button type="submit" class="btn-large"><pr:snippet name="buttonBuyNow" group="productDetailLoggedIn" defaultValue="buy now" /></button>
+												<div class="licence-terms"><a href="${ctx}/terms/outlet" target="_blank" ><pr:snippet name="licenceTerms" group="productDetailLoggedIn" defaultValue="Read licence terms" /></a></div>
 											</div>
-											<div class="value"><pr:snippet name="priceApproximate" group="productDetailLoggedIn" defaultValue="Approx." />&nbsp;<em><pr:price amount="${product.licenceFeeInDollars}" /></em></div>
-											<div class="outletcharges">
-												<label><pr:snippet name="priceAddPrintCosts" group="productDetailLoggedIn" defaultValue="Add your printing/service charges" /> <span class="currencycode">(${company.currency.code})</span></label>
-												<span class="currencysymbol">${company.currency.symbol}</span><input maxlength="12" type="text" id="outletcharges" name="outletcharges" value="${company.averagePrintingCost}" class="bg-input-detailed-small price required" />
-											</div>
-											<div class="total">
-												<span><pr:snippet name="priceCustomerTotal" group="productDetailLoggedIn" defaultValue="Total your customer pays you:" /></span>
-												<em><span class="amount" id="sellingprice"><pr:price amount="${product.licenceFeeInDollars}" /></span></em>
-											</div>
-											<button type="submit" class="btn-large"><pr:snippet name="buttonBuyNow" group="productDetailLoggedIn" defaultValue="buy now" /></button>
-											<div class="licence-terms"><a href="${ctx}/terms/outlet" target="_blank" ><pr:snippet name="licenceTerms" group="productDetailLoggedIn" defaultValue="Read licence terms" /></a></div>
 										</div>
-									</div>
-									</sec:authorize>
+										</sec:authorize>
+										
+										<sec:authorize access="!hasRole('ROLE_OUTLET')">
+										<div class="pricing">
+											<div class="inner">
+												<div class="publisher-note" style="margin-left:20px;">
+													<h2><pr:snippet name="priceNotOutletHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
+													<p><pr:snippet name="priceNotOutletDescription" group="productDetailLoggedIn" defaultValue="You need to change your account registration to &lt;em&gt;Paperight Outlet&lt;/em&gt;." /></p>
+													<button type="submit" onclick="window.location.href = '${ctx}/account/update'; return false;"><pr:snippet name="priceNotOutletButton" group="productDetailLoggedIn" defaultValue="Edit your details" /></button>
+												</div>
+											</div>
+										</div>
+										</sec:authorize>
 									
-									<sec:authorize access="!hasRole('ROLE_OUTLET')">
-									<div class="pricing">
-										<div class="inner">
-											<div class="publisher-note" style="margin-left:20px;">
-												<h2><pr:snippet name="priceNotOutletHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
-												<p><pr:snippet name="priceNotOutletDescription" group="productDetailLoggedIn" defaultValue="You need to change your account registration to &lt;em&gt;Paperight Outlet&lt;/em&gt;." /></p>
-												<button type="submit" onclick="window.location.href = '${ctx}/account/update'; return false;"><pr:snippet name="priceNotOutletButton" group="productDetailLoggedIn" defaultValue="Edit your details" /></button>
+									</c:when>
+									<c:otherwise>
+									
+										<div class="pricing">
+											<div class="inner">
+												<div class="publisher-note" style="margin-left:20px;">
+													<h2><pr:snippet name="priceNotAvailableHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
+													<p><pr:snippet name="priceNotAvailableDescription" group="productDetailLoggedIn" defaultValue="Unfortunately this is not available in your region. &lt;a target=&quot;_blank&quot; href=&quot;http://help.paperight.com/why-is-a-document-not-available-in-my-region/&quot;&gt;Find out why and report mistakes here.&lt;/a&gt;" /></p>
+												</div>
 											</div>
 										</div>
-									</div>
-									</sec:authorize>
-								
-								</c:if>
-								<c:if test="${available ne true}">
-								
-									<div class="pricing">
-										<div class="inner">
-											<div class="publisher-note" style="margin-left:20px;">
-												<h2><pr:snippet name="priceNotAvailableHeader" group="productDetailLoggedIn" defaultValue="Want to buy this book?" /></h2>
-												<p><pr:snippet name="priceNotAvailableDescription" group="productDetailLoggedIn" defaultValue="Unfortunately this is not available in your region. &lt;a target=&quot;_blank&quot; href=&quot;http://help.paperight.com/why-is-a-document-not-available-in-my-region/&quot;&gt;Find out why and report mistakes here.&lt;/a&gt;" /></p>
-											</div>
-										</div>
-									</div>
-								
-								</c:if>
+									
+									</c:otherwise>
+								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<div class="pricing">
@@ -328,6 +351,8 @@
 	twoUpPageCount = <c:out value="${product.twoUpPageExtent}"/>;
 	a5PageCount = <c:out value="${product.a5PageExtent}"/>;
 	productId = <c:out value="${product.id}"/>;
+	var productTitle = "<c:out value="${product.title}"/>";
+	
 	var map;
 	var companiesJSON;
 	var companiesHashMap = new Object();
@@ -699,7 +724,26 @@
 		$('#printing-cost').html('&#8776; ' + company.printingCost);
 		$('#printing-cost-message').text('<pr:snippet name="estimated-cost-pre" group="product-outlets-map" escapeJavascript="true" defaultValue="Estimated cost at"/>' + ' ' + company.name);
 		$('#printing-cost-contact').text('<pr:snippet name="estimated-cost-post" group="product-outlets-map" escapeJavascript="true" defaultValue="To check, call them on"/>' + ' ' + company.phoneNumber);
+		$('#order-by-email').attr("data-email-address", company.email);
 	}
+	
+	$('#order-by-email').click(function() {
+		var emailAddress = $('#order-by-email').attr("data-email-address");
+		
+		var subject = "<pr:snippet name="subject" group="order-by-email" escapeJavascript="true" defaultValue="Request to print a Paperight book"/>";
+		var body = "<pr:snippet name="body" group="order-by-email" escapeJavascript="true" multiline="true" defaultValue="Hello. I would like to order a copy of [$productTitle$], which is on Paperight here: [$productUrl$]
+
+Please send me details of pricing and how to pay and collect.
+
+Thank you."/>";
+	    body = body.replace("[$productTitle$]", productTitle);
+	    body = body.replace("[$productUrl$]", window.location.href);
+		var mailTo = "mailto:" + emailAddress + "?Subject=" + encodeURI(subject) + "&Body=" + encodeURI(body);
+		console.log(mailTo);
+	    window.location = mailTo;
+    });
+	
+	
 		
 	function addLocationsToMap(companies) {
 		if (companies == null
