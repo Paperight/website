@@ -31,9 +31,6 @@
 				</put-list-attribute>
 			</definition>
 		</put-attribute>
-		<put-list-attribute name="scripts" inherit="true">
-			<add-attribute value="/js/view/account/details.js" type="string" />
-		</put-list-attribute>
 	</definition>
 
 	<definition name="account/update" extends="default">
