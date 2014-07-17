@@ -4,7 +4,7 @@
 
 	<groupId>com.paperight</groupId>
 	<artifactId>common</artifactId>
-	<version>1.4.3.RELEASE</version>
+	<version>1.4.4.RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>Paperight Common</name>
@@ -16,7 +16,7 @@
 		<spring.security.version>3.1.6.RELEASE</spring.security.version>
 		<org.spring-integration-version>2.1.1.RELEASE</org.spring-integration-version>
 		<junit.version>4.7</junit.version>
-		<aspectj.version>1.6.12</aspectj.version>
+		<aspectj.version>1.7.3</aspectj.version>
 		<hibernate.version>4.1.1.Final</hibernate.version>
 		<hibernate-search.version>4.1.1.Final</hibernate-search.version>
 		<pdfbox.version>1.8.2</pdfbox.version>
@@ -93,7 +93,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>11.0.2</version>
+			<version>17.0</version>
 		</dependency>
 
 		<dependency>

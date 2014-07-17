@@ -77,7 +77,7 @@ public class LicenceInvoiceService {
 	
 	private Map<String, Object> buildOutletInvoiceModel(Licence licence) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		Company fromCompany = licence.getProduct().getOwnerCompany();
+		Company fromCompany = licence.getOwnerCompany();
 		if (fromCompany == null) {
 			fromCompany = Company.find(application.getDefaultOwnerCompanyId());
 		}

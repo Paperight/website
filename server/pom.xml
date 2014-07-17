@@ -4,7 +4,7 @@
 
 	<groupId>com.paperight</groupId>
 	<artifactId>server</artifactId>
-	<version>1.4.3.RELEASE</version>
+	<version>1.4.4.RELEASE</version>
 	<packaging>war</packaging>
 
 	<name>Paperight Server</name>
@@ -24,7 +24,7 @@
 		<slf4j.version>1.6.4</slf4j.version>
 		<junit.version>4.7</junit.version>
 		<tiles.version>2.2.2</tiles.version>
-		<aspectj.version>1.6.12</aspectj.version>
+		<aspectj.version>1.7.3</aspectj.version>
 		<hibernate.version>4.1.1.Final</hibernate.version>
 		<java.version>1.7</java.version>
 	</properties>

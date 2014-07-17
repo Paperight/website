@@ -149,8 +149,8 @@ td {
 					<td><span>$licence.id</span></td>
 					<td><span>$licence.transactionDate.toString("yyyy-MM-dd")</span></td>
 					<td><span>$licence.product.title</span></td>
-					#if ($licence.product.ownerCompany)
-						<td><span>$licence.product.ownerCompany.name</span></td>
+					#if ($licence.ownerCompany)
+						<td><span>$licence.ownerCompany.name</span></td>
 					#else
 						<td><span>Paperight</span></td>
 					#end

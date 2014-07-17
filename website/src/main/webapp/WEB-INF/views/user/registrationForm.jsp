@@ -251,15 +251,26 @@
 					<form:errors path="company.currencyCode" cssClass="error" element="label" />
 				</dd>
 			</dl>
-			<dl id="averagePrintingCostContainer">
-				<dt>
-					<span><pr:snippet name="averagePrintingCost" group="registration" defaultValue="Average price per double-sided A4 sheet"/></span>
-					<br /><span class="note"><pr:snippet name="averagePrintingCostNote" group="registration" defaultValue="Lets us suggest a total price for you to charge your customers for each sale."/></span>
-				</dt>
-				<dd>
-				<form:input id="averagePrintingCost" path="company.averagePrintingCost"  cssClass="" />
-				<form:errors path="company.averagePrintingCost" cssClass="error" element="label" /></dd>
-			</dl>
+			<div id="averagePrintingCostContainer">
+				<dl>
+					<dt>
+						<span><pr:snippet name="averagePrintingCost" group="registration" defaultValue="Average price per double-sided A4 sheet"/></span>
+						<br /><span class="note"><pr:snippet name="averagePrintingCostNote" group="registration" defaultValue="Lets us suggest a total price for you to charge your customers for each sale."/></span>
+					</dt>
+					<dd>
+					<form:input id="averagePrintingCost" path="company.averagePrintingCost"  cssClass="" />
+					<form:errors path="company.averagePrintingCost" cssClass="error" element="label" /></dd>
+				</dl>
+				<dl>
+	                <dt>
+	                    <span><pr:snippet name="averageBindingCost" group="registration" defaultValue="Average price for binding and colour cover"/></span>
+	                    <br /><span class="note"><pr:snippet name="averageBindingCostNote" group="registration" defaultValue="We'll include this in your customer's suggested price."/></span>
+	                </dt>
+	                <dd>
+	                <form:input id="averageBindingCost" path="company.averageBindingCost"  cssClass="" />
+	                <form:errors path="company.averageBindingCost" cssClass="error" element="label" /></dd>
+	            </dl>
+            </div>
 			<dl>
 				<dt>
 					<span><pr:snippet name="captchaYourAnswer" group="registration" defaultValue="Please answer this question: "/>${captcha1} + ${captcha2} =</span>

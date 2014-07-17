@@ -111,7 +111,7 @@ public class LicenceStatementService {
 		
 		BigDecimal licenceFee = licence.getRandsInvoiceValue();
 		BigDecimal licenceFeeVat = BigDecimal.ZERO;
-		if (currencyService.isLiableForVat(licence.getProduct().getOwnerCompany(), licence.getTransactionDate())) {
+		if (currencyService.isLiableForVat(licence.getOwnerCompany(), licence.getTransactionDate())) {
 			licenceFeeVat = currencyService.backCalculateVat(licenceFee, vatRate.getRate0());
 		}
 		
