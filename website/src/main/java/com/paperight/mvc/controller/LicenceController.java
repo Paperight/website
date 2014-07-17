@@ -112,6 +112,7 @@ public class LicenceController {
 		licence.setUser(user);
 		licence.setCompany(company);
 		licence.setProduct(product);
+		licence.setOwnerCompany(product.getOwnerCompany());
 		licence.setCustomerName(firstName);
 		licence.setCustomerLastName(lastName);
 		licence.setCustomerPhoneNumber(phoneNumber);
