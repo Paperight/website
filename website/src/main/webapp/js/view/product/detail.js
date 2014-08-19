@@ -74,11 +74,15 @@ $(document).ready(function(){
 		} else if (selectedLayout === 'A5') {
 			pageCount = Math.ceil(a5PageCount / 4);
 		}
-		var eQuantity = $("#purchase-licence-form #quantity"), quantity = parseInt(eQuantity.val());
-		var printCosts = ((paperight.averagePrintingCost * pageCount) + paperight.averageBindingCost) * quantity;
-		printCosts = printCosts.toFixed(2);
 		var eOutletCharges = $("#purchase-licence-form #outletcharges");
-		eOutletCharges.val(printCosts);
+		if (selectedLayout === 'PHOTOCOPY') {
+		    eOutletCharges.val("");
+		} else {
+		    var eQuantity = $("#purchase-licence-form #quantity"), quantity = parseInt(eQuantity.val());
+		    var printCosts = ((paperight.averagePrintingCost * pageCount) + paperight.averageBindingCost) * quantity;
+		    printCosts = printCosts.toFixed(2);
+		    eOutletCharges.val(printCosts);
+		}
 		updateLicenceTotals(eOutletCharges.closest("form"));
 	};
 	
