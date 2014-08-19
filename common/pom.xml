@@ -4,7 +4,7 @@
 
 	<groupId>com.paperight</groupId>
 	<artifactId>common</artifactId>
-	<version>1.4.4.RELEASE</version>
+	<version>1.4.5.RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>Paperight Common</name>
