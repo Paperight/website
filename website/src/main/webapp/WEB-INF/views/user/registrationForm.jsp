@@ -258,7 +258,7 @@
 						<br /><span class="note"><pr:snippet name="averagePrintingCostNote" group="registration" defaultValue="Lets us suggest a total price for you to charge your customers for each sale."/></span>
 					</dt>
 					<dd>
-					<form:input id="averagePrintingCost" path="company.averagePrintingCost"  cssClass="" />
+					<form:input id="averagePrintingCost" path="company.averagePrintingCost"  cssClass="price" />
 					<form:errors path="company.averagePrintingCost" cssClass="error" element="label" /></dd>
 				</dl>
 				<dl>
@@ -267,7 +267,7 @@
 	                    <br /><span class="note"><pr:snippet name="averageBindingCostNote" group="registration" defaultValue="We'll include this in your customer's suggested price."/></span>
 	                </dt>
 	                <dd>
-	                <form:input id="averageBindingCost" path="company.averageBindingCost"  cssClass="" />
+	                <form:input id="averageBindingCost" path="company.averageBindingCost"  cssClass="price" />
 	                <form:errors path="company.averageBindingCost" cssClass="error" element="label" /></dd>
 	            </dl>
             </div>
