@@ -246,7 +246,7 @@ function focusLocation(companyId) {
 		}
 		
 		infoWindow.setContent(hashMap[companyId]);
-        infoWindow.open(map, marker); 
+        infoWindow.open(map.map, marker); 
 	}
 }	
 	
@@ -337,7 +337,7 @@ function addMarkerListener(marker) {
 			infoWindow.close();
 		}
 		infoWindow.setContent(hashMap[marker.hotspotid]);
-        infoWindow.open(map, marker); 
+        infoWindow.open(map.map, marker); 
 	}); 
 }
 </script>
