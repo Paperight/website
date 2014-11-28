@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="common-web-elements:war exploded">
+    <output-path>$PROJECT_DIR$/common-web-elements/target/common-web-elements-1.4.5.RELEASE</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="common-web-elements" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="D:\projects\paperight\source\common-web-elements\target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="common-web-elements/web/Web" />
+    </root>
+  </artifact>
+</component>

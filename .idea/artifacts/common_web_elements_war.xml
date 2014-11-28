@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="common-web-elements:war">
+    <output-path>$PROJECT_DIR$/common-web-elements/target</output-path>
+    <root id="archive" name="common-web-elements-1.4.5.RELEASE.war">
+      <element id="artifact" artifact-name="common-web-elements:war exploded" />
+    </root>
+  </artifact>
+</component>

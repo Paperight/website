@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.batch:spring-batch-integration:1.2.2.BUILD-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/batch/spring-batch-integration/1.2.2.BUILD-SNAPSHOT/spring-batch-integration-1.2.2.BUILD-20130419.100603-555.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/batch/spring-batch-integration/1.2.2.BUILD-SNAPSHOT/spring-batch-integration-1.2.2.BUILD-20130419.100603-555-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/batch/spring-batch-integration/1.2.2.BUILD-SNAPSHOT/spring-batch-integration-1.2.2.BUILD-20130419.100603-555-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
