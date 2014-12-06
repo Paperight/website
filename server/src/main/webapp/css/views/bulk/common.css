@@ -1,0 +1,19 @@
+.label {
+    cursor: default;
+}
+
+span.health-error {
+    cursor: help;
+}
+
+dl.product-detail dd button {
+    margin-left: 10px;
+}
+
+.dl-horizontal dt {
+    width: auto;
+}
+
+.dl-horizontal dd {
+    margin-left: 160px;
+}

@@ -10,9 +10,9 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -83,24 +83,20 @@ public class AmazonProductService {
 	        params.put("ItemPage", "" + pageNumber);
 	        
 	        String requestUrl = helper.sign(params);
-	    	
-	        HttpClient httpclient = new DefaultHttpClient();
-			HttpGet httpget = new HttpGet(requestUrl);
-			HttpResponse response = httpclient.execute(httpget);
-			HttpEntity entity = response.getEntity();
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				try {
-					products = buildProducts(instream);
-				} catch (RuntimeException ex) {
-					//httpget.abort();
-					throw ex;
-				} finally {
-					instream.close();
-					httpclient.getConnectionManager().shutdown();
-				}
-			}
 	        
+	        try (CloseableHttpClient httpclient = HttpClientBuilder.create().build()) {
+    			HttpGet httpget = new HttpGet(requestUrl);
+    			HttpResponse response = httpclient.execute(httpget);
+    			HttpEntity entity = response.getEntity();
+    			if (entity != null) {
+    				try (InputStream instream = entity.getContent()){
+    					products = buildProducts(instream);
+    				} catch (RuntimeException ex) {
+    					//httpget.abort();
+    					throw ex;
+    				}
+    			}
+	        }
 	    	return products;
 		} catch (Exception exception) {
 			logger.error("Error executing Amazon search", exception);

@@ -69,6 +69,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file url="file://$PROJECT_DIR$/server/overlays" />
     <file type="web" url="file://$PROJECT_DIR$/common-web-elements" />
     <file type="web" url="file://$PROJECT_DIR$/server" />
     <file type="web" url="file://$PROJECT_DIR$/website" />

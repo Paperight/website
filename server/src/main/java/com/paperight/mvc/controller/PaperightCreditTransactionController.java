@@ -3,9 +3,9 @@ package com.paperight.mvc.controller;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,8 +69,7 @@ public class PaperightCreditTransactionController {
 	
 	private void sendReloadUser(PaperightCreditTransaction transaction) {
 		Long userId = transaction.getUser().getId();
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
+		try (CloseableHttpClient httpclient = HttpClientBuilder.create().build()) {
 			HttpGet httpget = new HttpGet(reloadUserUrl + userId);
 			httpclient.execute(httpget);
 		} catch (Exception e) {

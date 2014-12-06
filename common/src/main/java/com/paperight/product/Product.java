@@ -586,7 +586,7 @@ public class Product implements Serializable {
     public void setPremium(boolean premium) {
         this.premium = premium;
     }
-
+    
     public boolean isCanPhotocopy() {
         return canPhotocopy;
     }

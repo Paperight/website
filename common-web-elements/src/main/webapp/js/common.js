@@ -149,9 +149,6 @@ $(document).bind('loadui', function(e, element){
 	});
 	$('.buttonset', this).buttonset();
 	
-	// Date
-	$('input.date', this).datepicker({ changeMonth: true, changeYear: true, dateFormat: 'yy-mm-dd' });
-	
 
 	// Make sure all content editors are synced with their elements before running validation
 	$('form', this).bind('submit', function(){

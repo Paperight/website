@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="common-web-elements:war exploded">
-    <output-path>$PROJECT_DIR$/common-web-elements/target/common-web-elements-1.4.5.RELEASE</output-path>
+    <output-path>$PROJECT_DIR$/common-web-elements/target/common-web-elements-1.5.0.RC1</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">

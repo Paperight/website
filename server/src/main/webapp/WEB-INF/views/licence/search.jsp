@@ -2,29 +2,29 @@
 <h1>Licences</h1>
 <div class="form">
 <form:form method="GET" modelAttribute="licenceSearch" >
-	<div style="width:40%; float:left; margin-right:30px;">
+	<div style="width:310px; float:left; margin-right:30px; margin-bottom:30px;">
 		<dl>
 			<dt>From Date</dt>
 			<dd>
-				<form:input path="fromDate" cssClass="date required" />
+				<form:input path="fromDate" cssClass="date required" data-date-format="YYYY-MM-DD" />
 				<form:errors path="fromDate" cssClass="error" element="label" />
 			</dd>
 		</dl>
 		<dl>
 			<dt>To Date</dt>
 			<dd>
-				<form:input path="toDate" cssClass="date required" />
+				<form:input path="toDate" cssClass="date required" data-date-format="YYYY-MM-DD" />
 				<form:errors path="toDate" cssClass="error" element="label" />
 			</dd>
 		</dl>
+		<div style="clear:both; width:100%;">
+	        <input type="submit" class="btn btn-paperight" value="Search" />
+	        <button value="${ctx}/licence/export" class="btn btn-paperight btn-export" style="float:right; margin-right:10px;">
+	            <span>Export</span>
+	        </button>
+	    </div>
 	</div>
-	<div style="clear:both; width:100%;">
-		<input type="submit" value="Search" />
-		<button value="${ctx}/licence/export" class="btn-export" style="float:right; margin-right:10px;">
-			<span class="ui-icon ui-icon-circle-arrow-s"></span>
-			<span>Export</span>
-		</button>
-	</div>
+	
 </form:form>
 </div>
 <c:if test="${not empty licences}">

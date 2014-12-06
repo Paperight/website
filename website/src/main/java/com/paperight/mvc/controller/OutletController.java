@@ -5,7 +5,9 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -43,7 +45,7 @@ public class OutletController {
 	}
 
 	@RequestMapping(value = "/companies", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Object companies(Model model, @RequestParam double latitude, @RequestParam double longitude, @RequestParam Long productId) {
+	public @ResponseBody Object companies(@RequestParam double latitude, @RequestParam double longitude, @RequestParam Long productId) {
 	    List<Company> allCompanies = Company.findAllActiveByRole(Role.ROLE_OUTLET);
 		List<CompanyDto> companies = new ArrayList<CompanyDto>();
 		for (Company company : allCompanies) {
@@ -79,8 +81,9 @@ public class OutletController {
 			}
 		}	
 		Collections.sort(companies, new DistanceCompare());
-		model.addAttribute("companies", companies);
-		return model;
+		Map<String, Object> response = new HashMap<>();
+		response.put("companies", companies);
+		return response;
 	}
 	
 	private List<CompanyDto> filterPremiumCompanies(List<CompanyDto> companies) {

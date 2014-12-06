@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/integration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:int-file="http://www.springframework.org/schema/integration/file"
+    xsi:schemaLocation="http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 
+        1. Looks for csv files in ${product.file.upload.folder} and it's subdirectories 
+        2. Extracts Supplier, and creates NEW AssetDataJob, and moves file to ${asset.data.staging.folder} 
+    -->
+
+    <channel id="newImportFileChannel" />
+
+    <beans:bean id="delayedFileListFilter" class="com.paperight.integration.DelayedFileListFilter">
+        <beans:property name="filenameRegex" value=".*(?i)\.(csv)$" />
+    </beans:bean>
+
+    <int-file:inbound-channel-adapter id="newImportFileChannelAdapter" directory="${product.file.upload.folder}" 
+            channel="newImportFileChannel"  
+            filter="delayedFileListFilter">
+        <poller fixed-rate="10000" max-messages-per-poll="-1" />
+    </int-file:inbound-channel-adapter>
+
+    <service-activator id="newImportFileChannelServiceActivator" 
+            input-channel="newImportFileChannel" 
+            output-channel="nullChannel" 
+            ref="importJobServiceActivator" method="stageFile" />
+
+</beans:beans>

@@ -1,0 +1,2349 @@
+{
+    "list": {
+        "meta": {
+            "type": "resource-list",
+            "start": 0,
+            "count": 167
+        },
+        "resources": [
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KRW",
+                        "price": "1033.390015",
+                        "symbol": "KRW=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "SILVER 1 OZ 999 NY",
+                        "price": "0.050123",
+                        "symbol": "XAG=X",
+                        "ts": "1407447704",
+                        "type": "currency",
+                        "utctime": "2014-08-07T21:41:44+0000",
+                        "volume": "6"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/VND",
+                        "price": "21185.000000",
+                        "symbol": "VND=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BOB",
+                        "price": "6.910000",
+                        "symbol": "BOB=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MOP",
+                        "price": "7.983850",
+                        "symbol": "MOP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BDT",
+                        "price": "77.480003",
+                        "symbol": "BDT=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MDL",
+                        "price": "13.765000",
+                        "symbol": "MDL=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/VEF",
+                        "price": "6.292500",
+                        "symbol": "VEF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/GEL",
+                        "price": "1.723950",
+                        "symbol": "GEL=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ISK",
+                        "price": "115.400002",
+                        "symbol": "ISK=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BYR",
+                        "price": "10340.000000",
+                        "symbol": "BYR=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/THB",
+                        "price": "32.150002",
+                        "symbol": "THB=X",
+                        "ts": "1407497414",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:14+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MXV ",
+                        "price": "2.587604",
+                        "symbol": "MXV=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/TND",
+                        "price": "1.711150",
+                        "symbol": "TND=X",
+                        "ts": "1407497404",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:04+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/JMD",
+                        "price": "112.449997",
+                        "symbol": "JMD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/DKK",
+                        "price": "5.569000",
+                        "symbol": "DKK=X",
+                        "ts": "1407497421",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:21+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SRD",
+                        "price": "3.275000",
+                        "symbol": "SRD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BWP",
+                        "price": "8.920600",
+                        "symbol": "BWP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/NOK",
+                        "price": "6.242500",
+                        "symbol": "NOK=X",
+                        "ts": "1407497426",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:26+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MUR",
+                        "price": "30.660000",
+                        "symbol": "MUR=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/AZN",
+                        "price": "0.784300",
+                        "symbol": "AZN=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/INR",
+                        "price": "61.150002",
+                        "symbol": "INR=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MGA",
+                        "price": "2525.000000",
+                        "symbol": "MGA=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CAD",
+                        "price": "1.092650",
+                        "symbol": "CAD=X",
+                        "ts": "1407497425",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:25+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/XAF",
+                        "price": "489.739441",
+                        "symbol": "XAF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/LBP",
+                        "price": "1512.500000",
+                        "symbol": "LBP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/XDR",
+                        "price": "0.652750",
+                        "symbol": "XDR=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/IDR",
+                        "price": "11779.000000",
+                        "symbol": "IDR=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/IEP",
+                        "price": "0.587993",
+                        "symbol": "IEP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/AUD",
+                        "price": "1.078080",
+                        "symbol": "AUD=X",
+                        "ts": "1407497390",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:29:50+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MMK",
+                        "price": "973.000000",
+                        "symbol": "MMK=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/LYD",
+                        "price": "1.233500",
+                        "symbol": "LYD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ZAR",
+                        "price": "10.709500",
+                        "symbol": "ZAR=X",
+                        "ts": "1407497428",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:28+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/IQD",
+                        "price": "1164.500000",
+                        "symbol": "IQD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/XPF",
+                        "price": "89.099998",
+                        "symbol": "XPF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/TJS",
+                        "price": "4.977400",
+                        "symbol": "TJS=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CUP",
+                        "price": "1.000000",
+                        "symbol": "CUP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/UGX",
+                        "price": "2625.000000",
+                        "symbol": "UGX=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/NGN",
+                        "price": "162.899994",
+                        "symbol": "NGN=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/PGK",
+                        "price": "2.448800",
+                        "symbol": "PGK=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/TOP",
+                        "price": "1.873525",
+                        "symbol": "TOP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KES",
+                        "price": "87.952003",
+                        "symbol": "KES=X",
+                        "ts": "1407497306",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:28:26+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/TMT",
+                        "price": "2.850300",
+                        "symbol": "TMT=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CRC",
+                        "price": "540.859985",
+                        "symbol": "CRC=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MZN",
+                        "price": "30.250000",
+                        "symbol": "MZN=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SYP",
+                        "price": "149.100006",
+                        "symbol": "SYP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ANG",
+                        "price": "1.790000",
+                        "symbol": "ANG=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ZMW",
+                        "price": "6.160000",
+                        "symbol": "ZMW=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BRL",
+                        "price": "2.298900",
+                        "symbol": "BRL=X",
+                        "ts": "1407497230",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:27:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BSD",
+                        "price": "1.000000",
+                        "symbol": "BSD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/NIO",
+                        "price": "26.084999",
+                        "symbol": "NIO=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/GNF",
+                        "price": "6915.000000",
+                        "symbol": "GNF=X",
+                        "ts": "1407497400",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:00+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BMD",
+                        "price": "1.000000",
+                        "symbol": "BMD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SLL",
+                        "price": "4370.000000",
+                        "symbol": "SLL=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MKD",
+                        "price": "45.975498",
+                        "symbol": "MKD=X",
+                        "ts": "1407497306",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:28:26+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BIF",
+                        "price": "1549.000000",
+                        "symbol": "BIF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/LAK",
+                        "price": "8040.500000",
+                        "symbol": "LAK=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BHD",
+                        "price": "0.377050",
+                        "symbol": "BHD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SHP",
+                        "price": "0.594900",
+                        "symbol": "SHP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BGN",
+                        "price": "1.460900",
+                        "symbol": "BGN=X",
+                        "ts": "1407497305",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:28:25+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SGD",
+                        "price": "1.251580",
+                        "symbol": "SGD=X",
+                        "ts": "1407497427",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:27+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CNY",
+                        "price": "6.156900",
+                        "symbol": "CNY=X",
+                        "ts": "1407497190",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:26:30+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/EUR",
+                        "price": "0.747007",
+                        "symbol": "EUR=X",
+                        "ts": "1407497400",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:00+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/TTD",
+                        "price": "6.337100",
+                        "symbol": "TTD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SCR",
+                        "price": "12.327350",
+                        "symbol": "SCR=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BBD",
+                        "price": "2.000000",
+                        "symbol": "BBD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SBD",
+                        "price": "7.218167",
+                        "symbol": "SBD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MAD",
+                        "price": "8.353150",
+                        "symbol": "MAD=X",
+                        "ts": "1407497428",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:28+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/GTQ",
+                        "price": "7.813500",
+                        "symbol": "GTQ=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MWK",
+                        "price": "396.739990",
+                        "symbol": "MWK=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/PKR",
+                        "price": "98.900002",
+                        "symbol": "PKR=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/PEN",
+                        "price": "2.810000",
+                        "symbol": "PEN=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/AED",
+                        "price": "3.673100",
+                        "symbol": "AED=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/LVL",
+                        "price": "0.524750",
+                        "symbol": "LVL=X",
+                        "ts": "1407497260",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:27:40+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "PALLADIUM 1 UZ",
+                        "price": "0.001167",
+                        "symbol": "XPD=X",
+                        "ts": "1407447664",
+                        "type": "currency",
+                        "utctime": "2014-08-07T21:41:04+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/UAH",
+                        "price": "12.463500",
+                        "symbol": "UAH=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/LRD",
+                        "price": "82.500000",
+                        "symbol": "LRD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/LSL",
+                        "price": "10.770000",
+                        "symbol": "LSL=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SEK",
+                        "price": "6.909000",
+                        "symbol": "SEK=X",
+                        "ts": "1407497426",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:26+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/RON",
+                        "price": "3.323900",
+                        "symbol": "RON=X",
+                        "ts": "1407497423",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:23+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/XOF",
+                        "price": "490.750000",
+                        "symbol": "XOF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/COP",
+                        "price": "1891.500000",
+                        "symbol": "COP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CDF",
+                        "price": "922.799988",
+                        "symbol": "CDF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/USD",
+                        "price": "1.000000",
+                        "symbol": "USD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/TZS",
+                        "price": "1658.500000",
+                        "symbol": "TZS=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/NPR",
+                        "price": "98.489998",
+                        "symbol": "NPR=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/GHS",
+                        "price": "3.542500",
+                        "symbol": "GHS=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ZWL",
+                        "price": "322.355011",
+                        "symbol": "ZWL=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SOS",
+                        "price": "850.500000",
+                        "symbol": "SOS=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/DZD",
+                        "price": "79.790001",
+                        "symbol": "DZD=X",
+                        "ts": "1407497390",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:29:50+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/LKR",
+                        "price": "130.199997",
+                        "symbol": "LKR=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/FKP",
+                        "price": "0.594900",
+                        "symbol": "FKP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/JPY",
+                        "price": "101.969002",
+                        "symbol": "JPY=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CHF",
+                        "price": "0.906650",
+                        "symbol": "CHF=X",
+                        "ts": "1407497424",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:24+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KYD",
+                        "price": "0.820000",
+                        "symbol": "KYD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CLP",
+                        "price": "577.000000",
+                        "symbol": "CLP=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/IRR",
+                        "price": "26438.000000",
+                        "symbol": "IRR=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/AFN",
+                        "price": "56.599998",
+                        "symbol": "AFN=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/DJF",
+                        "price": "181.199997",
+                        "symbol": "DJF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SVC",
+                        "price": "8.747000",
+                        "symbol": "SVC=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/PLN",
+                        "price": "3.138500",
+                        "symbol": "PLN=X",
+                        "ts": "1407497424",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:24+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/PYG",
+                        "price": "4281.049805",
+                        "symbol": "PYG=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ERN",
+                        "price": "15.100000",
+                        "symbol": "ERN=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ETB",
+                        "price": "19.804501",
+                        "symbol": "ETB=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ILS",
+                        "price": "3.471050",
+                        "symbol": "ILS=X",
+                        "ts": "1407497390",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:29:50+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/TWD",
+                        "price": "30.017000",
+                        "symbol": "TWD=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KPW",
+                        "price": "900.000000",
+                        "symbol": "KPW=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/GIP",
+                        "price": "0.594900",
+                        "symbol": "GIP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BND",
+                        "price": "1.251800",
+                        "symbol": "BND=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/HNL",
+                        "price": "21.015699",
+                        "symbol": "HNL=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CZK",
+                        "price": "20.783001",
+                        "symbol": "CZK=X",
+                        "ts": "1407497426",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:26+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/HUF",
+                        "price": "234.369995",
+                        "symbol": "HUF=X",
+                        "ts": "1407497426",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:26+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BZD",
+                        "price": "1.995000",
+                        "symbol": "BZD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/JOD",
+                        "price": "0.708200",
+                        "symbol": "JOD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/RWF",
+                        "price": "690.000000",
+                        "symbol": "RWF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/LTL",
+                        "price": "2.579250",
+                        "symbol": "LTL=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/RUB",
+                        "price": "36.385201",
+                        "symbol": "RUB=X",
+                        "ts": "1407497428",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:28+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/RSD",
+                        "price": "87.450500",
+                        "symbol": "RSD=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/WST",
+                        "price": "2.322115",
+                        "symbol": "WST=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "PLATIN 1 UZ 999",
+                        "price": "0.000674",
+                        "symbol": "XPT=X",
+                        "ts": "1407447671",
+                        "type": "currency",
+                        "utctime": "2014-08-07T21:41:11+0000",
+                        "volume": "63"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/NAD",
+                        "price": "10.717000",
+                        "symbol": "NAD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/PAB",
+                        "price": "1.000000",
+                        "symbol": "PAB=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/DOP",
+                        "price": "43.424999",
+                        "symbol": "DOP=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ALL",
+                        "price": "104.209999",
+                        "symbol": "ALL=X",
+                        "ts": "1407497305",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:28:25+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/HTG",
+                        "price": "45.354900",
+                        "symbol": "HTG=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KMF",
+                        "price": "367.304596",
+                        "symbol": "KMF=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/AMD",
+                        "price": "410.260010",
+                        "symbol": "AMD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MRO",
+                        "price": "290.500000",
+                        "symbol": "MRO=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/HRK",
+                        "price": "5.712550",
+                        "symbol": "HRK=X",
+                        "ts": "1407497418",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:18+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KHR",
+                        "price": "4060.000000",
+                        "symbol": "KHR=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/PHP",
+                        "price": "44.145000",
+                        "symbol": "PHP=X",
+                        "ts": "1407497400",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:00+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KWD",
+                        "price": "0.283230",
+                        "symbol": "KWD=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/XCD",
+                        "price": "2.700000",
+                        "symbol": "XCD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "COPPER HIGHGRADE",
+                        "price": "0.315457",
+                        "symbol": "XCP=X",
+                        "ts": "1407469408",
+                        "type": "currency",
+                        "utctime": "2014-08-08T03:43:28+0000",
+                        "volume": "16"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CNH",
+                        "price": "6.157500",
+                        "symbol": "CNH=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SDG",
+                        "price": "5.692500",
+                        "symbol": "SDG=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CLF",
+                        "price": "0.023960",
+                        "symbol": "CLF=X",
+                        "ts": "1407497420",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:20+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KZT",
+                        "price": "182.059998",
+                        "symbol": "KZT=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/TRY",
+                        "price": "2.162000",
+                        "symbol": "TRY=X",
+                        "ts": "1407497427",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:27+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/NZD",
+                        "price": "1.179941",
+                        "symbol": "NZD=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/FJD",
+                        "price": "1.832500",
+                        "symbol": "FJD=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BAM",
+                        "price": "1.464150",
+                        "symbol": "BAM=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/BTN",
+                        "price": "61.275002",
+                        "symbol": "BTN=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/STD",
+                        "price": "18330.000000",
+                        "symbol": "STD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/VUV",
+                        "price": "94.180000",
+                        "symbol": "VUV=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MVR",
+                        "price": "15.370000",
+                        "symbol": "MVR=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/AOA",
+                        "price": "97.900002",
+                        "symbol": "AOA=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/EGP",
+                        "price": "7.149850",
+                        "symbol": "EGP=X",
+                        "ts": "1407497369",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:29:29+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/QAR",
+                        "price": "3.641150",
+                        "symbol": "QAR=X",
+                        "ts": "1407497306",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:28:26+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/OMR",
+                        "price": "0.385050",
+                        "symbol": "OMR=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/CVE",
+                        "price": "81.500000",
+                        "symbol": "CVE=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/KGS",
+                        "price": "51.710899",
+                        "symbol": "KGS=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MXN",
+                        "price": "13.247950",
+                        "symbol": "MXN=X",
+                        "ts": "1407497426",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:26+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MYR",
+                        "price": "3.202350",
+                        "symbol": "MYR=X",
+                        "ts": "1407497216",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:26:56+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/GYD",
+                        "price": "205.699997",
+                        "symbol": "GYD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SZL",
+                        "price": "10.712400",
+                        "symbol": "SZL=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/YER",
+                        "price": "214.904999",
+                        "symbol": "YER=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/SAR",
+                        "price": "3.750800",
+                        "symbol": "SAR=X",
+                        "ts": "1407497317",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:28:37+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/UYU",
+                        "price": "23.450001",
+                        "symbol": "UYU=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/GBP",
+                        "price": "0.594905",
+                        "symbol": "GBP=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/UZS",
+                        "price": "2328.159912",
+                        "symbol": "UZS=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/GMD",
+                        "price": "39.599998",
+                        "symbol": "GMD=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/AWG",
+                        "price": "1.790000",
+                        "symbol": "AWG=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/MNT",
+                        "price": "1862.500000",
+                        "symbol": "MNT=X",
+                        "ts": "1407496990",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:23:10+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "GOLD 1 UZ",
+                        "price": "0.000760",
+                        "symbol": "XAU=X",
+                        "ts": "1407497419",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:19+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/HKD",
+                        "price": "7.751250",
+                        "symbol": "HKD=X",
+                        "ts": "1407497380",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:29:40+0000",
+                        "volume": "0"
+                    }
+                }
+            },
+            {
+                "resource": {
+                    "classname": "Quote",
+                    "fields": {
+                        "name": "USD/ARS",
+                        "price": "8.262800",
+                        "symbol": "ARS=X",
+                        "ts": "1407497415",
+                        "type": "currency",
+                        "utctime": "2014-08-08T11:30:15+0000",
+                        "volume": "0"
+                    }
+                }
+            }
+        ]
+    }
+}

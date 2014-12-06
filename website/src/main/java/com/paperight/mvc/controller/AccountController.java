@@ -356,17 +356,18 @@ public class AccountController {
 
 	@PreAuthorize("hasRole('ROLE_COMPANY_ADMIN')")
 	@RequestMapping(value = "/account/companies.json", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Object companies(Model model) {
+	public @ResponseBody Object companies() {
+        Map<String, Object> response = new HashMap<>();
 		User user = AuthenticationService.currentActingUser();
 		if (!isUserAuthorized(user.getCompany())) {
-			model.addAttribute("success", false);
-			model.addAttribute("message", "Permission denied");
-			return model;
+		    response.put("success", false);
+		    response.put("message", "Permission denied");
+			return response;
 		}
 		Company company = Company.find(user.getCompany().getId());
-		model.addAttribute("data", buildCompanyMap(company));
-		model.addAttribute("success", true);
-		return model;
+		response.put("data", buildCompanyMap(company));
+		response.put("success", true);
+		return response;
 	}
 	
 	private Map<String, Object> buildCompanyMap(Company company){
@@ -387,67 +388,69 @@ public class AccountController {
 
 	@PreAuthorize("hasRole('ROLE_COMPANY_ADMIN')")
 	@RequestMapping(value = "/account/company/{companyId}/users.json", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Object companyUsers(Model model, @PathVariable Long companyId) {
-		User user = AuthenticationService.currentActingUser();
+	public @ResponseBody Object companyUsers(@PathVariable Long companyId) {
+        Map<String, Object> response = new HashMap<>();
 		Company company = Company.find(companyId);
 		if (company != null) {
 			if (!isUserAuthorized(company)) {
-				model.addAttribute("success", false);
-				model.addAttribute("message", "Permission denied");
-				return model;
+			    response.put("success", false);
+			    response.put("message", "Permission denied");
+				return response;
 			}
 			List<User> users = User.findByCompany(company.getId());
 			List<CompanyUser> companyUsers = new ArrayList<CompanyUser>();
 			for (User companyUser : users) {
 				companyUsers.add(new CompanyUser(companyUser));
 			}
-			model.addAttribute("data", companyUsers);
-			model.addAttribute("success", true);
+			response.put("data", companyUsers);
+			response.put("success", true);
 		} else {
-			model.addAttribute("data", null);
-			model.addAttribute("success", false);
+		    response.put("data", null);
+		    response.put("success", false);
 		}
-		return model;
+		return response;
 	}
 
 	@PreAuthorize("hasRole('ROLE_COMPANY_ADMIN')")
 	@RequestMapping(value = "/account/company/{companyId}/{userId}.json", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Object companyUser(Model model, @PathVariable Long companyId, @PathVariable Long userId) {
+	public @ResponseBody Object companyUser(@PathVariable Long companyId, @PathVariable Long userId) {
+	    Map<String, Object> response = new HashMap<>();
 		User user = User.find(userId);
 		if (user != null) {
 			if (!isUserAuthorized(user.getCompany())) {
-				model.addAttribute("success", false);
-				model.addAttribute("message", "Permission denied");
-				return model;
+			    response.put("success", false);
+			    response.put("message", "Permission denied");
+				return response;
 			}
 			CompanyUser companyUser = new CompanyUser(user);
-			model.addAttribute("data", companyUser);
-			model.addAttribute("success", true);
+			response.put("data", companyUser);
+			response.put("success", true);
 		} else {
-			model.addAttribute("data", null);
-			model.addAttribute("success", false);
+		    response.put("data", null);
+		    response.put("success", false);
 		}
-		return model;
+		return response;
 	}
 
 	@PreAuthorize("hasRole('ROLE_COMPANY_ADMIN')")
 	@RequestMapping(value = "/account/company/{companyId}.json", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Object company(Model model, @PathVariable Long companyId) {
+	public @ResponseBody Object company(@PathVariable Long companyId) {
+	    Map<String, Object> response = new HashMap<>();
 		Company company = Company.find(companyId);
 		if (!isUserAuthorized(company)) {
-			model.addAttribute("success", false);
-			model.addAttribute("message", "Permission denied");
-			return model;
+		    response.put("success", false);
+		    response.put("message", "Permission denied");
+			return response;
 		}
 		if (company != null) {
 			CompanyHashMap companyMap = new CompanyHashMap(company);
-			model.addAttribute("data", companyMap);
-			model.addAttribute("success", true);
+			response.put("data", companyMap);
+			response.put("success", true);
 		} else {
-			model.addAttribute("data", null);
-			model.addAttribute("success", false);
+		    response.put("data", null);
+		    response.put("success", false);
 		}
-		return model;
+		return response;
 	}
 
 	@PreAuthorize("hasRole('ROLE_COMPANY_ADMIN')")
@@ -621,54 +624,56 @@ public class AccountController {
 
 	@PreAuthorize("hasRole('ROLE_COMPANY_ADMIN')")
 	@RequestMapping(value = "/account/company/users/remove", produces = "application/json")
-	public @ResponseBody Object companyUserRemove(Model model, @RequestParam Long companyid, @RequestParam Long userid) {
-		model.addAttribute("success", false);
+	public @ResponseBody Object companyUserRemove(@RequestParam Long companyid, @RequestParam Long userid) {
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("success", false);
 		User user = User.find(userid);
 		Company company = Company.find(companyid);
 		if(!isUserAuthorized(company)){
-			model.addAttribute("message", "Permission denied");
-			return model;
+		    response.put("message", "Permission denied");
+			return response;
 		}
 		if (user == null){
-			model.addAttribute("message", "User could not be removed");
-			return model;
+		    response.put("message", "User could not be removed");
+			return response;
 		}
 		if (AuthenticationService.currentActingUser().getId().equals(user.getId())) {
-			model.addAttribute("message", "Cannot delete own user");
-			return model;
+		    response.put("message", "Cannot delete own user");
+			return response;
 		}
 		if (company == null) {
-			model.addAttribute("message", "Company not found");
-			return model;
+		    response.put("message", "Company not found");
+			return response;
 		}
 		user.delete();
-		model.addAttribute("success", true);
-		model.addAttribute("message", "User removed");
-		return model;
+		response.put("success", true);
+		response.put("message", "User removed");
+		return response;
 	}
 
 	@PreAuthorize("hasRole('ROLE_COMPANY_ADMIN')")
 	@RequestMapping(value = "/account/company/remove", produces = "application/json")
-	public @ResponseBody Object companyRemove(Model model, @RequestParam Long companyid) {
-		model.addAttribute("success", false);
+	public @ResponseBody Object companyRemove(@RequestParam Long companyid) {
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("success", false);
 		User user = AuthenticationService.currentActingUser();
 		Company company = Company.find(companyid);
 		if(!isUserAuthorized(company)){
-			model.addAttribute("message", "Permission denied");
-			return model;
+		    response.put("message", "Permission denied");
+			return response;
 		}
 		if (company == null) {
-			model.addAttribute("message", "Company not found");
-			return model;
+		    response.put("message", "Company not found");
+			return response;
 		}
 		if (user.getCompany().getId().equals(company.getId())) {
-			model.addAttribute("message", "Cannot remove own company");
-			return model;
+		    response.put("message", "Cannot remove own company");
+			return response;
 		}
 		company.delete();
-		model.addAttribute("success", true);
-		model.addAttribute("message", "Company removed");
-		return model;
+		response.put("success", true);
+		response.put("message", "Company removed");
+		return response;
 	}
 	
 	private boolean isUserAuthorized(Company company) {

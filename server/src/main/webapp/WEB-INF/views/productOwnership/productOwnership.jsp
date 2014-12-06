@@ -7,7 +7,7 @@
 			<div class="selectfilters">
 				<form>
 					<input type="text" placeholder="Search companies..." />
-					<button id="company-search" type="submit">&raquo;</button>
+					<button class="btn btn-paperight" id="company-search" type="submit">&raquo;</button>
 					<img id="company-search-loader" style="display:none" src="${ctx}/img/ajax-loader.gif" width="32" height="32" />
 				</form>
 			</div>
@@ -29,7 +29,7 @@
 				<form>
 					<div>
 					<input type="text" placeholder="Search products..." />
-					<button type="submit">&raquo;</button>
+					<button class="btn btn-paperight" type="submit">&raquo;</button>
 					<img id="company-product-search-loader" style="display:none" src="${ctx}/img/ajax-loader.gif" width="32" height="32" />
 					</div>
 				</form>
@@ -46,7 +46,7 @@
 					</c:forEach>
 				</select>
 			</div>
-			<button class="move-out" style="width: 100%;">Unassign &raquo;</button>
+			<button class="btn btn-paperight move-out" style="width: 100%;">Unassign &raquo;</button>
 			<div class="ui-helper-clearfix">
 				<small>*Note: products and orphaned products support multiple select.</small>
 			</div>
@@ -59,7 +59,7 @@
 			<div class="selectfilters">
 				<form>
 					<input type="text" placeholder="Search products..." />
-					<button type="submit">&raquo;</button>
+					<button class="btn btn-paperight" type="submit">&raquo;</button>
 					<img id="orphan-product-search-loader" style="display:none" src="${ctx}/img/ajax-loader.gif" width="32" height="32" />
 				</form>
 			</div>
@@ -73,7 +73,7 @@
 					</c:if>
 				</select>
 			</div>
-			<button class="move-in" style="width: 100%;">&laquo; Assign</button>
+			<button class="btn btn-paperight move-in" style="width: 100%;">&laquo; Assign</button>
 			<div class="ui-helper-clearfix">
 				<small>*Note: products and orphaned products support multiple select.</small>
 			</div>

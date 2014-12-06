@@ -106,7 +106,6 @@ public class ItextPDFWatermarkWriter extends AbstractPdfWatermarkWriter {
 		}
 		
 		float pageWidth = document.getPageSize(pageNumber).getWidth();
-		float pageHeight = document.getPageSize(pageNumber).getHeight();
 		
 		if (getPageLayout() == PageLayout.A5) {
 			float pageCentreXPosition = pageWidth / 2f;
@@ -138,7 +137,6 @@ public class ItextPDFWatermarkWriter extends AbstractPdfWatermarkWriter {
 		}
 			
 		float pageWidth = document.getPageSize(pageNumber).getWidth();
-		float pageHeight = document.getPageSize(pageNumber).getHeight();
 
 		if (getPageLayout() == PageLayout.A5) {
 			float pageCentreXPosition = pageWidth / 2f;
@@ -169,7 +167,6 @@ public class ItextPDFWatermarkWriter extends AbstractPdfWatermarkWriter {
 		}
 			
 		float pageWidth = document.getPageSize(pageNumber).getWidth();
-		float pageHeight = document.getPageSize(pageNumber).getHeight();
 
 		if (getPageLayout() == PageLayout.A5) {
 			float pageCentreXPosition = pageWidth / 2f;
@@ -200,7 +197,6 @@ public class ItextPDFWatermarkWriter extends AbstractPdfWatermarkWriter {
 		}
 			
 		float pageWidth = document.getPageSize(pageNumber).getWidth();
-		float pageHeight = document.getPageSize(pageNumber).getHeight();
 
 		if (getPageLayout() == PageLayout.A5) {
 			float pageCentreXPosition = pageWidth / 2f;

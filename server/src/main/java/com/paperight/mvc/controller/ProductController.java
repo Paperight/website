@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.paperight.FileUpload;
 import com.paperight.ProductImportService;
 import com.paperight.product.ImportExecution;
 import com.paperight.product.ImportStatus;
@@ -88,7 +89,7 @@ public class ProductController {
 	private String saveFile(MultipartFile uploadFile) throws Exception {
 		String filename = uploadFile.getOriginalFilename();
 		String extension = FilenameUtils.getExtension(filename);
-		filename = FilenameUtils.getBaseName(filename) + "_" + DateTime.now().toString("yyyyMMdd_HHmmss") + "." + extension;
+		filename = FilenameUtils.getBaseName(filename) + "_" + DateTime.now().toString("yyyyMMdd_HHmmss") + "." + extension + ".import";
 		filename = FilenameUtils.concat(productFileUploadFolder, filename);
 		logger.info("saving uploaded file " + uploadFile.getOriginalFilename() + " to " + filename);
 		File file = new File(filename);
@@ -193,20 +194,6 @@ class ProductSearch {
 	
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	
-}
-
-class FileUpload {
-	
-	private MultipartFile file;
-
-	public MultipartFile getFile() {
-		return file;
-	}
-
-	public void setFile(MultipartFile file) {
-		this.file = file;
 	}
 	
 }

@@ -16,7 +16,7 @@
 			</definition>
 		</put-attribute>
 		<put-list-attribute name="scripts" inherit="true">
-			<add-attribute value="/js/view/posters/search.js" type="string" />
+			<add-attribute value="/js/views/posters/search.js" type="string" />
 		</put-list-attribute>
 	</definition>
 	

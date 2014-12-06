@@ -10,7 +10,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/product/detail.jsp" />
 		<put-list-attribute name="scripts" inherit="true">
 			<add-attribute value="/js/form-defaults.js" type="string" />
-			<add-attribute value="/js/view/product/detail.js" type="string" />
+			<add-attribute value="/js/views/product/detail.js" type="string" />
 			<add-attribute value="//maps.google.com/maps/api/js?v=3.16&amp;sensor=true&amp;libraries=places" type="text/javascript" />
 			<add-attribute value="/js/gmaps.js" type="text/javascript" />
 			<add-attribute value="/js/jquery.geocomplete.min.js" type="text/javascript" />

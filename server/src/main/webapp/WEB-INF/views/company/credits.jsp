@@ -3,7 +3,7 @@
 <div class="ui-helper-clearfix">
 	<form action="${ctx}/company/search">
 		<div style="clear: both; width: 100%;">
-			<input type="submit" value="New Credit Record">
+			<input class="btn btn-paperight" type="submit" value="New Credit Record">
 		</div>
 	</form>
 </div>

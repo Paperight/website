@@ -406,10 +406,6 @@ public class Company implements Serializable {
 	
 	@Transactional
 	public void reopen() {
-		List<Company> children = Company.findByParentCompany(getId());
-//		for (Company childCompany : children) {
-//			childCompany.reopen();
-//		}
 		setClosed(false);
 		merge();
 		activateProducts();
@@ -432,10 +428,6 @@ public class Company implements Serializable {
 	
 	@Transactional
 	public void enable() {
-		List<Company> children = Company.findByParentCompany(getId());
-//		for (Company childCompany : children) {
-//			childCompany.enable();
-//		}
 		setDisabled(false);
 		merge();
 		activateProducts();

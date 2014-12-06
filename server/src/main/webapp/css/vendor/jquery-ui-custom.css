@@ -1,0 +1,8 @@
+.ui-widget-header {
+    background: #0084A9;
+    border: none;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+    display: none;
+}

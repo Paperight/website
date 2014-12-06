@@ -3,9 +3,9 @@ package com.paperight.mvc.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,8 +111,7 @@ public class PosterController {
 	private String reloadWebsitePostersUrl;
 	
 	private void refreshWebsitePosters() {
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
+		try (CloseableHttpClient httpclient = HttpClientBuilder.create().build()) {
 			HttpGet httpget = new HttpGet(reloadWebsitePostersUrl);
 			httpclient.execute(httpget);
 		} catch (Exception e) {

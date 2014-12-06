@@ -52,8 +52,8 @@
 			</dl>
 		</div>
 		<div style="clear:both; width:100%;">
-			<input class="button" onclick="window.location.href = '${ctx}/user/search';" type="button" value="Cancel" />
-			<input type="submit" value="Update" />
+			<input class="btn btn-paperight" onclick="window.location.href = '${ctx}/user/search';" type="button" value="Cancel" />
+			<input type="submit" class="btn btn-paperight" value="Update" />
 		</div>
 	</form:form>
 </div>

@@ -150,22 +150,24 @@ public class HomeController {
 	 * @return Model
 	 */
 	@RequestMapping(value = "/js/paperight.context.json*", method = RequestMethod.GET)
-	public @ResponseBody Object contextJs(Model model, HttpServletRequest request) {
+	public @ResponseBody Object contextJs(HttpServletRequest request) {
+	    Map<String, Object> response = new HashMap<>();
+	    
 		User user = AuthenticationService.currentActingUser();
 		Currency currency = (user != null) ? user.getCompany().getCurrency() : currencyService.getDefaultCurrency();
-		model.addAttribute("contextPath", request.getContextPath());
-		model.addAttribute("currency", getCurrencyMap(currency));
+		response.put("contextPath", request.getContextPath());
+		response.put("currency", getCurrencyMap(currency));
 		if (user != null) {
-			model.addAttribute("credits", user.getCompany().getCredits());
-			model.addAttribute("averagePrintingCost", user.getCompany().getAveragePrintingCost());
-			model.addAttribute("averageBindingCost", user.getCompany().getAverageBindingCost());
+		    response.put("credits", user.getCompany().getCredits());
+		    response.put("averagePrintingCost", user.getCompany().getAveragePrintingCost());
+		    response.put("averageBindingCost", user.getCompany().getAverageBindingCost());
 		} else {
-			model.addAttribute("credits", 0);
-			model.addAttribute("averagePrintingCost", 0);
-			model.addAttribute("averageBindingCost", 0);
+		    response.put("credits", 0);
+		    response.put("averagePrintingCost", 0);
+		    response.put("averageBindingCost", 0);
 		}
 		
-		return model;
+	    return response;
 	}
 
 	private Map<String, Object> getCurrencyMap(Currency currency) {

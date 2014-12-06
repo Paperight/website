@@ -1,22 +1,195 @@
-#logo-panel a { width:100px; height:118px; background:url(../themes/default/images/logo.png) no-repeat 0 0; display:block; }
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
 
-#navigators h3 { margin-bottom: 10px; }
-#navigators ul { margin-bottom: 20px; }
-#navigators ul li a { display: block; }
+#logo-panel a {
+    width: 100px;
+    height: 118px;
+    background: url(../themes/default/images/logo.png) no-repeat 0 0;
+    display: block;
+}
 
-body { background-color:#f2f2f2; }
-#header > .wrapper { height: auto; }
-#content > .wrapper { border-top-left-radius: 6px; border-top-right-radius: 6px; border:1px solid #dedede; border-bottom:0; overflow: hidden; }
-#content > .wrapper,
-#footer > .wrapper { background: white; }
-#footer > .wrapper { overflow: auto; padding-top: 50px; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border:1px solid #dedede; border-top:0; }
-#footer { margin-bottom:20px; }
+#navigators h3 {
+    margin-bottom: 10px;
+}
 
-.columns { margin:40px; }
+#navigators ul {
+    margin-bottom: 20px;
+}
 
-#productownership #companySelect { width:100%; clear: both; margin-bottom: 40px; }
-#productownership #orphanedProducts,
-#productownership #companyProducts { width:100%; clear: both; margin-bottom: 40px; }
-#productownership .selectfilters { margin-bottom:5px; }
-#productownership .selectfilters input { width:295px; border:1px solid #cacaca; background: white; }
-#productownership small { opacity:0.7; }
+#navigators ul li a {
+    display: block;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+
+#wrapper {
+  padding-left: 200px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+    
+  margin-left: -180px;
+  left: 250px;
+  width: 200px;
+
+  //position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 150px;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width:1024px) {
+
+    #wrapper {
+      padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+      left: 0;
+    }
+
+    #wrapper.active {
+      position: relative;
+      left: 250px;
+    }
+
+    #wrapper.active #sidebar-wrapper {
+      left: 250px;
+      width: 250px;
+      transition: all 0.4s ease 0s;
+    }
+
+}
+
+
+#header>.wrapper {
+    height: auto;
+    width: 100%;
+}
+
+#content>.wrapper {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: 1px solid #dedede;
+    border-bottom: 0;
+    overflow: hidden;
+}
+
+#footer>.wrapper {
+    overflow: auto;
+    padding-top: 50px;
+    /* border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border: 1px solid #dedede; */
+    border-top: 0;
+}
+
+#footer {
+    margin-bottom: 20px;
+}
+
+.columns {
+    margin: 40px;
+}
+
+#productownership #companySelect {
+    width: 100%;
+    clear: both;
+    margin-bottom: 40px;
+}
+
+#productownership #orphanedProducts, #productownership #companyProducts
+    {
+    width: 100%;
+    clear: both;
+    margin-bottom: 40px;
+}
+
+#productownership .selectfilters {
+    margin-bottom: 5px;
+}
+
+#productownership .selectfilters input {
+    width: 295px;
+    border: 1px solid #cacaca;
+    background: white;
+}
+
+#productownership small {
+    opacity: 0.7;
+}
+
+textarea, input[type="text"], input[type="password"] {
+    border: 1px solid;
+    background: white;
+}
+
+input[type="text"], input[type="password"] {
+    width: 300px;
+    height: 30px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+textarea {
+    resize: both;
+}
+
+select {
+    height: 30px;
+}
+
+.form dl dt {
+    width: 100%;
+}
+
+button span {
+    font-weight: normal !important;
+}
+
+.btn-paperight {
+    background-color: #89BB23;
+    color: #fff;
+}
+
+.btn-paperight:hover, .btn-paperight:focus {
+    background-color: #6a901b;
+    color: #fff;
+}
+
+/* table .btn{
+  padding: 1px 5px 1px;
+  font-size: 14px;
+  margin-right: -3px;
+} */
+
+.notifications {
+    width: 100%;
+}
+
+td .dl-horizontal dd {
+    padding-bottom: 10px;
+}

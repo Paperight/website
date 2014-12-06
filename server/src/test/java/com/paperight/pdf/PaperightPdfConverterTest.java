@@ -18,7 +18,7 @@ public class PaperightPdfConverterTest {
 	
 	private PaperightPdfConverter converter = new PaperightPdfConverter();
 
-	@Test
+	//@Test
 	public void testCropPdf() throws IOException, DocumentException, Exception {
 		//String croppedFilename = converter.cropPdf("d:/downloads/study-and-master_accounting-grade-12_sample_20131202.pdf");
 		//String croppedFilename = converter.cropPdf("d:/downloads/bukantswe-ya-dipalomathaithai_cropped_20131213.pdf");
@@ -36,7 +36,7 @@ public class PaperightPdfConverterTest {
 		String croppedFilename = null;
 		String croppedA5Filename = null;
 		//croppedFilename = converter.cropPdf("d:/projects/paperight/data/ngiyaddela-ngobuntu_mdlalose_extracted-pages_20130826.pdf", false);
-		croppedFilename = converter.cropPdf("d:/downloads/bukantswe-ya-dipalomathaithai_cropped_20131213.pdf");
+		croppedFilename = converter.cropPdf("d:/downloads/9781770304598.pdf");
 		//croppedA5Filename = converter.cropPdf("d:/downloads/9780992213206_a-grain-of-sand_charles-cilliers_20131217.pdf");
 		PdfConversion conversion = converter.createPaperightPdfs(croppedFilename, croppedA5Filename, layouts);
 		System.out.println("ONE-UP: " + conversion.getOneUpFilename());

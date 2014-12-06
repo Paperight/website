@@ -20,6 +20,7 @@
         	classpath:META-INF/spring/cache-context.xml
         	classpath:META-INF/spring/email-context.xml
         	classpath:META-INF/spring/task-context.xml
+        	classpath:META-INF/spring/integration-context.xml
         </param-value>
     </context-param>
 

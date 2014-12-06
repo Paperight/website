@@ -42,6 +42,11 @@
 		<li><a href="${ctx}/product/import">New Import</a></li>
 		<li><a href="${ctx}/product/import/search">History</a></li>
 	</ul>
+	<h3>Bulk Import</h3>
+    <ul>
+        <li><a href="${ctx}/bulk/upload">New Import</a></li>
+        <li><a href="${ctx}/bulk">History</a></li>
+    </ul>
 	<h3>Transactions</h3>
 	<ul>
 		<sec:authorize access="hasPermission(#user, 'AUTHORISE_TOPUPS')">

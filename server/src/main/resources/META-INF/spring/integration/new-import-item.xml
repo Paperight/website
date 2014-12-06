@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/integration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans" xmlns:int-jpa="http://www.springframework.org/schema/integration/jpa"
+    xsi:schemaLocation="http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration/jpa http://www.springframework.org/schema/integration/jpa/spring-integration-jpa.xsd">
+
+    <channel id="newImportItemChannel" />
+
+    <int-jpa:inbound-channel-adapter id="newImportItemChannelAdapter" channel="newImportItemChannel" 
+            entity-manager-factory="entityManagerFactory" 
+            entity-class="com.paperight.product.ImportItem" 
+            jpa-query="select i from ImportItem i where i.status = 'NEW' and i.health = 'OK'">
+        <poller fixed-rate="10000" max-messages-per-poll="-1" />
+    </int-jpa:inbound-channel-adapter>
+
+    <channel id="splitNewImportItemChannel" />
+
+    <splitter expression="payload" input-channel="newImportItemChannel" output-channel="splitNewImportItemChannel"></splitter>
+
+    <service-activator id="newImportItemServiceActivator" 
+            input-channel="splitNewImportItemChannel" 
+            output-channel="nullChannel" ref="csvFileService" method="extractImportItem" />
+
+</beans:beans>

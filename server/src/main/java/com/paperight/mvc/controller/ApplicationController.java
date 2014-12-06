@@ -1,8 +1,8 @@
 package com.paperight.mvc.controller;
 
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,10 +59,9 @@ public class ApplicationController {
 	private String reloadWebsiteApplicationSettingsUrl;
 	
 	private void refreshWebsiteApplicationSettings() {
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpGet httpget = new HttpGet(reloadWebsiteApplicationSettingsUrl);
-			httpclient.execute(httpget);
+		try (CloseableHttpClient httpclient = HttpClientBuilder.create().build()) {
+	        HttpGet httpget = new HttpGet(reloadWebsiteApplicationSettingsUrl);
+	        httpclient.execute(httpget);
 		} catch (Exception e) {
 			logger.error("unable to send application settings refresh", e);
 		}

@@ -1,9 +1,9 @@
 package com.paperight.mvc.controller;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -87,8 +87,7 @@ public class ArticleController {
 	private String reloadWebsiteArticleUrl;
 	
 	private void refreshWebsiteArticle(String name) {
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
+		try (CloseableHttpClient httpclient = HttpClientBuilder.create().build()) {
 			HttpGet httpget = new HttpGet(reloadWebsiteArticleUrl + name);
 			httpclient.execute(httpget);
 		} catch (Exception e) {

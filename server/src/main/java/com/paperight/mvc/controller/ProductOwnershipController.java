@@ -3,7 +3,9 @@ package com.paperight.mvc.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -45,25 +47,28 @@ public class ProductOwnershipController {
 			companies = Company.findByNameOrUserEmail(searchString);
 		}
 		Company.sortCompanies(companies);
-		model.addAttribute("data", ProductOwnershipCompanyDto.buildDtos(companies));
-		model.addAttribute("success", true);
-		return model;
+		Map<String, Object> response = new HashMap<>();
+		response.put("data", ProductOwnershipCompanyDto.buildDtos(companies));
+		response.put("success", true);
+		return response;
 	}
 	
 	@RequestMapping(value = "/product/ownership/{companyId}/products/search.json", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody Object searchCompanyProducts(@RequestBody String searchString, Model model, @PathVariable Long companyId) {
 		List<Product> products = searchProducts(searchString, companyId);
-		model.addAttribute("data", products);
-		model.addAttribute("success", true);
-		return model;
+        Map<String, Object> response = new HashMap<>();
+        response.put("data", products);
+        response.put("success", true);
+		return response;
 	}
 	
 	@RequestMapping(value = "/product/ownership/orphan-products/search.json", method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody Object searchOrphanProducts(@RequestBody String searchString, Model model) {
+	public @ResponseBody Object searchOrphanProducts(@RequestBody String searchString) {
 		List<Product> products = searchProducts(searchString, null);
-		model.addAttribute("data",  products);
-		model.addAttribute("success", true);
-		return model;
+        Map<String, Object> response = new HashMap<>();
+        response.put("data",  products);
+        response.put("success", true);
+		return response;
 	}
 	
 	private List<Product> searchProducts(String searchString, Long companyId) {

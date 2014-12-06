@@ -4,7 +4,7 @@
 
 	<groupId>com.paperight</groupId>
 	<artifactId>common</artifactId>
-	<version>1.4.5.RELEASE</version>
+	<version>1.5.0.RC1</version>
 	<packaging>jar</packaging>
 
 	<name>Paperight Common</name>
@@ -12,12 +12,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework.version>3.1.2.RELEASE</springframework.version>
-		<spring.security.version>3.1.6.RELEASE</spring.security.version>
-		<org.spring-integration-version>2.1.1.RELEASE</org.spring-integration-version>
+		<springframework.version>4.0.6.RELEASE</springframework.version>
+		<spring.security.version>3.2.4.RELEASE</spring.security.version>
+		<org.spring-integration-version>4.0.3.RELEASE</org.spring-integration-version>
 		<junit.version>4.7</junit.version>
 		<aspectj.version>1.7.3</aspectj.version>
-		<hibernate.version>4.1.1.Final</hibernate.version>
+		<hibernate.version>4.3.6.Final</hibernate.version>
 		<hibernate-search.version>4.1.1.Final</hibernate-search.version>
 		<pdfbox.version>1.8.2</pdfbox.version>
 		<tiles.version>2.2.2</tiles.version>
@@ -35,6 +35,12 @@
 	</repositories>
 
 	<dependencies>
+	
+	    <dependency>
+            <groupId>net.sf.supercsv</groupId>
+            <artifactId>super-csv</artifactId>
+            <version>2.1.0</version>
+        </dependency>
 	
 		<dependency>
 			<groupId>commons-beanutils</groupId>
@@ -102,7 +108,7 @@
 			<version>3.0</version>
 		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
 		   <groupId>commons-httpclient</groupId>
 		   <artifactId>commons-httpclient</artifactId>
 		   <version>3.1</version>
@@ -112,7 +118,7 @@
 		   		<groupId>commons-logging</groupId>
 		   	</exclusion>
 		   </exclusions>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -129,7 +135,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.1.3</version>
+			<version>4.3.5</version>
 		</dependency>
 		
 		<dependency>
@@ -156,31 +162,51 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.2</version>
 		</dependency>
+		
+		<!-- JSON -->
+		
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.2.2</version>
+        </dependency>
  
 		<!-- Hibernate -->
+		
+		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
 	
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search</artifactId>
+			<artifactId>hibernate-search-orm</artifactId>
 			<version>${hibernate-search.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.2.0.Final</version>
+			<version>5.1.2.Final</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jadira.usertype</groupId>
 			<artifactId>usertype.core</artifactId>
-			<version>3.0.0.CR1</version>
+			<version>3.2.0.GA</version>
 		</dependency>
 
 		<dependency>
@@ -357,6 +383,20 @@
 			<artifactId>tiles-jsp</artifactId>
 			<version>${tiles.version}</version>
 		</dependency>
+		
+		<!-- JDBC -->
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.24</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp</artifactId>
+            <version>0.8.0.RELEASE</version>
+        </dependency>
 		
 		<!-- Servlet -->
 

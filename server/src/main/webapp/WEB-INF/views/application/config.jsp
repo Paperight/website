@@ -73,7 +73,7 @@
 		</div>
 		
 		<div style="clear:both; width:100%;">
-			<button type="submit">Save details</button>
+			<button class="btn btn-paperight" type="submit">Save details</button>
 		</div>
 	</form:form>
 </div>

@@ -17,9 +17,8 @@
 		</div>
 		
 		<div style="clear:both; width:100%;">
-			<input type="submit" value="Search" />
-			<button value="${ctx}/product/search/rebuild-index" class="btn-rebuild-search-index" style="float:right; margin-right:10px;">
-				<span class="ui-icon ui-icon-circle-arrow-s"></span>
+			<input type="submit" class="btn btn-paperight" value="Search" />
+			<button value="${ctx}/product/search/rebuild-index" class="btn btn-paperight btn-rebuild-search-index" style="float:right; margin-right:10px;">
 				<span>Rebuild Search Index</span>
 			</button>
 		</div>

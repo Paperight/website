@@ -13,13 +13,9 @@ import org.criteria4jpa.Criteria;
 import org.criteria4jpa.CriteriaUtils;
 import org.criteria4jpa.criterion.MatchMode;
 import org.criteria4jpa.criterion.Restrictions;
-import org.criteria4jpa.order.Order;
 import org.joda.time.DateTime;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Configurable;
-
-import com.paperight.product.Poster;
-import com.paperight.product.Product;
 
 privileged aspect User_Jpa {
 	

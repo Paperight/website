@@ -5,3 +5,4 @@
 /website/src/main/resources/application.properties
 /website/src/main/resources/database.properties
 target
+/.idea/workspace.xml

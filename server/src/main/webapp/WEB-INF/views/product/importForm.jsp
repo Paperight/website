@@ -16,7 +16,7 @@
 		</div>
 		
 		<div style="clear:both; width:100%;">
-			<input type="submit" value="Upload" />
+			<input type="submit" class="btn btn-paperight" value="Upload" />
 		</div>
 	</form:form>
 </div>

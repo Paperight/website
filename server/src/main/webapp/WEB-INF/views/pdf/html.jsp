@@ -32,7 +32,7 @@
 					<div id="existingProduct" style="display:none">
 						<div class="selectfilters">
 							<input id="productSearchQuery" type="text" placeholder="Search products..." />
-							<button id="searchProducts">&raquo;</button>
+							<button class="btn btn-paperight" id="searchProducts">&raquo;</button>
 						</div>
 						<div class="selectlists">
 							<form:select path="existingProductId" size="15" style="width: 100%;">
@@ -45,10 +45,10 @@
 				<dt>HTML Location
 					<br /><span class="note">
 					Available options:
-					<ul style="list-style: none;">
-						<li><form:radiobutton path="" value="Http" name="htmlLocation" id="htmlLocationHttp" checked="checked" />Web URL e.g. http://www.gutenberg.org/files/40909/40909-h/40909-h.htm</li>
-						<li><form:radiobutton path="" value="File" name="htmlLocation" id="htmlLocationFile" />File relative to FTP html upload folder e.g. mybook/mybook.html</li>
-					</ul>
+					<div>
+						<div><form:radiobutton path="" value="Http" name="htmlLocation" id="htmlLocationHttp" checked="checked" /> Web URL e.g. http://www.gutenberg.org/files/40909/40909-h/40909-h.htm</div>
+						<div><form:radiobutton path="" value="File" name="htmlLocation" id="htmlLocationFile" /> File relative to FTP html upload folder e.g. mybook/mybook.html</div>
+					</div>
 					</span>
 				</dt>
 				<dd>
@@ -82,7 +82,7 @@
 		</div>
 
 		<div style="clear: both; width: 100%;">
-			<input type="submit" value="Convert" />
+			<input type="submit" class="btn btn-paperight" value="Convert" />
 		</div>
 	</form:form>
 </div>

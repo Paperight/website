@@ -106,7 +106,7 @@ public class LicenceController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/licence/purchase")
-	public @ResponseBody Object licencePurchase(Model model, @RequestParam("productId") long productId, @RequestParam("layout") String layout, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("phoneNumber") String phoneNumber, @RequestParam("outletcharges") BigDecimal outletcharges, @RequestParam("quantity") int quantity) {
+	public @ResponseBody Object licencePurchase(@RequestParam("productId") long productId, @RequestParam("layout") String layout, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("phoneNumber") String phoneNumber, @RequestParam("outletcharges") BigDecimal outletcharges, @RequestParam("quantity") int quantity) {
 
 		User user = AuthenticationService.currentActingUser();
 		Product product = Product.find(productId);
@@ -139,18 +139,19 @@ public class LicenceController {
 		licence.setPaperightCreditToBaseCurrencyRate(paperightCreditService.getPaperightCreditToBaseCurrencyRate());
 		licence.setInvoiceState(InvoiceState.NEW);
 
-		model.addAttribute("result", true);
-		model.addAttribute("message", "");
+		Map<String, Object> response = new HashMap<>();
+		response.put("result", true);
+		response.put("message", "");
 		try {
 			completeLicencePurchase(licence, company, costInCredits);
 			AuthenticationService.updateActingUser(User.find(AuthenticationService.currentActingUser().getId()));
 			// Send licence-purchase emails
 			emailGateway.licencePurchaseComplete(licence);
 		} catch (InsufficientCreditsException e) {
-			model.addAttribute("result", false);
-			model.addAttribute("message", contentService.getSnippetValue("dialog-purchasing-licence-message-insufficient-credits", "product-detail-licences", "Sorry, you don't have enough credits. Please top up.", false) );
+		    response.put("result", false);
+		    response.put("message", contentService.getSnippetValue("dialog-purchasing-licence-message-insufficient-credits", "product-detail-licences", "Sorry, you don't have enough credits. Please top up.", false) );
 		}
-		return model;
+		return response;
 	}
 	
     @RequestMapping(method = RequestMethod.POST, value = "/licence/{licenceId}/generate")

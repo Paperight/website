@@ -7,7 +7,7 @@
 			<div class="selectfilters">
 				<form>
 					<input type="text" placeholder="Search companies..." />
-					<button id="company-search" type="submit">&raquo;</button>
+					<button class="btn btn-paperight" id="company-search" type="submit">&raquo;</button>
 					<img id="company-search-loader" style="display: none"
 						src="${ctx}/img/ajax-loader.gif" width="32" height="32" />
 				</form>
@@ -53,7 +53,7 @@
 								<form:errors path="note" cssClass="error" element="label" /></dd>
 							</dl>
 							<div style="clear: both; width: 100%; padding-top: 10px;">
-								<input type="submit" value="Save" />
+								<input class="btn btn-paperight" type="submit" value="Save" />
 							</div>
 						</div>
 					</form:form>

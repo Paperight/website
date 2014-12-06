@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/layouts/includes/taglibs.jsp" %>
 <c:set var="id"><t:insertAttribute name="id" ignore="true" /></c:set>
 <c:if test="${empty title}"><c:set var="title"><t:insertAttribute name="title" ignore="true" /></c:set></c:if>
-<spring:message code="application_name" text="" var="applicationName" htmlEscape="false" />
+<spring:message code="application_name" text="" var="applicationName"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

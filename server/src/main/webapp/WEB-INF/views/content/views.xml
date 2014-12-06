@@ -28,7 +28,7 @@
 			</definition>
 		</put-attribute>
 		<put-list-attribute name="links" inherit="true">
-			<add-attribute value="/css/content/updateSnippets.css" type="string" />
+			<add-attribute value="/css/views/content/updateSnippets.css" type="string" />
 		</put-list-attribute>
 	</definition>
 	

@@ -93,7 +93,7 @@
 			</definition>
 		</put-attribute>
 		<put-list-attribute name="scripts" inherit="true">
-			<add-attribute value="/js/view/topup.js" type="string" />
+			<add-attribute value="/js/views/topup.js" type="string" />
 		</put-list-attribute>
 	</definition>
 
@@ -176,7 +176,7 @@
 			</definition>
 		</put-attribute>
 		<put-list-attribute name="scripts" inherit="true">
-			<add-attribute value="/js/view/updateEmail.js" type="string" />
+			<add-attribute value="/js/views/updateEmail.js" type="string" />
 		</put-list-attribute>
 	</definition>
 

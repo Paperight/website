@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+    <definition name="bulk/items" template="/WEB-INF/views/bulk/items.jsp" />
+
+	<definition name="bulk/upload" extends="default">
+		<put-attribute name="title" type="string" value="New Bulk Conversion Upload" />
+		<put-attribute name="id" type="string" value="bulkUpload" />
+		<put-attribute name="body">
+			<definition extends="twoColumnLeftNavigation">
+				<put-list-attribute name="columnTwo">
+					<add-attribute value="/WEB-INF/views/bulk/upload.jsp" />
+				</put-list-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	<definition name="bulk/jobs" extends="default">
+        <put-attribute name="title" type="string" value="Bulk Import Jobs" />
+        <put-attribute name="id" type="string" value="bulkImportJobs" />
+        <put-attribute name="body">
+            <definition extends="twoColumnLeftNavigation">
+                <put-list-attribute name="columnTwo">
+                    <add-attribute value="/WEB-INF/views/bulk/list.jsp" />
+                </put-list-attribute>
+            </definition>
+        </put-attribute>
+        <put-list-attribute name="scripts" inherit="true">
+            <add-attribute value="/js/views/bulk/common.js" />
+        </put-list-attribute>
+        <put-list-attribute name="links" inherit="true">
+            <add-attribute value="/css/views/bulk/common.css" />
+        </put-list-attribute>
+    </definition>
+    
+    <definition name="bulk/detail" extends="default">
+        <put-attribute name="title" type="string" value="Bulk Import Jobs" />
+        <put-attribute name="id" type="string" value="bulkImportJobDetail" />
+        <put-attribute name="body">
+            <definition extends="twoColumnLeftNavigation">
+                <put-list-attribute name="columnTwo">
+                    <add-attribute value="/WEB-INF/views/bulk/detail.jsp" />
+                </put-list-attribute>
+            </definition>
+        </put-attribute>
+        <put-list-attribute name="scripts" inherit="true">
+            <add-attribute value="/js/views/bulk/common.js" />
+        </put-list-attribute>
+        <put-list-attribute name="links" inherit="true">
+            <add-attribute value="/css/views/bulk/common.css" />
+        </put-list-attribute>
+    </definition>
+
+</tiles-definitions>

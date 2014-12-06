@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -52,6 +54,7 @@ import com.paperight.utils.StringComparators;
 
 @Controller
 @SessionAttributes({"toProduct"})
+@RequestMapping(value = "/pdf")
 public class PdfAutomationController {
 	
 	private Logger logger = LoggerFactory.getLogger(PdfAutomationController.class);
@@ -71,13 +74,13 @@ public class PdfAutomationController {
 	@Value("${pdf.file.folder}")
 	private String pdfFileFolder;
 
-	@RequestMapping(value = "/pdf/epub", method = RequestMethod.GET)
+	@RequestMapping(value = "/epub", method = RequestMethod.GET)
 	public String productImport(Model model) {
 		model.addAttribute("epubFileUpload", new EpubFileUpload());
 		return "pdf/epub";
 	}
 	
-	@RequestMapping(value = "/pdf/epub", method = RequestMethod.POST)
+	@RequestMapping(value = "/epub", method = RequestMethod.POST)
 	public String productImport(@Valid EpubFileUpload epubFileUpload, BindingResult result) {
 		if (result.hasErrors()) {
 			return "pdf/epub";
@@ -103,7 +106,7 @@ public class PdfAutomationController {
        }
 	}
 	
-	@RequestMapping(value = "/pdf/html", method = RequestMethod.GET)
+	@RequestMapping(value = "/html", method = RequestMethod.GET)
 	public String htmlToPdf(Model model) throws Exception {
 		HtmlConversion htmlConversion = new HtmlConversion();
 		htmlConversion.setPdfConversion(application.getDefaultPdfConversion());
@@ -134,7 +137,7 @@ public class PdfAutomationController {
 	
 	private static final String A5_CSS_FILE = "a5.css";
 	
-	@RequestMapping(value = "/pdf/html", method = RequestMethod.POST)
+	@RequestMapping(value = "/html", method = RequestMethod.POST)
 	public String htmlToPdf(@Valid HtmlConversion htmlConversion, BindingResult result, Model model) throws Exception {
 		if (result.hasErrors()) {
 			htmlConversion.setLayouts(Arrays.asList(new PageLayout[] { PageLayout.ONE_UP, PageLayout.TWO_UP }));
@@ -157,7 +160,7 @@ public class PdfAutomationController {
 			}
 			
 			try {
-				PdfConversion pdfConversion = pdfAutomationService.createPaperightPdfs(newPdf, newA5Pdf, htmlConversion.getLayouts());
+				PdfConversion pdfConversion = pdfAutomationService.createPaperightPdfs(newPdf, newA5Pdf, htmlConversion.getLayouts(), null);
 				pdfConversion.setOriginalFilename(htmlConversion.getHtml());
 				pdfConversion.persist();
 				String redirect = "redirect:/pdf/product/" + pdfConversion.getId();
@@ -183,7 +186,7 @@ public class PdfAutomationController {
 		}
 	}
 	
-	@RequestMapping(value = "/pdf/pdf", method = RequestMethod.GET)
+	@RequestMapping(value = "/pdf", method = RequestMethod.GET)
 	public String existingPdfToPdf(Model model) throws Exception {
 		ExistingPdfConversion existingPdfConversion = new ExistingPdfConversion();
 		existingPdfConversion.setLayouts(Arrays.asList(new PageLayout[] { PageLayout.ONE_UP, PageLayout.TWO_UP }));
@@ -192,7 +195,7 @@ public class PdfAutomationController {
 		return "pdf/pdf";
 	}
 	
-	@RequestMapping(value = "/pdf/pdf", method = RequestMethod.POST)
+	@RequestMapping(value = "/pdf", method = RequestMethod.POST)
 	public String existingPdfToPdf(@Valid ExistingPdfConversion existingPdfConversion, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			existingPdfConversion.setLayouts(Arrays.asList(new PageLayout[] { PageLayout.ONE_UP, PageLayout.TWO_UP }));
@@ -211,7 +214,7 @@ public class PdfAutomationController {
 			}
 			
 			try {
-				PdfConversion pdfConversion = pdfAutomationService.createPaperightPdfs(newPdf, newA5Pdf, existingPdfConversion.getLayouts());
+				PdfConversion pdfConversion = pdfAutomationService.createPaperightPdfs(newPdf, newA5Pdf, existingPdfConversion.getLayouts(), null);
 				pdfConversion.setOriginalFilename(existingPdfConversion.getExistingPdf().getOriginalFilename());
 				pdfConversion.persist();
 				String redirect = "redirect:/pdf/product/" + pdfConversion.getId();
@@ -250,12 +253,12 @@ public class PdfAutomationController {
 		binder.setDisallowedFields("pdfConversion.id", "pdfConversion.originalFilename", "pdfConversion.oneUpFilename", "pdfConversion.twoUpFilename", "product.oneUpFilename", "product.twoUpFilename");
 	}
 	
-	@RequestMapping(value = "/pdf/product/{pdfConversionId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/{pdfConversionId}", method = RequestMethod.GET)
 	public String toProduct(@PathVariable Long pdfConversionId, Model model) throws Exception {
 		return internalToProduct(pdfConversionId, null, model);
 	}
 	
-	@RequestMapping(value = "/pdf/product/{pdfConversionId}/existing-product/{existingProductId} ", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/{pdfConversionId}/existing-product/{existingProductId} ", method = RequestMethod.GET)
 	public String toProduct(@PathVariable Long pdfConversionId, @PathVariable Long existingProductId, Model model) throws Exception {
 		return internalToProduct(pdfConversionId, Product.find(existingProductId), model);
 	}
@@ -311,7 +314,7 @@ public class PdfAutomationController {
 		}
 	}
 	
-	@RequestMapping(value = "/pdf/product", method = RequestMethod.POST)
+	@RequestMapping(value = "/product", method = RequestMethod.POST)
 	public String update(@ModelAttribute ToProduct toProduct, BindingResult result, Model model, SessionStatus sessionStatus) {
 		if (result.hasErrors()) {
 			return "pdf/product";
@@ -346,7 +349,7 @@ public class PdfAutomationController {
 		return filename;
 	}
 	
-	@RequestMapping(value = "/pdf/product/{pdfConversionId}/cancel", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/{pdfConversionId}/cancel", method = RequestMethod.GET)
 	public String cancelConversion(@PathVariable Long pdfConversionId, Model model) throws Exception {
 		PdfConversion pdfConversion = PdfConversion.find(pdfConversionId);
 		if (!StringUtils.isBlank(pdfConversion.getOneUpFilename())) {
@@ -365,9 +368,15 @@ public class PdfAutomationController {
 		return "redirect:/pdf/html";
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/pdf/preview")
+	@RequestMapping(method = RequestMethod.GET, value = "/preview")
 	public void conversionFilePreview(@RequestParam("filename") String filename, HttpServletResponse response) throws Exception {
-		File file = new File(FilenameUtils.concat(pdfFileFolder, filename));
+	    File file;
+	    if (StringUtils.isBlank(FilenameUtils.getPath(filename))) {
+	        file = new File(FilenameUtils.concat(pdfFileFolder, filename));
+	    } else {
+	        file = new File(filename);
+	    }
+		  
 		InputStream inputStream = new FileInputStream(file);
 		try {
 			response.setContentType("application/pdf");
@@ -380,7 +389,7 @@ public class PdfAutomationController {
 		}
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/pdf/product/{pdfConversionId}/delete/{filename}/{layout}/")
+	@RequestMapping(method = RequestMethod.GET, value = "/product/{pdfConversionId}/delete/{filename}/{layout}/")
 	public String deleteConversionFile(@PathVariable Long pdfConversionId, @PathVariable("filename") String filename, @PathVariable("layout") PageLayout layout, HttpServletResponse response) throws Exception {
 		PdfConversion pdfConversion = PdfConversion.find(pdfConversionId);
 		File file = new File(FilenameUtils.concat(pdfFileFolder, filename));
@@ -397,12 +406,13 @@ public class PdfAutomationController {
 		return "redirect:/pdf/product/" + pdfConversion.getId();
 	}
 	
-	@RequestMapping(value = "/pdf/products/search.json", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/products/search.json", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody Object searchProducts(@RequestBody String searchString, Model model) {
 		List<Product> products = searchProducts(searchString);
-		model.addAttribute("data",  products);
-		model.addAttribute("success", true);
-		return model;
+		Map<String, Object> response = new HashMap<>();
+		response.put("data",  products);
+		response.put("success", true);
+		return response;
 	}
 	
 	private List<Product> searchProducts(String searchString) {

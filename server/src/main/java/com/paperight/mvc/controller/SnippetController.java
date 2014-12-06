@@ -6,9 +6,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -75,8 +75,7 @@ public class SnippetController {
 	private String reloadWebsiteSnippetsUrl;
 	
 	private void refreshWebsiteSnippets(String groupName) {
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
+		try (CloseableHttpClient httpclient = HttpClientBuilder.create().build()) {
 			HttpGet httpget = new HttpGet(reloadWebsiteSnippetsUrl + groupName);
 			httpclient.execute(httpget);
 		} catch (Exception e) {

@@ -21,7 +21,7 @@
 	</dl>
 	</c:forEach>
 	<div style="clear:both; width:100%;">
-		<input type="submit" value="Update" />
+		<input type="submit" class="btn btn-paperight" value="Update" />
 	</div>
 </form:form>
 </div>

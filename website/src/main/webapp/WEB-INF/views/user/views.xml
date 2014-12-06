@@ -47,7 +47,7 @@
 		<add-attribute value="/css/jquery-gmaps-latlon-picker.css" type="string" />
 	</put-list-attribute>
 	<put-list-attribute name="scripts" inherit="true">
-		<add-attribute value="/js/view/registration.js" type="string" />
+		<add-attribute value="/js/views/registration.js" type="string" />
 		<add-attribute value="//maps.googleapis.com/maps/api/js?sensor=false" type="string" />
 		<add-attribute value="/js/jquery-gmaps-latlon-picker.custom.js" type="string" />
 	</put-list-attribute>
@@ -97,7 +97,7 @@
 		</definition>
 	</put-attribute>
 	<put-list-attribute name="scripts" inherit="true">
-		<add-attribute value="/js/view/resetPassword.js" type="string" />
+		<add-attribute value="/js/views/resetPassword.js" type="string" />
 	</put-list-attribute>
 	<put-list-attribute name="scripts" inherit="true">
 		<add-attribute value="/js/jquery.url.js" type="string" />

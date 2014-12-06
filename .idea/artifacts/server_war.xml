@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="server:war">
     <output-path>$PROJECT_DIR$/server/target</output-path>
-    <root id="archive" name="server-1.4.5.RELEASE.war">
+    <root id="archive" name="server-1.5.0.RC1.war">
       <element id="artifact" artifact-name="server:war exploded" />
     </root>
   </artifact>

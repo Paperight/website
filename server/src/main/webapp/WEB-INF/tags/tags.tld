@@ -34,7 +34,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
-		<tag>
+	<tag>
 		<name>snippet</name>
 		<tag-class>com.paperight.mvc.tags.SnippetTag</tag-class>
 		<body-content>empty</body-content>
@@ -64,4 +64,14 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>	
 	</tag>
+	<tag>
+        <name>productLink</name>
+        <tagclass>com.paperight.mvc.tags.ProductLinkTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>product</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

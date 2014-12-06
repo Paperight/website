@@ -176,7 +176,8 @@ public class PublisherEarningController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/publisher-earnings/{id}/invoice")
-	public  @ResponseBody Object licenceInvoice(Model model, @PathVariable("id") long id, HttpServletResponse response) throws Exception {
+	public  @ResponseBody Object licenceInvoice(@PathVariable("id") long id, HttpServletResponse response) throws Exception {
+	    Map<String, Object> result = new HashMap<>();
 		User user = AuthenticationService.currentActingUser();
 		PublisherEarning publisherEarning = PublisherEarning.findByIdAndCompanyId(id, user.getCompany().getId());
 		if (publisherEarning != null) {
@@ -186,10 +187,10 @@ public class PublisherEarningController {
 			response.flushBuffer();
 			publisherEarning.setInvoiceState(InvoiceState.DOWNLOADED);
 			publisherEarning.merge();
-			model.addAttribute("result", true);
-			model.addAttribute("message", "");
+			result.put("result", true);
+			result.put("message", "");
 		}
-		return model;
+		return result;
 	}
 	
 		

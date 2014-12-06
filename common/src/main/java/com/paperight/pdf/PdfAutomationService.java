@@ -41,8 +41,11 @@ public class PdfAutomationService {
 		return pdfExecutor.execute(htmlLocation, cssFiles);
 	}
 	
-	public PdfConversion createPaperightPdfs(File originalPdfFile, File originalA5PdfFile, List<PageLayout> pageLayouts) throws Exception {
+	public PdfConversion createPaperightPdfs(File originalPdfFile, File originalA5PdfFile, List<PageLayout> pageLayouts, String outputFolder) throws Exception {
 		PaperightPdfConverter paperightPdfConverter = new PaperightPdfConverter();
+		if (!StringUtils.isBlank(outputFolder)) {
+		    paperightPdfConverter.setPdfFileFolder(outputFolder);
+		}
 		String originalFilePath = null;
 		if (originalPdfFile != null) {
 			originalFilePath = originalPdfFile.getAbsolutePath();

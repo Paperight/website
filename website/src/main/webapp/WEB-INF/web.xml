@@ -15,7 +15,6 @@
         	classpath:META-INF/spring/resource-context.xml
         	classpath:META-INF/spring/persistence-context.xml
         	classpath:META-INF/spring/security-context.xml
-        	classpath:META-INF/spring/rest-context.xml
         	classpath:META-INF/spring/cache-context.xml
         	classpath:META-INF/spring/email-context.xml
         </param-value>

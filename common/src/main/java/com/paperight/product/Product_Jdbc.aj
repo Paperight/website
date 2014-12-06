@@ -2,18 +2,14 @@ package com.paperight.product;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.google.common.collect.Iterables;
-
 privileged aspect Product_Jdbc {
-	
+
 	@Autowired
 	transient JdbcTemplate Product.jdbcTemplate;
 	

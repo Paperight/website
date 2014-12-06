@@ -33,7 +33,7 @@
 		</put-attribute>
 		<put-list-attribute name="scripts" inherit="true">
 			<add-attribute value="/js/form-defaults.js" type="string" />
-			<add-attribute value="/js/view/publisherEarning/publisherPaymentRequestSearch.js" type="string" />
+			<add-attribute value="/js/views/publisherEarning/publisherPaymentRequestSearch.js" type="string" />
 		</put-list-attribute>
 	</definition>
 	

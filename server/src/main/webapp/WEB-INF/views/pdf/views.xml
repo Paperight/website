@@ -28,7 +28,7 @@
 			</definition>
 		</put-attribute>
 		<put-list-attribute name="scripts" inherit="true">
-			<add-attribute value="/js/view/pdf/html.js" type="string" />
+			<add-attribute value="/js/views/pdf/html.js" type="string" />
 		</put-list-attribute>
 	</definition>
 	
@@ -43,7 +43,7 @@
 			</definition>
 		</put-attribute>
 		<put-list-attribute name="scripts" inherit="true">
-			<add-attribute value="/js/view/pdf/pdf.js" type="string" />
+			<add-attribute value="/js/views/pdf/pdf.js" type="string" />
 		</put-list-attribute>
 	</definition>
 	
@@ -58,7 +58,7 @@
 			</definition>
 		</put-attribute>
 		<put-list-attribute name="scripts" inherit="true">
-			<add-attribute value="/js/view/pdf/toProduct.js" type="string" />
+			<add-attribute value="/js/views/pdf/toProduct.js" type="string" />
 		</put-list-attribute>
 	</definition>
 

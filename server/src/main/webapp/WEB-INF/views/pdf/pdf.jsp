@@ -12,7 +12,7 @@
 					<div id="existingProduct" style="display:none">
 						<div class="selectfilters">
 							<input id="productSearchQuery" type="text" placeholder="Search products..." />
-							<button id="searchProducts">&raquo;</button>
+							<button class="btn btn-paperight" id="searchProducts">&raquo;</button>
 						</div>
 						<div class="selectlists">
 							<form:select path="existingProductId" size="15" style="width: 100%;">
@@ -44,7 +44,7 @@
 		</div>
 
 		<div style="clear: both; width: 100%;">
-			<input type="submit" value="Convert" />
+			<input type="submit" class="btn btn-paperight" value="Convert" />
 		</div>
 	</form:form>
 </div>

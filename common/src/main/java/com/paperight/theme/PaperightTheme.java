@@ -38,7 +38,6 @@ public class PaperightTheme implements Theme {
 	private String name;
 	private DateTime createdDate;
 
-	@Transient
 	private MessageSource messageSource;
 
 	public static final EntityManager entityManager() {

@@ -22,8 +22,12 @@ docraptor.api.key=
 
 pdf.file.folder=/paperight/pdf
 licenced.pdf.file.folder=/paperight/pdf/licences/live
-jacket.image.file.folder=//paperight/jacket_images
+jacket.image.file.folder=/paperight/jacket_images
 product.file.upload.folder=/paperight/product_file_uploads
+product.file.upload.staged.folder=/paperight/product_file_uploads/staged
+bulk.product.data.folder=/paperight/product_file_uploads/bulk_data
+converted.bulk.product.data.folder=/paperight/product_file_uploads/bulk_data/converted
+bulk.default.css.file=docraptor-html.css
 lucene.index.folder=/paperight/lucene_indexes/live
 ip2country.lookup.data.filename=//path to MaxMind GeoIp.dat - http://dev.maxmind.com/geoip/geoip2/geolite2/
 html.pdf.css.folder=/paperight/css

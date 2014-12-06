@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/integration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans" xmlns:int-jpa="http://www.springframework.org/schema/integration/jpa"
+    xsi:schemaLocation="http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration/jpa http://www.springframework.org/schema/integration/jpa/spring-integration-jpa.xsd">
+
+    <!--    
+        1. Loads via JPA, all EXTRACTED ImportItems
+        2. Splits each JPA entity onto a new channel
+        3. Processes JPA entity
+    -->
+
+    <channel id="extractedImportItemChannel" />
+    
+    <int-jpa:inbound-channel-adapter id="extractedImportItemChannelAdapter" channel="extractedImportItemChannel" 
+            entity-manager-factory="entityManagerFactory" 
+            entity-class="com.paperight.product.ImportItem" 
+            jpa-query="select i from ImportItem i where i.status = 'EXTRACTED' and i.health = 'OK'">
+        <poller fixed-rate="10000" max-messages-per-poll="-1" />
+    </int-jpa:inbound-channel-adapter>
+
+    <channel id="splitExtractedImportItemChannel" />
+
+    <splitter expression="payload" input-channel="extractedImportItemChannel" output-channel="splitExtractedImportItemChannel" />
+
+    <service-activator id="extractedImportItemChannelServiceActivator" 
+            input-channel="splitExtractedImportItemChannel" 
+            output-channel="nullChannel" ref="importJobService" method="processExtractedImportItem" />
+            
+    <!--    
+        1. Loads via JPA, all IMAGES_PROCESSED Assets
+        2. Splits each JPA entity onto a new channel
+        3. Processes JPA entity, copy jacket image, or if none, generates one
+    -->
+
+   <!--  <channel id="imagesProcessedAssetChannel" />
+
+    <int-jpa:inbound-channel-adapter id="imagesProcessedAssetChannelAdapter" channel="imagesProcessedAssetChannel" 
+            entity-manager-factory="entityManagerFactory" 
+            entity-class="com.snapplify.common.domain.Asset" 
+            jpa-query="select a from Asset a where a.status = 'IMAGES_PROCESSED' and a.health = 'OK' ">
+        <poller fixed-rate="10000" max-messages-per-poll="-1" />
+    </int-jpa:inbound-channel-adapter>
+
+    <channel id="splitImagesProcessedAssetChannel" />
+
+    <splitter expression="payload" input-channel="imagesProcessedAssetChannel" output-channel="splitImagesProcessedAssetChannel" />
+
+    <service-activator id="imagesProcessedAssetChannelServiceActivator" 
+            input-channel="splitImagesProcessedAssetChannel" 
+            output-channel="nullChannel" ref="assetService" method="processImagesProcessedAsset" /> -->
+            
+    <!--    
+        1. Loads via JPA, all FILE_PROCESSED Assets
+        2. Splits each JPA entity onto a new channel
+        3. Processes JPA entity, creating a StoreAsset for each Store in SupplierStore
+    -->
+
+    <!-- <channel id="fileProcessedAssetChannel" />
+
+    <int-jpa:inbound-channel-adapter id="fileProcessedAssetChannelAdapter" channel="fileProcessedAssetChannel" 
+            entity-manager-factory="entityManagerFactory" 
+            entity-class="com.snapplify.common.domain.Asset" 
+            jpa-query="select a from Asset a where a.status = 'FILE_PROCESSED' and a.health = 'OK' ">
+        <poller fixed-rate="10000" max-messages-per-poll="-1" />
+    </int-jpa:inbound-channel-adapter>
+
+    <channel id="splitFileProcessedAssetChannel" />
+
+    <splitter expression="payload" input-channel="fileProcessedAssetChannel" output-channel="splitFileProcessedAssetChannel" />
+
+    <service-activator id="fileProcessedAssetChannelServiceActivator" 
+            input-channel="splitFileProcessedAssetChannel" 
+            output-channel="nullChannel" ref="assetService" method="processFileProcessedAsset" /> -->
+
+</beans:beans>

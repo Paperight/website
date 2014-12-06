@@ -1,11 +1,13 @@
 package com.paperight.mvc.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,7 +51,7 @@ public class CompanyController {
 	}
 	
 	@RequestMapping(value = "/search.json", method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody Object searchCompanies(@RequestBody String searchString, Model model) {
+	public @ResponseBody Object searchCompanies(@RequestBody String searchString) {
 		List<Company> companies;
 		if (StringUtils.isBlank(searchString)) {
 			companies = Company.findAll();
@@ -57,9 +59,10 @@ public class CompanyController {
 			companies = Company.findByNameOrUserEmail(searchString);
 		}
 		Company.sortCompanies(companies);
-		model.addAttribute("data", CreditCompanyDto.buildDtos(companies));
-		model.addAttribute("success", true);
-		return model;
+		Map<String, Object> response = new HashMap<>();
+		response.put("data", CreditCompanyDto.buildDtos(companies));
+		response.put("success", true);
+		return response;
 	}
 	
 	@RequestMapping(value = "/credits", method = RequestMethod.GET)
@@ -109,8 +112,7 @@ public class CompanyController {
 	}
 	
 	private void sendReloadCompany(Long companyId) {
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
+		try (CloseableHttpClient httpclient = HttpClientBuilder.create().build()) {
 			HttpGet httpget = new HttpGet(reloadCompanyUrl + companyId);
 			httpclient.execute(httpget);
 		} catch (Exception e) {

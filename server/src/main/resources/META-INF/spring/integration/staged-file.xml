@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/integration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans" xmlns:int-jpa="http://www.springframework.org/schema/integration/jpa"
+    xsi:schemaLocation="http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration/jpa http://www.springframework.org/schema/integration/jpa/spring-integration-jpa.xsd">
+
+    <!--    
+        1. Loads via JPA, all NEW ImportJobs
+        2. Splits each JPA entity onto a new channel
+        4. Processes JPA entity, extracting ImportItems
+    -->
+
+    <channel id="stagedImportJobChannel" />
+
+    <int-jpa:inbound-channel-adapter id="stagedImportJobChannelAdapter" channel="stagedImportJobChannel" 
+            entity-manager-factory="entityManagerFactory" 
+            entity-class="com.paperight.product.ImportJob" 
+            jpa-query="select i from ImportJob i where i.status = 'NEW' and i.health = 'OK'">
+        <poller fixed-rate="10000" max-messages-per-poll="-1" />
+    </int-jpa:inbound-channel-adapter>
+
+    <channel id="splitStagedImportJobChannel" />
+
+    <splitter expression="payload" input-channel="stagedImportJobChannel" output-channel="splitStagedImportJobChannel"></splitter>
+            
+    <service-activator id="stagedImportJobChannelServiceActivator" 
+            input-channel="splitStagedImportJobChannel" 
+            output-channel="nullChannel" ref="importJobServiceActivator" method="processNewCsv" />
+
+</beans:beans>

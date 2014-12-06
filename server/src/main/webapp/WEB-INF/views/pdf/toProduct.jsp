@@ -15,7 +15,7 @@
 				<dd>
 					<form:input path="product.oneUpFilename" disabled="true" />
 					<form:errors path="product.oneUpFilename" cssClass="error" element="label" />				
-					<a href="${pdfConversion.oneUpFilename}" class="btn-preview-conversion">Preview</a><c:if test="${canDeleteLayout eq true}">&nbsp;&nbsp;<a href="${ctx}/pdf/product/${pdfConversion.id}/delete/${pdfConversion.oneUpFilename}/ONE_UP/" class="btn-delete-conversion">Delete</a></c:if>
+					<a href="${pdfConversion.oneUpFilename}" class="btn-preview-pdf">Preview</a><c:if test="${canDeleteLayout eq true}">&nbsp;&nbsp;<a href="${ctx}/pdf/product/${pdfConversion.id}/delete/${pdfConversion.oneUpFilename}/ONE_UP/" class="btn-delete-conversion">Delete</a></c:if>
 				</dd>				
 			</dl>
 			</c:if>
@@ -25,7 +25,7 @@
 				<dd>
 					<form:input path="product.twoUpFilename" disabled="true"/>
 					<form:errors path="product.twoUpFilename" cssClass="error" element="label" />
-					<a href="${pdfConversion.twoUpFilename}" class="btn-preview-conversion">Preview</a><c:if test="${canDeleteLayout eq true}">&nbsp;&nbsp;<a href="${ctx}/pdf/product/${pdfConversion.id}/delete/${pdfConversion.twoUpFilename}/TWO_UP/" class="btn-delete-conversion">Delete</a></c:if>					
+					<a href="${pdfConversion.twoUpFilename}" class="btn-preview-pdf">Preview</a><c:if test="${canDeleteLayout eq true}">&nbsp;&nbsp;<a href="${ctx}/pdf/product/${pdfConversion.id}/delete/${pdfConversion.twoUpFilename}/TWO_UP/" class="btn-delete-conversion">Delete</a></c:if>					
 				</dd>
 			</dl>
 			</c:if>
@@ -35,7 +35,7 @@
 				<dd>
 					<form:input path="product.a5Filename" disabled="true" />
 					<form:errors path="product.a5Filename" cssClass="error" element="label" />				
-					<a href="${pdfConversion.a5Filename}" class="btn-preview-conversion">Preview</a><c:if test="${canDeleteLayout eq true}">&nbsp;&nbsp;<a href="${ctx}/pdf/product/${pdfConversion.id}/delete/${pdfConversion.a5Filename}/A5/" class="btn-delete-conversion">Delete</a></c:if>
+					<a href="${pdfConversion.a5Filename}" class="btn-preview-pdf">Preview</a><c:if test="${canDeleteLayout eq true}">&nbsp;&nbsp;<a href="${ctx}/pdf/product/${pdfConversion.id}/delete/${pdfConversion.a5Filename}/A5/" class="btn-delete-conversion">Delete</a></c:if>
 				</dd>				
 			</dl>
 			</c:if>	
@@ -123,12 +123,12 @@
 			</dl>
 			<dl>
 				<dt>Publication Date</dt>
-				<dd><form:input path="product.publicationDate" cssClass="date" />
+				<dd><form:input path="product.publicationDate" cssClass="date" data-date-format="YYYY-MM-DD"/>
 				<form:errors path="product.publicationDate" cssClass="error" element="label" /></dd>
 			</dl>
 			<dl>
 				<dt>Embargo Date</dt>
-				<dd><form:input path="product.embargoDate" cssClass="date" />
+				<dd><form:input path="product.embargoDate" cssClass="date" data-date-format="YYYY-MM-DD"/>
 				<form:errors path="product.embargoDate" cssClass="error" element="label" /></dd>
 			</dl>
 			<dl>
@@ -189,7 +189,7 @@
 		</div>
 		
 		<div style="clear:both; width:100%;">
-			<input type="submit" value="Update" />
+			<input type="submit" class="btn btn-paperight" value="Update" />
 		</div>
 	</form:form>
 </div>

@@ -126,12 +126,12 @@
 			</dl>
 			<dl>
 				<dt>Publication Date</dt>
-				<dd><form:input path="publicationDate" cssClass="date" />
+				<dd><form:input path="publicationDate" cssClass="date" data-date-format="YYYY-MM-DD" />
 				<form:errors path="publicationDate" cssClass="error" element="label" /></dd>
 			</dl>
 			<dl>
 				<dt>Embargo Date</dt>
-				<dd><form:input path="embargoDate" cssClass="date" />
+				<dd><form:input path="embargoDate" cssClass="date" data-date-format="YYYY-MM-DD" />
 				<form:errors path="embargoDate" cssClass="error" element="label" /></dd>
 			</dl>
 			<dl>
@@ -220,7 +220,7 @@
 		</div>
 		
 		<div style="clear:both; width:100%;">
-			<input type="submit" value="Reset page extent and update" onclick="return resetPageExtents();" />
+			<input type="submit" class="btn btn-paperight" value="Reset page extent and update" onclick="return resetPageExtents();" />
 		</div>
 	</form:form>
 </div>

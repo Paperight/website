@@ -46,6 +46,7 @@
 			<add-attribute value="/js/paperight.context.jsonp?cb=paperight.load" type="string" />
 			<add-attribute value="/js/jquery.sortElements.js" type="string" />
 			<add-attribute value="/js/common.js" type="string" />
+			<add-attribute value="/js/website.js" type="string" />
 			<add-attribute value="/js/google.analytics.js" type="string" />
 			<add-attribute value="/js/breadcrumbs.js" type="string" />
 		</put-list-attribute>

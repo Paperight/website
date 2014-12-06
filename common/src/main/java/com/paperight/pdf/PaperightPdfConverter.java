@@ -3,6 +3,7 @@ package com.paperight.pdf;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -243,12 +245,21 @@ public class PaperightPdfConverter {
 		Rectangle pageSize = reader.getPageSize(1);
 		PdfReader stampReader;
 		if (pageLayout == PageLayout.A5) {
-			stampReader = new PdfReader(FilenameUtils.concat(getPdfFileFolder(), "a5-template.pdf"));
+		    ClassPathResource classPathResource = new ClassPathResource("a5-template.pdf");
+		    try (InputStream inputStream = classPathResource.getInputStream()) {
+		        stampReader = new PdfReader(inputStream);
+		    }
 		} else {
 			if (pageSize.getWidth() < pageSize.getHeight()) {
-				stampReader = new PdfReader(FilenameUtils.concat(getPdfFileFolder(), "1-up-template.pdf"));
+			    ClassPathResource classPathResource = new ClassPathResource("1-up-template.pdf");
+			    try (InputStream inputStream = classPathResource.getInputStream()) {
+			        stampReader = new PdfReader(inputStream);
+			    }
 			} else {
-				stampReader = new PdfReader(FilenameUtils.concat(getPdfFileFolder(), "2-up-template.pdf"));
+			    ClassPathResource classPathResource = new ClassPathResource("2-up-template.pdf");
+			    try (InputStream inputStream = classPathResource.getInputStream()) {
+			        stampReader = new PdfReader(inputStream);
+			    }
 			}
 		}
 		// Create the stamper
