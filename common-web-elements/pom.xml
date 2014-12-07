@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.paperight</groupId>
 	<artifactId>common-web-elements</artifactId>
-	<version>1.5.0.RC1</version>
+	<version>1.5.0.RELEASE</version>
 	<packaging>war</packaging>
 	<name>Common Web Elements</name>
 
