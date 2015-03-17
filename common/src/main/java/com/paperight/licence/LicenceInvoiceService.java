@@ -86,7 +86,7 @@ public class LicenceInvoiceService {
 
 	private void generateLicenceInvoice(Licence licence, String baseFolder, String timeStamp) {
 		try {
-			File file = new File(baseFolder + "\\invoice_" + licence.getId() + "_" + timeStamp + ".pdf");
+			File file = new File(baseFolder + "/" + "invoice_" + licence.getId() + "_" + timeStamp + ".pdf");
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
 			this.generateOutletInvoice(licence, fileOutputStream);
 			licence.setInvoiceState(InvoiceState.DOWNLOADED);
