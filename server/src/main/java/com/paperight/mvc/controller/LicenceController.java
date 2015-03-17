@@ -18,8 +18,7 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,6 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import au.com.bytecode.opencsv.CSVWriter;
 
 import com.paperight.licence.Licence;
+import com.paperight.licence.LicenceInvoiceService;
+import com.paperight.licence.LicenceSearch;
 import com.paperight.licence.LicenceService;
 import com.paperight.licence.LicenceStatus;
 import com.paperight.product.Product;
@@ -43,6 +44,12 @@ public class LicenceController {
 	
 	@Autowired
 	private LicenceService licenceService;
+	
+	@Autowired
+	private LicenceInvoiceService licenceInvoiceService;
+	
+	@Value("${pdf.download.licence.file.folder}")
+	private String licencesDownloadFolder;
 	
 	private Logger logger = LoggerFactory.getLogger(LicenceController.class);
 	
@@ -72,23 +79,15 @@ public class LicenceController {
 	
 	@RequestMapping(value="/licence/search", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String search(@ModelAttribute LicenceSearch licenceSearch, Model model) {
-		List<Licence> licences = searchLicences(licenceSearch);
+		List<Licence> licences = licenceService.searchLicences(licenceSearch);
 		model.addAttribute("licenceSearch", licenceSearch);
 		model.addAttribute("licences", licences);
 		return "licence/search";
 	}
 	
-	private List<Licence> searchLicences(LicenceSearch licenceSearch) {
-		if (licenceSearch.getFromDate() == null && licenceSearch.getToDate() == null) {
-			return new ArrayList<Licence>();
-		} else {
-			return Licence.findByDateRange(licenceSearch.getFromDate(), licenceSearch.getToDate());
-		}
-	}
-	
 	@RequestMapping(value="/licence/export", method = RequestMethod.GET )
 	public void export(@ModelAttribute LicenceSearch licenceSearch, HttpServletResponse response) throws Exception {
-		List<Licence> licences = searchLicences(licenceSearch);
+		List<Licence> licences = licenceService.searchLicences(licenceSearch);
 		String csvContent = buildCsv(licences);			
 		response.setContentType("text/csv");
 		String filename = "licence_export_" + new DateTime().toString("yyyyMMdd-hhmmss");
@@ -101,6 +100,16 @@ public class LicenceController {
 			inputStream.close();
 		}
 		
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/licence/invoices")
+	public String licenceInvoices(Model model, HttpServletResponse response) throws Exception {
+		String timeStamp = new DateTime().toString("yyyyMMdd-hhmmss");
+		List<Licence> licences = Licence.findAll();
+		licenceInvoiceService.generateLicenceInvoices(licences, licencesDownloadFolder, timeStamp);
+		model.addAttribute("notificationType", "success");
+		model.addAttribute("notificationMessage", "Licence invoices have been generated");
+		return search(new LicenceSearch(), model);
 	}
 	
 	private String buildCsv(List<Licence> licences) throws IOException {
@@ -184,30 +193,4 @@ class ResponseError {
 	public String getError() {
 		return error;
 	}
-}
-
-class LicenceSearch {
-	
-	@DateTimeFormat(iso = ISO.DATE)
-	private DateTime fromDate;
-	
-	@DateTimeFormat(iso = ISO.DATE)
-	private DateTime toDate;
-	
-	public DateTime getFromDate() {
-		return fromDate;
-	}
-	
-	public void setFromDate(DateTime fromDate) {
-		this.fromDate = fromDate.withHourOfDay(0).withMinuteOfHour(0).withSecondOfMinute(0);
-	}
-	
-	public DateTime getToDate() {
-		return toDate;
-	}
-	
-	public void setToDate(DateTime toDate) {
-		this.toDate = toDate.withHourOfDay(23).withMinuteOfHour(59).withSecondOfMinute(59);
-	}
-	
 }

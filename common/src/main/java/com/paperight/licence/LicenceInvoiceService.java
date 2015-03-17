@@ -1,5 +1,6 @@
 package com.paperight.licence;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,6 +8,7 @@ import java.io.OutputStream;
 import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
@@ -25,9 +27,11 @@ import com.paperight.Application;
 import com.paperight.content.ContentService;
 import com.paperight.currency.CurrencyService;
 import com.paperight.currency.VatRate;
+import com.paperight.licence.Licence.InvoiceState;
 import com.paperight.mvc.tags.PriceTag;
 import com.paperight.pdf.PdfExecutor;
 import com.paperight.pdf.PdfExecutorFactory;
+import com.paperight.publisherearning.PublisherEarning;
 import com.paperight.user.Company;
 
 @Service
@@ -63,6 +67,36 @@ public class LicenceInvoiceService {
             IOUtils.closeQuietly(out);
         }
     }
+	
+	public void generateLicenceInvoices(List<Licence> licences, String baseFolder, String timeStamp) {
+		for (Licence licence : licences) {
+			if (licence != null) {
+				generateLicenceInvoice(licence, baseFolder, timeStamp);
+			}
+		}
+	}
+	
+	public void generateEarningsInvoices(List<PublisherEarning> publisherEarnings, String baseFolder, String timeStamp) {
+		for (PublisherEarning publisherEarning : publisherEarnings) {
+			if (publisherEarning.getLicence() != null) {
+				generateLicenceInvoice(publisherEarning.getLicence(), baseFolder, timeStamp);
+			}
+		}
+	}
+
+	private void generateLicenceInvoice(Licence licence, String baseFolder, String timeStamp) {
+		try {
+			File file = new File(baseFolder + "\\invoice_" + licence.getId() + "_" + timeStamp + ".pdf");
+			FileOutputStream fileOutputStream = new FileOutputStream(file);
+			this.generateOutletInvoice(licence, fileOutputStream);
+			licence.setInvoiceState(InvoiceState.DOWNLOADED);
+			licence.merge();
+			fileOutputStream.flush();
+			fileOutputStream.close();
+		} catch (Exception e) {
+			logger.error("Error generating invoice", e);
+		}
+	}
 	
 	private void generatePdf(String html, OutputStream outputStream) throws Exception {
 		InputStream inputStream = IOUtils.toInputStream(html);
@@ -166,8 +200,4 @@ public class LicenceInvoiceService {
 	public void setApplicationUrl(String applicationUrl) {
 		this.applicationUrl = applicationUrl;
 	}
-	
-	
-	
-	
 }

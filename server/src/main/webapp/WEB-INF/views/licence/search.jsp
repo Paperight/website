@@ -3,6 +3,10 @@
 <div class="form">
 <form:form method="GET" modelAttribute="licenceSearch" >
 	<div style="width:310px; float:left; margin-right:30px; margin-bottom:30px;">
+		<div style="margin-bottom: 10px;">
+			<a id="btn-download-all-licences" class="btn btn-paperight" href="${ctx}/licence/invoices"><pr:snippet name="downloadAllLicencesButton" group="topupPanel" defaultValue="Download licences"/></a>
+			<a id="btn-download-all-earnings" class="btn btn-paperight" href="${ctx}/publisher-earnings/invoices"><pr:snippet name="downloadAllEarningsButton" group="topupPanel" defaultValue="Download earnings"/></a>
+		</div>
 		<dl>
 			<dt>From Date</dt>
 			<dd>

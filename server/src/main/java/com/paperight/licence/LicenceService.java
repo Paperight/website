@@ -1,6 +1,8 @@
 package com.paperight.licence;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -33,6 +35,14 @@ public class LicenceService {
 		
 	}
 	
+	public List<Licence> searchLicences(LicenceSearch licenceSearch) {
+		if (licenceSearch.getFromDate() == null && licenceSearch.getToDate() == null) {
+			return new ArrayList<Licence>();
+		} else {
+			return Licence.findByDateRange(licenceSearch.getFromDate(), licenceSearch.getToDate());
+		}
+	}
+	
 	public boolean generateFile(Licence licence) throws Exception {
 		finalizeLicence(licence);
 		WatermarkWriter watermarkWriter = WatermarkWriterFactory.create(FilenameUtils.getExtension(licence.getOriginalFileName()));
@@ -60,6 +70,5 @@ public class LicenceService {
 			licence.setTrackingUrl(trackingUrl);
 			licence.merge();
 		}
-	}
-	
+	}	
 }
