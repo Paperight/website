@@ -1,4 +1,4 @@
-# A Paperight website
+# A Paperight website-A perfect place for readers!
 
 A Paperight website (originally built at [paperight.com](paperight.com), where you can find more background) enables print shops to sell print-outs of books to customers on demand. The print shops sign up, then pay a small licence fee to each book's publisher to download the file for printing. The code for the site is open (AGPL), so with some development expertise you can set up your own Paperight-powered network for selling books.
 
